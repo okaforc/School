@@ -1,0 +1,25 @@
+arr.add(1);
+        arr.add(-3);
+        arr.add(71);
+        arr.add(68);
+        arr.add(17);
+
+
+
+        arr.add(-59);
+        arr.add(-36);
+        arr.add(-13);
+        arr.add(1);
+        arr.add(-53);
+        arr.add(-92);
+        arr.add(-2);
+        arr.add(-96);
+        arr.add(-54);
+        arr.add(75);
+
+
+
+
+        arr.add(3);
+        arr.add(-7);
+        arr.add(0);

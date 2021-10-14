@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"*.rmd": "markdown",
+			"*.html": "html",
+			"postfix.h": "c",
+			"stdio.h": "c",
+			"infix.h": "c"
+		}
+	}
+}

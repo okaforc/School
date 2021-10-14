@@ -1,0 +1,101 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+
+-- Uncomment the following library declaration if using
+-- arithmetic functions with Signed or Unsigned values
+--USE ieee.numeric_std.ALL;
+
+ENTITY multiplexer_tb IS
+END multiplexer_tb;
+
+ARCHITECTURE behavior OF multiplexer_tb IS
+
+   -- Component Declaration for the Unit Under Test (UUT)
+
+   COMPONENT multiplexer
+      PORT (
+         s : IN STD_LOGIC_VECTOR(1 DOWNTO 0);
+         in1 : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+         in2 : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+         in3 : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+         in4 : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+         z : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+      );
+   END COMPONENT;
+   --Inputs
+   SIGNAL s : STD_LOGIC_VECTOR(1 DOWNTO 0) := (OTHERS => '0');
+   SIGNAL in1 : STD_LOGIC_VECTOR(31 DOWNTO 0) := (OTHERS => '0');
+   SIGNAL in2 : STD_LOGIC_VECTOR(31 DOWNTO 0) := (OTHERS => '0');
+   SIGNAL in3 : STD_LOGIC_VECTOR(31 DOWNTO 0) := (OTHERS => '0');
+   SIGNAL in4 : STD_LOGIC_VECTOR(31 DOWNTO 0) := (OTHERS => '0');
+
+   --Outputs
+   SIGNAL z : STD_LOGIC_VECTOR(31 DOWNTO 0);
+   -- No clocks detected in port list. Replace <clock> below with 
+   -- appropriate port name 
+
+   --   constant Clk_period : time := 10 ns;
+
+BEGIN
+
+   -- Instantiate the Unit Under Test (UUT)
+   uut : multiplexer PORT MAP(
+      s => s,
+      in1 => in1,
+      in2 => in2,
+      in3 => in3,
+      in4 => in4,
+      z => z
+   );
+
+   stim_proc : PROCESS
+   BEGIN
+      in0 <= "10110110001111101101100101001000";
+      in1 <= "11111100000111111011001000111100";
+      in2 <= "11100001001001100100000011110100";
+      in3 <= "10111010011101001110010010000000";
+      in4 <= "10011010110100001001000001011100";
+      in5 <= "11101101101101110110011000100000";
+      in6 <= "10110101010111101000110101100010";
+      in7 <= "11011001011100100111110001100111";
+      in8 <= "10111101000010000000110010110000";
+      in9 <= "10101101000001000001101000110001";
+      in10 <= "10001011100000000011001011100010";
+      in11 <= "10101100011110001001010001000011";
+      in12 <= "10100001100111011000001000011101";
+      in13 <= "11100010100110001101011110100000";
+      in14 <= "11111111101001100111011101100010";
+      in15 <= "11010111011111100101011101100101";
+      in16 <= "10110000101000111110100000000000";
+      in17 <= "11100011011010010010010011110111";
+      in18 <= "10001000111110000100001000010001";
+      in19 <= "10101101000000100000001110001101";
+      in20 <= "11110010010000110001010110010010";
+      in21 <= "11100101101011000100101000110001";
+      in22 <= "10011001001000000111001010100011";
+      in23 <= "10111110101000101100111001110011";
+      in24 <= "11001110010001111000110010101011";
+      in25 <= "11000011010110001000000100010010";
+      in26 <= "10000010111101110100010000011101";
+      in27 <= "11111101011001100101111011011100";
+      in28 <= "11110010111100101110111111001000";
+      in29 <= "10010000001000010001111111110110";
+      in30 <= "10100100101100100111110111010011";
+      in31 <= "01000110001100011010000011101001";
+
+      WAIT FOR 10 ns;
+      s <= "00";
+
+      WAIT FOR 10 ns;
+      s <= "01";
+
+      WAIT FOR 10 ns;
+      s <= "10";
+
+      WAIT FOR 10 ns;
+      s <= "11";
+
+      --     wait;
+   END PROCESS;
+
+END;
