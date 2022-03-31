@@ -3,8 +3,10 @@ import java.io.*;
 
 public class FileHandler {
     public static final String[] movedKeywords = { "EB", "FLAGSTOP", "NB", "SB", "WB" };
+    private static HashMap<String, String> prettyHead = new HashMap<>();
     // private static ArrayList<HashMap<String, String>> stops = new ArrayList<>();
-    private static TST<HashMap<String, String>> trie = new TST<>();
+    private static TST<LinkedHashMap<String, String>> trie = new TST<>();
+    private static String[] head;
 
     /**
      * Verify if a String {@code a} is in an array {@code arr} via a binary search.
@@ -39,7 +41,7 @@ public class FileHandler {
             String line = br.readLine();
             // ArrayList<Integer> stops = new ArrayList<>();
 
-            String[] head = line.split(","); // split the header by commas
+            head = line.split(","); // split the header by commas
             line = br.readLine();
             while (line != null) {
                 String[] vals = line.split(","); // split each line by commas
@@ -65,6 +67,7 @@ public class FileHandler {
                 line = br.readLine(); // move onto the next line
             }
 
+            initPrettyHead();
             br.close();
         } catch (Exception e) {
             e.printStackTrace();
@@ -79,28 +82,105 @@ public class FileHandler {
     // If it is, move the value to the end of the string and return it. 
     // Otherwise, return the original string.
     private static String rewriteSpecialString(String str) {
-        if (binarySearch(movedKeywords, str.split(" ")[0]) != -1) {
-            String a = str;
-            List<String> val = new ArrayList<>(Arrays.asList(str.split(" ")));
+        // if (binarySearch(movedKeywords, str.split(" ")[0]) != -1) {
+        //     String a = str;
+        //     List<String> val = new ArrayList<>(Arrays.asList(str.split(" ")));
+        //     a = val.get(0);
+        //     val.remove(0);
+        //     val.add(a);
+        //     return String.join(" ", val);
+        // } else {
+        //     return str;
+        // }
+        String res = str;
+        int limit = res.split(" ").length;
+        int count = 0;
+        while (binarySearch(movedKeywords, res.split(" ")[0]) != -1 && count < limit) {
+            String a = res;
+            List<String> val = new ArrayList<>(Arrays.asList(res.split(" ")));
             a = val.get(0);
             val.remove(0);
             val.add(a);
-            return String.join(" ", val);
-        } else {
-            return str;
+            count++;
+            res = String.join(" ", val);
         }
+        return res;
     }
 
     // public static ArrayList<HashMap<String, String>> getStops() {
     //     return stops;
     // }
 
-    public static TST<HashMap<String, String>> getTrie() {
+    private static void initPrettyHead() {
+        prettyHead.put(head[0], "Stop ID");
+        prettyHead.put(head[1], "Stop Code");
+        prettyHead.put(head[2], "Stop Name");
+        prettyHead.put(head[3], "Stop Description");
+        prettyHead.put(head[4], "Stop Latitude");
+        prettyHead.put(head[5], "Stop Longitude");
+        prettyHead.put(head[6], "Zone ID");
+        prettyHead.put(head[7], "Stop URL");
+        prettyHead.put(head[8], "Location Type");
+        prettyHead.put(head[9], "Parent Station");
+    }
+    
+    /**
+     * Returns the trie saved to the FileHandler.
+     * @return
+     */
+    public static TST<LinkedHashMap<String, String>> getTrie() {
         return trie;
     }
 
-    // allow user to search for strings without case sensitivity
+    /**
+     * Allow user to search for station keys without case sensitivity.
+     * @param prefix
+     * @return The string returned by {@code TST.keysWithPrefix(String)} without case prejudice.
+     */
     public static Iterable<String> searchPrefix(String prefix) {
         return trie.keysWithPrefix(prefix.toUpperCase());
+    }
+
+    /**
+     * Get all the data of a specific key in the trie, with a specified amount of tabs.
+     * @param key
+     * @param tabs
+     * @return The formatted string.
+     */
+    public static String get(String key, int tabs, boolean pretty) {
+        if (key == null) {
+            throw new IllegalArgumentException("calls get() with null argument");
+        }
+        if (key.length() == 0)
+            throw new IllegalArgumentException("key must have length >= 1");
+        LinkedHashMap<String, String> x = trie.get(key);
+        if (x == null)
+            return null;
+        return mapToString(x, tabs, pretty);
+    }
+
+    /**
+     * Return all formatted data of a string-string LinkedHashMap with tabs amount of tabs.
+     * @param hm
+     * @param tabs
+     * @return The formatted string.
+     */
+    private static String mapToString(LinkedHashMap<String, String> hm, int tabs, boolean pretty) {
+        String res = "", tab = "";
+
+        for (int i = 0; i < tabs; i++) {
+            tab += "\t";
+        }
+        if (pretty) {
+            for (int i = 0; i < hm.values().size(); i++) {
+                res += tab + prettyHead.get(head[i]) + ": " + hm.get(head[i]) + "\n";
+            }
+        } else {
+            for (int i = 0; i < hm.values().size(); i++) {
+                res += tab + head[i] + ": " + hm.get(head[i]) + "\n";
+            }
+        }
+
+        return res;
     }
 }
