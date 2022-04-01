@@ -1,12 +1,16 @@
 import java.util.*;
 import java.io.*;
+import java.time.*;
+import java.time.format.*;
 
 public class FileHandler {
     public static final String[] movedKeywords = { "EB", "FLAGSTOP", "NB", "SB", "WB" };
     private static HashMap<String, String> prettyHead = new HashMap<>();
     // private static ArrayList<HashMap<String, String>> stops = new ArrayList<>();
-    private static TST<LinkedHashMap<String, String>> trie = new TST<>();
+    private static TST<LinkedHashMap<String, String>> stopsTST = new TST<>();
+    private static TST<ArrayList<LinkedHashMap<String, String>>> timesTST = new TST<>();
     private static String[] head;
+    private static String[] headTimes;
 
     /**
      * Verify if a String {@code a} is in an array {@code arr} via a binary search.
@@ -20,20 +24,24 @@ public class FileHandler {
             int mid = lo + (hi - lo) / 2;
             int cmp = a.compareTo(arr[mid]);
 
-            if (cmp == 0) return mid;
-            else if (cmp > 0) lo = mid + 1;
-            else hi = mid - 1;
+            if (cmp == 0)
+                return mid;
+            else if (cmp > 0)
+                lo = mid + 1;
+            else
+                hi = mid - 1;
         }
 
         return -1; // not found
     }
 
     /**
-     * Populate the TST with the data found in {@code filename}.
+     * Populate the TST with the stops data found in {@code filename}.
      * @param filename The name of a .txt/.csv file (must have a header and comma-separated values) with data intended for a TST.
      * @return -1 if an error occurs, else 0.
      */
     public static int initStops(String filename) {
+        System.out.println("Loading stops...");
         try {
             BufferedReader br = new BufferedReader(
                     new InputStreamReader(new FileInputStream(filename), "UTF-8"));
@@ -61,18 +69,117 @@ public class FileHandler {
                 }
 
                 // add the hashmap for each node with the stop name as the key to the TST
-                trie.put(m.get(head[2]), m); 
+                stopsTST.put(m.get(head[2]), m);
                 // stops.add(m);
 
                 line = br.readLine(); // move onto the next line
             }
 
-            initPrettyHead();
+            initPrettyHead("stop");
             br.close();
         } catch (Exception e) {
             e.printStackTrace();
             return -1; // Return -1 if file name/data is invalid
         }
+
+        // Return 0 if code runs normally
+        return 0;
+    }
+
+    /**
+     * Populate the TST with the stop times data found in {@code filename}.
+     * @param filename The name of a .txt/.csv file (must have a header and comma-separated values) with data intended for a TST.
+     * @return -1 if an error occurs, else 0.
+     */
+    
+    public static int initTimes(String filename) {
+        int percentageLoaded = 0;
+        // private static int lines = 10001;
+        int lines = 1772369;
+        int portion = lines / 10;
+        int fcount = 0;
+        System.out.println("Loading stop times...");
+        System.out.print("[");
+        try {
+            BufferedReader br = new BufferedReader(
+                    new InputStreamReader(new FileInputStream(filename), "UTF-8"));
+            // br.readLine();
+            String line = br.readLine();
+            ArrayList<LinkedHashMap<String, String>> timeData = new ArrayList<>();
+
+            ArrayList<String> times = new ArrayList<>();
+
+            headTimes = line.split(","); // split the header by commas
+            line = br.readLine();
+            boolean validStopTime;
+            while (line != null) {
+                validStopTime = true;
+                String[] vals = line.split(","); // split each line by commas
+                String time = "";
+
+                // in the event of a stop having no parent station, the empty value at that position isn't added. 
+                // this adds an empty string to that position.
+                if (vals.length < headTimes.length) {
+                    vals = Arrays.copyOf(vals, headTimes.length);
+                    vals[8] = "";
+                }
+
+                // create a new linkedhashmap for each node
+                LinkedHashMap<String, String> m = new LinkedHashMap<>();
+                for (int i = 0; i < headTimes.length; i++) {
+                    // add the data to the hashmap, with the header as the key and the parsed there as the value.
+                    if (parseTime(vals[i].strip()) != null) {
+                        m.put(headTimes[i], parseTime(vals[i].strip()));
+                        if (i == 1) {
+                            time = parseTime(vals[i].strip());
+                        }
+                    } else {
+                        validStopTime = false;
+                        // System.out.println("invalid stop time; discarding");
+                        break;
+                    }
+                }
+
+                if (validStopTime) {
+                    if (!times.contains(time)) {
+                        times.add(time);
+                        // ArrayList<LinkedHashMap<String, String>> empty = new ArrayList<>();
+                        timesTST.put(time, new ArrayList<LinkedHashMap<String, String>>());
+                    }
+                    ArrayList<LinkedHashMap<String, String>> t = timesTST.get(time);
+                    t.add(m);
+                    t = sortHMArr(t);
+                    timesTST.put(time, t);
+                    // LinkedHashMap<String, String> t = timeData.get(times.indexOf(time));
+                    // // TST<LinkedHashMap<String, ArrayList<HashMap<String, String>>>>
+                    // t.add(m);
+                    // timesTST.put(time, val);
+                    // timeData.add(m.get(head[2]), m);
+                }
+                // add the hashmap for each node with the stop name as the key to the TST
+                // if (validStopTime) {
+                // }
+                // stops.add(m);
+
+                percentageLoaded++;
+                if (percentageLoaded == portion) {
+                    fcount += 10;
+                    System.out.print(String.valueOf(Character.toChars(0x2588)) + " ");
+                    percentageLoaded = 0;
+                    // System.out.println(portion);
+                }
+
+                line = br.readLine(); // move onto the next line
+            }
+
+            initPrettyHead("time");
+            br.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return -1; // Return -1 if file name/data is invalid
+        }
+
+        System.out.print("]\n");
 
         // Return 0 if code runs normally
         return 0;
@@ -111,25 +218,57 @@ public class FileHandler {
     //     return stops;
     // }
 
-    private static void initPrettyHead() {
-        prettyHead.put(head[0], "Stop ID");
-        prettyHead.put(head[1], "Stop Code");
-        prettyHead.put(head[2], "Stop Name");
-        prettyHead.put(head[3], "Stop Description");
-        prettyHead.put(head[4], "Stop Latitude");
-        prettyHead.put(head[5], "Stop Longitude");
-        prettyHead.put(head[6], "Zone ID");
-        prettyHead.put(head[7], "Stop URL");
-        prettyHead.put(head[8], "Location Type");
-        prettyHead.put(head[9], "Parent Station");
+    private static void initPrettyHead(String type) {
+        switch (type) {
+            case "stop":
+                prettyHead.put(head[0], "Stop ID");
+                prettyHead.put(head[1], "Stop Code");
+                prettyHead.put(head[2], "Stop Name");
+                prettyHead.put(head[3], "Stop Description");
+                prettyHead.put(head[4], "Stop Latitude");
+                prettyHead.put(head[5], "Stop Longitude");
+                prettyHead.put(head[6], "Zone ID");
+                prettyHead.put(head[7], "Stop URL");
+                prettyHead.put(head[8], "Location Type");
+                prettyHead.put(head[9], "Parent Station");
+
+                break;
+            case "time":
+                prettyHead.put(headTimes[0], "Trip ID");
+                prettyHead.put(headTimes[1], "Arrival Time");
+                prettyHead.put(headTimes[2], "Departure Time");
+                prettyHead.put(headTimes[3], "Stop ID");
+                prettyHead.put(headTimes[4], "Stop Sequence");
+                prettyHead.put(headTimes[5], "Stop Headsign");
+                prettyHead.put(headTimes[6], "Pickup Type");
+                prettyHead.put(headTimes[7], "Drop-off Type");
+                prettyHead.put(headTimes[8], "Shape Distance Travelled");
+
+                break;
+
+            default:
+                break;
+        }
     }
-    
+
     /**
-     * Returns the trie saved to the FileHandler.
-     * @return
+     * Returns the stopsTST saved to the FileHandler.
+     * @return {@code stopsTST}
      */
-    public static TST<LinkedHashMap<String, String>> getTrie() {
-        return trie;
+    public static TST<LinkedHashMap<String, String>> getStopsTST() {
+        return stopsTST;
+    }
+
+    /**
+     * Returns the stopsTST saved to the FileHandler.
+     * @return {@code timesTST}
+     */
+    public static TST<ArrayList<LinkedHashMap<String, String>>> getTimesTST() {
+        return timesTST;
+    }
+
+    public static Iterable<String> secret() {
+        return timesTST.keys();
     }
 
     /**
@@ -137,26 +276,56 @@ public class FileHandler {
      * @param prefix
      * @return The string returned by {@code TST.keysWithPrefix(String)} without case prejudice.
      */
-    public static Iterable<String> searchPrefix(String prefix) {
-        return trie.keysWithPrefix(prefix.toUpperCase());
+    public static Iterable<String> searchPrefix(TST<LinkedHashMap<String, String>> tst, String prefix) {
+        return tst.keysWithPrefix(prefix.toUpperCase());
     }
 
     /**
-     * Get all the data of a specific key in the trie, with a specified amount of tabs.
+     * Allow user to search for station keys without case sensitivity.
+     * @param prefix
+     * @return The string returned by {@code TST.keysWithPrefix(String)} without case prejudice.
+     */
+    public static Iterable<String> search(TST<LinkedHashMap<String, String>> tst, String prefix) {
+        return tst.keysThatMatch(prefix.toUpperCase());
+    }
+
+    public static Iterable<String> searchb(TST<ArrayList<LinkedHashMap<String, String>>> tst, String prefix) {
+        return tst.keysThatMatch(prefix.toUpperCase());
+    }
+
+    /**
+     * Get all the data of a specific key in the TST, with a specified amount of tabs.
      * @param key
      * @param tabs
      * @return The formatted string.
      */
-    public static String get(String key, int tabs, boolean pretty) {
+    public static String get(TST<LinkedHashMap<String, String>> tst, String key, int tabs, boolean pretty) {
         if (key == null) {
             throw new IllegalArgumentException("calls get() with null argument");
         }
         if (key.length() == 0)
             throw new IllegalArgumentException("key must have length >= 1");
-        LinkedHashMap<String, String> x = trie.get(key);
+        LinkedHashMap<String, String> x = tst.get(key);
         if (x == null)
             return null;
-        return mapToString(x, tabs, pretty);
+        return mapToString(x, tabs, pretty, true);
+    }
+
+    public static String get_b(TST<ArrayList<LinkedHashMap<String, String>>> tst, String key, int tabs,
+            boolean pretty) {
+        if (key == null) {
+            throw new IllegalArgumentException("calls get() with null argument");
+        }
+        if (key.length() == 0)
+            throw new IllegalArgumentException("key must have length >= 1");
+        ArrayList<LinkedHashMap<String, String>> x = tst.get(key);
+        if (x == null)
+            return null;
+        String res = "";
+        for (LinkedHashMap<String, String> hm : x) {
+            res += mapToString(hm, tabs, pretty, false) + "\n";
+        }
+        return res;
     }
 
     /**
@@ -165,22 +334,65 @@ public class FileHandler {
      * @param tabs
      * @return The formatted string.
      */
-    private static String mapToString(LinkedHashMap<String, String> hm, int tabs, boolean pretty) {
+    private static String mapToString(LinkedHashMap<String, String> hm, int tabs, boolean pretty, boolean which) {
         String res = "", tab = "";
 
         for (int i = 0; i < tabs; i++) {
             tab += "\t";
         }
+
         if (pretty) {
             for (int i = 0; i < hm.values().size(); i++) {
-                res += tab + prettyHead.get(head[i]) + ": " + hm.get(head[i]) + "\n";
+                if (which) {
+                    res += tab + prettyHead.get(head[i]) + ": " + hm.get(head[i]) + "\n";
+                } else {
+                    res += tab + prettyHead.get(headTimes[i]) + ": " + hm.get(headTimes[i]) + "\n";
+
+                }
             }
         } else {
             for (int i = 0; i < hm.values().size(); i++) {
-                res += tab + head[i] + ": " + hm.get(head[i]) + "\n";
+                if (which) {
+                    res += tab + head[i] + ": " + hm.get(head[i]) + "\n";
+                } else {
+                    res += tab + headTimes[i] + ": " + hm.get(headTimes[i]) + "\n";
+                }
             }
         }
 
         return res;
+    }
+
+    private static String parseTime(String time) {
+        if (!time.contains(":"))
+            return time;
+
+        String res = "";
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+
+        try {
+            // add leading zeroes (e.g. 9 -> 09) to time if absent
+            String[] temp = time.split(":");
+            temp[0] = String.format("%02d", Integer.parseInt(temp[0]));
+            res = String.join(":", temp);
+            // parse the string to a time and return it if valid
+            res = timeFormatter.format(
+                    LocalTime.of(Integer.parseInt(temp[0]), Integer.parseInt(temp[1]), Integer.parseInt(temp[2])));
+            // res = LocalTime.parse(res, timeFormatter).toString();
+            return res;
+        } catch (Exception e) {
+            // if the string is not a valid time, return null
+            return null;
+        }
+    }
+
+    private static ArrayList<LinkedHashMap<String, String>> sortHMArr(ArrayList<LinkedHashMap<String, String>> list) {
+        Collections.sort(list, new Comparator<LinkedHashMap<String, String>>() {
+                    @Override
+                    public int compare(LinkedHashMap<String, String> a, LinkedHashMap<String, String> b) {
+                        return (a.get(headTimes[1]).compareTo(b.get(headTimes[1])));
+                    }
+                });
+        return list;
     }
 }
