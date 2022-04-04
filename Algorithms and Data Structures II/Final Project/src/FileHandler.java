@@ -115,13 +115,9 @@ public class FileHandler {
         try {
             BufferedReader br = new BufferedReader(
                     new InputStreamReader(new FileInputStream(filename), "UTF-8"));
-            // br.readLine();
             String line = br.readLine();
-            // ArrayList<LinkedHashMap<String, String>> timeData = new ArrayList<>();
             ArrayList<String> times = new ArrayList<>();
-            ArrayList<Integer> visitedStops = new ArrayList<>(); // array of visited stops in stop_sequence
-            boolean newTrip = false;
-            int currentTrip = 0, lastTrip = -1, prevStopID = -1;
+            int prevStopID = -1;
             boolean validStopTime;
             
             headTimes = line.split(","); // split the header by commas
@@ -137,15 +133,6 @@ public class FileHandler {
                     vals = Arrays.copyOf(vals, headTimes.length);
                     vals[8] = "";
                 }
-
-                currentTrip = Integer.parseInt(vals[0]);
-
-                if (lastTrip != currentTrip) {
-                    lastTrip = currentTrip;
-                    newTrip = true;
-                }
-                
-
 
                 // create a new linkedhashmap for each node
                 LinkedHashMap<String, String> m = new LinkedHashMap<>();
@@ -170,26 +157,16 @@ public class FileHandler {
                         timesTST.put(time, new ArrayList<LinkedHashMap<String, String>>());
                     }
                     ArrayList<LinkedHashMap<String, String>> t = timesTST.get(time);
-                    t.add(m);
+                    t.add(m); // add the hashmap to the times arraylist
                     t = sortHMArr(t);
                     timesTST.put(time, t);
-
-                    if (newTrip) {
-                        visitedStops = new ArrayList<>();
-                        newTrip = false;
-                    }
 
                     int curStopID = Integer.parseInt(vals[3]); // get stop_id value for current line
                     if (Integer.parseInt(vals[4]) != 1) {
                         // if this isn't the start of the trip, add an edge from the previous stop to the current one
                         ewd.addEdge(new DirectedEdge(prevStopID, curStopID, 1));
-                        ArrayList<DirectedEdge> ht = ewd.edges();
-                        DirectedEdge p = ht.get(0);
                     }
                     prevStopID = curStopID; // set this to the new previous stop id
-                    visitedStops.add(curStopID); // add this to the array of visited stops
-
-
                 }
 
                 percentageLoaded++;
@@ -199,7 +176,6 @@ public class FileHandler {
                     // System.out.println(portion);
                 }
 
-                
                 line = br.readLine(); // move onto the next line
             }
 

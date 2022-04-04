@@ -34,10 +34,10 @@ public class Project {
                         // System.out.println(FileHandler.ewd.edges());
                         // System.out.println(FileHandler.ewd.adj(1856));
                         System.out.print("Where are you departing from? Please enter the stop name in its entirety: ");
-                        int res1 = sc.nextInt();
+                        int res1 = Integer.parseInt(sc.next());
                         // String res1 = sc.nextLine();
                         System.out.print("Where are you getting off? Please enter the stop name in its entirety: ");
-                        int res2 = sc.nextInt();
+                        int res2 = Integer.parseInt(sc.next());
                         // String res2 = sc.nextLine();
                         // int t1 = FileHandler.idToName(FileHandler.)
                         DijkstraSP dj = new DijkstraSP(FileHandler.ewd, res1, FileHandler.maxValue);
