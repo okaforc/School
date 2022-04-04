@@ -5,12 +5,14 @@ import java.time.format.*;
 
 public class FileHandler {
     public static final String[] movedKeywords = { "EB", "FLAGSTOP", "NB", "SB", "WB" };
+    private static HashMap<Integer, String> stopInfo = new HashMap<>(); // stop id, stop name
     private static HashMap<String, String> prettyHead = new HashMap<>();
-    // private static ArrayList<HashMap<String, String>> stops = new ArrayList<>();
     private static TST<LinkedHashMap<String, String>> stopsTST = new TST<>();
     private static TST<ArrayList<LinkedHashMap<String, String>>> timesTST = new TST<>();
     private static String[] head;
     private static String[] headTimes;
+    public static EdgeWeightedDigraph ewd;
+    public static int maxValue;
 
     /**
      * Verify if a String {@code a} is in an array {@code arr} via a binary search.
@@ -36,12 +38,14 @@ public class FileHandler {
     }
 
     /**
-     * Populate the TST with the stops data found in {@code filename}.
+     * {@brief} Populate the TST with the stops data found in {@code filename} and the edge weighted digraph associated with the files with nodes.
      * @param filename The name of a .txt/.csv file (must have a header and comma-separated values) with data intended for a TST.
      * @return -1 if an error occurs, else 0.
      */
     public static int initStops(String filename) {
         System.out.println("Loading stops...");
+        ArrayList<Integer> nodes = new ArrayList<>();
+        int maxVal = -1;
         try {
             BufferedReader br = new BufferedReader(
                     new InputStreamReader(new FileInputStream(filename), "UTF-8"));
@@ -53,6 +57,11 @@ public class FileHandler {
             line = br.readLine();
             while (line != null) {
                 String[] vals = line.split(","); // split each line by commas
+
+                // add the stop ID to the graph as a node
+                int val = Integer.parseInt(vals[0]);
+                nodes.add(val);
+                if (val > maxVal) maxVal = val;
 
                 // in the event of a stop having no parent station, the empty value at that position isn't added. 
                 // this adds an empty string to that position.
@@ -70,7 +79,9 @@ public class FileHandler {
 
                 // add the hashmap for each node with the stop name as the key to the TST
                 stopsTST.put(m.get(head[2]), m);
-                // stops.add(m);
+
+                // add the stop's id (key) and name (value) to a lookup table
+                stopInfo.put(Integer.parseInt(m.get(head[0])), m.get(head[2]));
 
                 line = br.readLine(); // move onto the next line
             }
@@ -82,12 +93,14 @@ public class FileHandler {
             return -1; // Return -1 if file name/data is invalid
         }
 
+        ewd = new EdgeWeightedDigraph(nodes, maxVal);
+        maxValue = maxVal;
         // Return 0 if code runs normally
         return 0;
     }
 
     /**
-     * Populate the TST with the stop times data found in {@code filename}.
+     * {@brief} Populate the TST with the stop times data found in {@code filename} and the edge weighted digraph associated with the files with edges.
      * @param filename The name of a .txt/.csv file (must have a header and comma-separated values) with data intended for a TST.
      * @return -1 if an error occurs, else 0.
      */
@@ -97,7 +110,6 @@ public class FileHandler {
         // private static int lines = 10001;
         int lines = 1772369;
         int portion = lines / 10;
-        int fcount = 0;
         System.out.println("Loading stop times...");
         System.out.print("[");
         try {
@@ -105,13 +117,15 @@ public class FileHandler {
                     new InputStreamReader(new FileInputStream(filename), "UTF-8"));
             // br.readLine();
             String line = br.readLine();
-            ArrayList<LinkedHashMap<String, String>> timeData = new ArrayList<>();
-
+            // ArrayList<LinkedHashMap<String, String>> timeData = new ArrayList<>();
             ArrayList<String> times = new ArrayList<>();
-
+            ArrayList<Integer> visitedStops = new ArrayList<>(); // array of visited stops in stop_sequence
+            boolean newTrip = false;
+            int currentTrip = 0, lastTrip = -1, prevStopID = -1;
+            boolean validStopTime;
+            
             headTimes = line.split(","); // split the header by commas
             line = br.readLine();
-            boolean validStopTime;
             while (line != null) {
                 validStopTime = true;
                 String[] vals = line.split(","); // split each line by commas
@@ -123,6 +137,15 @@ public class FileHandler {
                     vals = Arrays.copyOf(vals, headTimes.length);
                     vals[8] = "";
                 }
+
+                currentTrip = Integer.parseInt(vals[0]);
+
+                if (lastTrip != currentTrip) {
+                    lastTrip = currentTrip;
+                    newTrip = true;
+                }
+                
+
 
                 // create a new linkedhashmap for each node
                 LinkedHashMap<String, String> m = new LinkedHashMap<>();
@@ -150,25 +173,33 @@ public class FileHandler {
                     t.add(m);
                     t = sortHMArr(t);
                     timesTST.put(time, t);
-                    // LinkedHashMap<String, String> t = timeData.get(times.indexOf(time));
-                    // // TST<LinkedHashMap<String, ArrayList<HashMap<String, String>>>>
-                    // t.add(m);
-                    // timesTST.put(time, val);
-                    // timeData.add(m.get(head[2]), m);
+
+                    if (newTrip) {
+                        visitedStops = new ArrayList<>();
+                        newTrip = false;
+                    }
+
+                    int curStopID = Integer.parseInt(vals[3]); // get stop_id value for current line
+                    if (Integer.parseInt(vals[4]) != 1) {
+                        // if this isn't the start of the trip, add an edge from the previous stop to the current one
+                        ewd.addEdge(new DirectedEdge(prevStopID, curStopID, 1));
+                        ArrayList<DirectedEdge> ht = ewd.edges();
+                        DirectedEdge p = ht.get(0);
+                    }
+                    prevStopID = curStopID; // set this to the new previous stop id
+                    visitedStops.add(curStopID); // add this to the array of visited stops
+
+
                 }
-                // add the hashmap for each node with the stop name as the key to the TST
-                // if (validStopTime) {
-                // }
-                // stops.add(m);
 
                 percentageLoaded++;
                 if (percentageLoaded == portion) {
-                    fcount += 10;
-                    System.out.print(String.valueOf(Character.toChars(0x2588)) + " ");
+                    System.out.print(String.valueOf(Character.toChars(0x2588)) + " "); // print full block chars while loading
                     percentageLoaded = 0;
                     // System.out.println(portion);
                 }
 
+                
                 line = br.readLine(); // move onto the next line
             }
 
@@ -184,6 +215,65 @@ public class FileHandler {
         // Return 0 if code runs normally
         return 0;
     }
+
+
+
+    /**
+     * Populate the TST with the stops data found in {@code filename}.
+     * @param filename The name of a .txt/.csv file (must have a header and comma-separated values) with data intended for a TST.
+     * @return -1 if an error occurs, else 0.
+     */
+    public static int initTransfers(String filename) {
+        System.out.println("Loading transfers...");
+        try {
+            BufferedReader br = new BufferedReader(
+                    new InputStreamReader(new FileInputStream(filename), "UTF-8"));
+            // br.readLine();
+            String line = br.readLine();
+            // ArrayList<Integer> stops = new ArrayList<>();
+
+            head = line.split(","); // split the header by commas
+            line = br.readLine();
+            while (line != null) {
+                String[] vals = line.split(","); // split each line by commas
+
+                // in the event of a stop having no parent station, the empty value at that position isn't added. 
+                // this adds an empty string to that position.
+                if (vals.length < head.length) {
+                    vals = Arrays.copyOf(vals, head.length);
+                    vals[3] = "";
+                }
+
+                // create a new linkedhashmap for each node
+                LinkedHashMap<String, String> m = new LinkedHashMap<>();
+                for (int i = 0; i < head.length; i++) {
+                    // add the data to the hashmap, with the header as the key and the value there as the value.
+                    m.put(head[i], rewriteSpecialString(vals[i]));
+                }
+
+                // add the hashmap for each node with the stop name as the key to the TST
+                stopsTST.put(m.get(head[2]), m);
+
+                // add the stop's id (key) and name (value) to a lookup table
+                stopInfo.put(Integer.parseInt(m.get(head[0])), m.get(head[2]));
+
+                line = br.readLine(); // move onto the next line
+            }
+
+            initPrettyHead("stop");
+            br.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return -1; // Return -1 if file name/data is invalid
+        }
+
+        
+
+        // Return 0 if code runs normally
+        return 0;
+    }
+
+
 
     // Check is the first value of a string split space-wise is in the movedKeywords array.
     // If it is, move the value to the end of the string and return it. 
@@ -394,5 +484,34 @@ public class FileHandler {
                     }
                 });
         return list;
+    }
+
+    public static ArrayList<DirectedEdge> arrayToList(Stack<DirectedEdge> arr) {
+        ArrayList<DirectedEdge> p = new ArrayList<>();
+        for (DirectedEdge directedEdge : arr) {
+            p.add(directedEdge);
+        }
+        return p;
+    }
+
+    public static String namedPathTo(ArrayList<DirectedEdge> arr, int tabs) {
+        String res = "";
+        String tab = "";
+        int i = 1;
+        int last = 0;
+        for (int j = 0; j < tabs; j++) {
+            tab += "\t";
+        }
+        for (DirectedEdge de : arr) {
+            res += tab + Integer.toString(i) + ". " + stopInfo.get(de.from()) + "\n";
+            i++;
+            last = de.to();
+        }
+        res += tab + Integer.toString(i) + ". " + stopInfo.get(last) + "\n\n";
+        return res;
+    }
+
+    public static String idToName(int id) {
+        return stopInfo.get(id);
     }
 }
