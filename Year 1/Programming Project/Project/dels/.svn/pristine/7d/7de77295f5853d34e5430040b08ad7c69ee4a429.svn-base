@@ -1,0 +1,38 @@
+// event buttons
+final int EVENT_BUTTON1 = 1;
+final int EVENT_BUTTON2 = 2;
+final int EVENT_BUTTON3 = 3;
+final int EVENT_BUTTON4 = 4;
+final int EVENT_BUTTON5 = 5;
+final int EVENT_BUTTON6 = 6;
+final int EVENT_BUTTON7 = 7;
+final int EVENT_BUTTON8 = 8;
+final int EVENT_BUTTON9 = 9;
+
+final int EVENT_ALLAREA1 = 10;
+final int EVENT_ALLAREA2 = 11;
+final int EVENT_ALLAREA3 = 12;
+final int EVENT_ALLAREA_DATE = 13;
+
+final int DATE_BUTTON11 = 14;
+final int DATE_BUTTON12 = 15;
+final int DATE_CONFIRMED = 16;
+final int EVENT_NULL=0;
+
+final int EVENT_BUTTON17 = 17;
+final int EVENT_BUTTON18 = 18;
+final int EVENT_BUTTON19 = 19;
+final int EVENT_BUTTON20 = 20;
+final int EVENT_BUTTON21 = 21;
+
+// colours
+final color BLACK = color(0);
+final color WHITE = color(255);
+final color LIGHT_GREY = color(230);
+final color DARK_GREY = color(170);
+final color RED = color(255, 0, 0);
+final color GREEN = color(0, 255, 0);
+final color BLUE = color(0, 0, 255);
+final color OCEAN_COLOUR = color(202, 226, 245);
+final color HIGHLIGHTED_LAND_COLOUR = color(180, 120, 120);
+final color LAND_COLOUR = color(206, 173, 146);
