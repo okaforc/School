@@ -1,9 +1,6 @@
 
 /**
- * This is a class adapted from the file found here: https://algs4.cs.princeton.edu/44sp/DijkstraSP.java.html
- * The code written here was originally created by Robert Sedgewick and Kevin Wayne, but I have adapted it
- * to suit my own needs.
- * @author: Chike Okafor
+ * @author: my big juicy ass
  */
 
 import java.util.*;
@@ -22,6 +19,10 @@ public class DijkstraSP {
 
         distTo[s] = 0.0;
 
+        fullRelax(G);
+    }
+
+    public void fullRelax(EdgeWeightedDigraph G) {
         Integer[] tnodes = G.nodes().toArray(new Integer[G.V()]);
         Arrays.sort(tnodes);
 

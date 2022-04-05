@@ -1,9 +1,6 @@
 
 /**
- * This is a class adapted from the file found here: https://algs4.cs.princeton.edu/44sp/EdgeWeightedDigraph.java.html
- * The code written here was originally created by Robert Sedgewick and Kevin Wayne, but I have adapted it
- * to suit my own needs.
- * @author: Chike Okafor
+ * @author: mmmmmmm so scrumptions
  */
 
 
@@ -13,8 +10,10 @@ public class EdgeWeightedDigraph {
     private int V, E;
     private ArrayList<DirectedEdge>[] adj;
     private List<Integer> nodes;
+    private List<Integer> edges;
     // private int[] indegree;
 
+    // max is the highest value within the arraylist (not necessarily the last)
     EdgeWeightedDigraph(ArrayList<Integer> nds, int max) {
         this.V = nds.size();
         this.E = 0;
@@ -60,5 +59,17 @@ public class EdgeWeightedDigraph {
             }
         }
         return list;
+    }
+
+    // remove duplicate edges (where de.to(), de.from(), and de.weight() are equal values within another edge)
+    public void purge() {
+        for (int v : nodes) {
+            Set<DirectedEdge> s = new HashSet<>(); // create a new empty hashset
+            ArrayList<DirectedEdge> arr = new ArrayList<>(); // create a new arraylist
+            adj(v).forEach(arr :: add); // add each value from adj(v) to the arraylist
+            s.addAll(arr); // add each value in the arraylist to the hashset
+            adj[v] = new ArrayList<>(); // clear adj[v]
+            adj[v].addAll(s); // replace the value in adj[v] with the new hashset arraylist
+        }
     }
 }

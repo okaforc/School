@@ -6,6 +6,7 @@ import java.time.format.*;
 public class FileHandler {
     public static final String[] movedKeywords = { "EB", "FLAGSTOP", "NB", "SB", "WB" };
     private static HashMap<Integer, String> stopInfo = new HashMap<>(); // stop id, stop name
+    private static HashMap<String, Integer> stopInfoReverse = new HashMap<>(); // stop name, stop id
     private static HashMap<String, String> prettyHead = new HashMap<>();
     private static TST<LinkedHashMap<String, String>> stopsTST = new TST<>();
     private static TST<ArrayList<LinkedHashMap<String, String>>> timesTST = new TST<>();
@@ -61,7 +62,8 @@ public class FileHandler {
                 // add the stop ID to the graph as a node
                 int val = Integer.parseInt(vals[0]);
                 nodes.add(val);
-                if (val > maxVal) maxVal = val;
+                if (val > maxVal)
+                    maxVal = val;
 
                 // in the event of a stop having no parent station, the empty value at that position isn't added. 
                 // this adds an empty string to that position.
@@ -82,6 +84,9 @@ public class FileHandler {
 
                 // add the stop's id (key) and name (value) to a lookup table
                 stopInfo.put(Integer.parseInt(m.get(head[0])), m.get(head[2]));
+
+                // add the stop's name (key) and id (value) to a lookup table
+                stopInfoReverse.put(m.get(head[2]), Integer.parseInt(m.get(head[0])));
 
                 line = br.readLine(); // move onto the next line
             }
@@ -104,7 +109,7 @@ public class FileHandler {
      * @param filename The name of a .txt/.csv file (must have a header and comma-separated values) with data intended for a TST.
      * @return -1 if an error occurs, else 0.
      */
-    
+
     public static int initTimes(String filename) {
         int percentageLoaded = 0;
         // private static int lines = 10001;
@@ -119,7 +124,7 @@ public class FileHandler {
             ArrayList<String> times = new ArrayList<>();
             int prevStopID = -1;
             boolean validStopTime;
-            
+
             headTimes = line.split(","); // split the header by commas
             line = br.readLine();
             while (line != null) {
@@ -187,20 +192,20 @@ public class FileHandler {
         }
 
         System.out.print("]\n");
+        ewd.purge();
 
         // Return 0 if code runs normally
         return 0;
     }
 
-
-
     /**
-     * Populate the TST with the stops data found in {@code filename}.
+     * Populate the TST with the edge transfer data found in {@code filename}.
      * @param filename The name of a .txt/.csv file (must have a header and comma-separated values) with data intended for a TST.
      * @return -1 if an error occurs, else 0.
      */
     public static int initTransfers(String filename) {
         System.out.println("Loading transfers...");
+        int exampleNode = -1;
         try {
             BufferedReader br = new BufferedReader(
                     new InputStreamReader(new FileInputStream(filename), "UTF-8"));
@@ -219,37 +224,35 @@ public class FileHandler {
                     vals = Arrays.copyOf(vals, head.length);
                     vals[3] = "";
                 }
-
-                // create a new linkedhashmap for each node
-                LinkedHashMap<String, String> m = new LinkedHashMap<>();
-                for (int i = 0; i < head.length; i++) {
-                    // add the data to the hashmap, with the header as the key and the value there as the value.
-                    m.put(head[i], rewriteSpecialString(vals[i]));
+                exampleNode = Integer.parseInt(vals[0]);
+                DirectedEdge nde;
+                // set the graph's edges with the edges in this
+                if (vals[2].equals("0")) {
+                    nde = new DirectedEdge(Integer.parseInt(vals[0]), Integer.parseInt(vals[1]), 2);
+                } else {
+                    nde = new DirectedEdge(Integer.parseInt(vals[0]), Integer.parseInt(vals[1]),
+                            Double.parseDouble(vals[3]) / 100);
                 }
-
-                // add the hashmap for each node with the stop name as the key to the TST
-                stopsTST.put(m.get(head[2]), m);
-
-                // add the stop's id (key) and name (value) to a lookup table
-                stopInfo.put(Integer.parseInt(m.get(head[0])), m.get(head[2]));
+                ewd.addEdge(nde);
 
                 line = br.readLine(); // move onto the next line
             }
 
-            initPrettyHead("stop");
+            // initPrettyHead("stop");
             br.close();
         } catch (Exception e) {
             e.printStackTrace();
             return -1; // Return -1 if file name/data is invalid
         }
 
+        ewd.purge(); // remove any duplicate edges
+        DijkstraSP throwaway = new DijkstraSP(ewd, exampleNode, maxValue); // node doesn't matter
+        throwaway.fullRelax(ewd);
         
 
         // Return 0 if code runs normally
         return 0;
     }
-
-
 
     // Check is the first value of a string split space-wise is in the movedKeywords array.
     // If it is, move the value to the end of the string and return it. 
@@ -452,16 +455,18 @@ public class FileHandler {
         }
     }
 
+    // Sort an arraylist of stop time data by times
     private static ArrayList<LinkedHashMap<String, String>> sortHMArr(ArrayList<LinkedHashMap<String, String>> list) {
         Collections.sort(list, new Comparator<LinkedHashMap<String, String>>() {
-                    @Override
-                    public int compare(LinkedHashMap<String, String> a, LinkedHashMap<String, String> b) {
-                        return (a.get(headTimes[1]).compareTo(b.get(headTimes[1])));
-                    }
-                });
+            @Override
+            public int compare(LinkedHashMap<String, String> a, LinkedHashMap<String, String> b) {
+                return (a.get(headTimes[1]).compareTo(b.get(headTimes[1])));
+            }
+        });
         return list;
     }
 
+    // convert a stack of directed edges to an arraylist of directed edges
     public static ArrayList<DirectedEdge> arrayToList(Stack<DirectedEdge> arr) {
         ArrayList<DirectedEdge> p = new ArrayList<>();
         for (DirectedEdge directedEdge : arr) {
@@ -470,24 +475,26 @@ public class FileHandler {
         return p;
     }
 
+    // Get the path to a bus stop while replacing all stop IDs with their names
     public static String namedPathTo(ArrayList<DirectedEdge> arr, int tabs) {
-        String res = "";
-        String tab = "";
+        if (arr == null) return "path invalid";
+        String res = ""; // end result
+        String tab = ""; // store amount of tabs wanted
         int i = 1;
         int last = 0;
         for (int j = 0; j < tabs; j++) {
             tab += "\t";
         }
         for (DirectedEdge de : arr) {
-            res += tab + Integer.toString(i) + ". " + stopInfo.get(de.from()) + "\n";
+            res += tab + Integer.toString(i) + ". " + stopInfo.get(de.from()) + " (stop no. " + de.from() + ")\n";
             i++;
-            last = de.to();
+            last = de.to(); // get the final stop
         }
-        res += tab + Integer.toString(i) + ". " + stopInfo.get(last) + "\n\n";
+        res += tab + Integer.toString(i) + ". " + stopInfo.get(last) + " (stop no. " + last + ")\n";
         return res;
     }
 
-    public static String idToName(int id) {
-        return stopInfo.get(id);
+    public static Integer nameToID(String name) {
+        return stopInfoReverse.get(name);
     }
 }

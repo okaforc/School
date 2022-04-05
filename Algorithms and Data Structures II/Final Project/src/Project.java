@@ -4,14 +4,13 @@ import java.util.*;
 public class Project {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String[] arrExitPhrases = { "q", "quit", "exit", "-1" };
-        List<String> exitPhrases = Arrays.asList(arrExitPhrases);
+        List<String> exitPhrases = Arrays.asList(new String[] { "q", "quit", "exit", "-1" });
         // 1772369 edges
         // 8757 stops
         FileHandler.initStops("stops.txt");
         // FileHandler.initTimes("10000_stop_times.txt");
         FileHandler.initTimes("stop_times.txt");
-        // FileHandler.initTransfers("transfers.txt");
+        FileHandler.initTransfers("transfers.txt");
         System.out.println(
                 "Welcome to the Vancouver public transport system API. There are various settings you can view: ");
         System.out.println(
@@ -30,19 +29,52 @@ public class Project {
                 switch (Integer.parseInt(s)) {
                     case 1:
                         // 1. Find the shortest path between two bus stops
-                        // System.out.println("This hasn't been implemented yet, sorry!");
-                        // System.out.println(FileHandler.ewd.edges());
-                        // System.out.println(FileHandler.ewd.adj(1856));
                         System.out.print("Where are you departing from? Please enter the stop name in its entirety: ");
-                        int res1 = Integer.parseInt(sc.next());
-                        // String res1 = sc.nextLine();
+                        String res1 = sc.nextLine();
+                        Integer t1 = -1, t2 = -1;
+                        try {
+                            t1 = Integer.parseInt(res1);
+                        } catch (Exception e) {
+                            // the user entry is a string, not an id
+                            t1 = FileHandler.nameToID(res1);
+                        }
+
+                        if (t1 == null || !FileHandler.ewd.nodes().contains(t1)) {
+                            System.out.println(
+                                    "Sorry, that doesn't appear to be a valid bus stop. Try option 1 to see a list of matching bus stops.");
+                            break;
+                        }
+
                         System.out.print("Where are you getting off? Please enter the stop name in its entirety: ");
-                        int res2 = Integer.parseInt(sc.next());
-                        // String res2 = sc.nextLine();
-                        // int t1 = FileHandler.idToName(FileHandler.)
-                        DijkstraSP dj = new DijkstraSP(FileHandler.ewd, res1, FileHandler.maxValue);
-                        System.out.println(FileHandler.namedPathTo(dj.pathTo(res2), 1));
-                        
+                        // int res2 = Integer.parseInt(sc.next());
+                        String res2 = sc.nextLine();
+                        try {
+                            t2 = Integer.parseInt(res2);
+                        } catch (Exception e) {
+                            // the user entry is a string, not an id
+                            t2 = FileHandler.nameToID(res2);
+                        }
+
+                        if (t2 == null || !FileHandler.ewd.nodes().contains(t2)) {
+                            System.out.println(
+                                    "Sorry, that doesn't appear to be a valid bus stop. Try option 1 to see a list of matching bus stops.");
+                            break;
+                        }
+
+                        if (t1 == t2) {
+                            System.out.println("You cannot travel to the same bus stop. Please choose a different bus stop as your start or end point.");
+                            break;
+                        }
+
+                        DijkstraSP dj = new DijkstraSP(FileHandler.ewd, t1, FileHandler.maxValue);
+                        System.out.println(FileHandler.namedPathTo(dj.pathTo(t2), 1));
+                        System.out.println("\tCost: " + dj.distTo(t2) + "\n");
+
+                        // FileHandler.ewd.addEdge(new DirectedEdge(646, 378, 1000));
+
+                        // System.out.println(FileHandler.ewd.adj(646));
+                        // System.out.println(a.equals(b));
+
                         break;
                     case 2:
                         // 2. Search for a bus stop
@@ -115,7 +147,7 @@ public class Project {
                         System.out.println("This is an invalid option (options are from 1-3). Please try again.\n");
                         break;
                 }
-
+                System.out.println("Options:");
                 System.out.println(
                         "\t1. Find the shortest path between two bus stops\n" +
                                 "\t2. Search for a bus stop\n" +
