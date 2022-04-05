@@ -7,13 +7,20 @@ public class FileHandler {
     public static final String[] movedKeywords = { "EB", "FLAGSTOP", "NB", "SB", "WB" };
     private static HashMap<Integer, String> stopInfo = new HashMap<>(); // stop id, stop name
     private static HashMap<String, Integer> stopInfoReverse = new HashMap<>(); // stop name, stop id
-    private static HashMap<String, String> prettyHead = new HashMap<>();
+    private static HashMap<String, String> prettyHeadStops = new HashMap<>();
+    private static HashMap<String, String> prettyHeadTimes = new HashMap<>();
     private static TST<LinkedHashMap<String, String>> stopsTST = new TST<>();
     private static TST<ArrayList<LinkedHashMap<String, String>>> timesTST = new TST<>();
     private static String[] head;
     private static String[] headTimes;
     public static EdgeWeightedDigraph ewd;
     public static int maxValue;
+
+    FileHandler(String stops, String times, String transfers) {
+        initStops(stops);
+        initTimes(times);
+        initTransfers(transfers);
+    }
 
     /**
      * Verify if a String {@code a} is in an array {@code arr} via a binary search.
@@ -213,15 +220,15 @@ public class FileHandler {
             String line = br.readLine();
             // ArrayList<Integer> stops = new ArrayList<>();
 
-            head = line.split(","); // split the header by commas
+            String[] transferHead = line.split(","); // split the header by commas
             line = br.readLine();
             while (line != null) {
                 String[] vals = line.split(","); // split each line by commas
 
                 // in the event of a stop having no parent station, the empty value at that position isn't added. 
                 // this adds an empty string to that position.
-                if (vals.length < head.length) {
-                    vals = Arrays.copyOf(vals, head.length);
+                if (vals.length < transferHead.length) {
+                    vals = Arrays.copyOf(vals, transferHead.length);
                     vals[3] = "";
                 }
                 exampleNode = Integer.parseInt(vals[0]);
@@ -290,28 +297,28 @@ public class FileHandler {
     private static void initPrettyHead(String type) {
         switch (type) {
             case "stop":
-                prettyHead.put(head[0], "Stop ID");
-                prettyHead.put(head[1], "Stop Code");
-                prettyHead.put(head[2], "Stop Name");
-                prettyHead.put(head[3], "Stop Description");
-                prettyHead.put(head[4], "Stop Latitude");
-                prettyHead.put(head[5], "Stop Longitude");
-                prettyHead.put(head[6], "Zone ID");
-                prettyHead.put(head[7], "Stop URL");
-                prettyHead.put(head[8], "Location Type");
-                prettyHead.put(head[9], "Parent Station");
+                prettyHeadStops.put(head[0], "Stop ID");
+                prettyHeadStops.put(head[1], "Stop Code");
+                prettyHeadStops.put(head[2], "Stop Name");
+                prettyHeadStops.put(head[3], "Stop Description");
+                prettyHeadStops.put(head[4], "Stop Latitude");
+                prettyHeadStops.put(head[5], "Stop Longitude");
+                prettyHeadStops.put(head[6], "Zone ID");
+                prettyHeadStops.put(head[7], "Stop URL");
+                prettyHeadStops.put(head[8], "Location Type");
+                prettyHeadStops.put(head[9], "Parent Station");
 
                 break;
             case "time":
-                prettyHead.put(headTimes[0], "Trip ID");
-                prettyHead.put(headTimes[1], "Arrival Time");
-                prettyHead.put(headTimes[2], "Departure Time");
-                prettyHead.put(headTimes[3], "Stop ID");
-                prettyHead.put(headTimes[4], "Stop Sequence");
-                prettyHead.put(headTimes[5], "Stop Headsign");
-                prettyHead.put(headTimes[6], "Pickup Type");
-                prettyHead.put(headTimes[7], "Drop-off Type");
-                prettyHead.put(headTimes[8], "Shape Distance Travelled");
+                prettyHeadTimes.put(headTimes[0], "Trip ID");
+                prettyHeadTimes.put(headTimes[1], "Arrival Time");
+                prettyHeadTimes.put(headTimes[2], "Departure Time");
+                prettyHeadTimes.put(headTimes[3], "Stop ID");
+                prettyHeadTimes.put(headTimes[4], "Stop Sequence");
+                prettyHeadTimes.put(headTimes[5], "Stop Headsign");
+                prettyHeadTimes.put(headTimes[6], "Pickup Type");
+                prettyHeadTimes.put(headTimes[7], "Drop-off Type");
+                prettyHeadTimes.put(headTimes[8], "Shape Distance Travelled");
 
                 break;
 
@@ -342,7 +349,8 @@ public class FileHandler {
 
     /**
      * Allow user to search for station keys without case sensitivity.
-     * @param prefix
+     * @param prefix The String to look for
+     * @param tst The trie to search in
      * @return The string returned by {@code TST.keysWithPrefix(String)} without case prejudice.
      */
     public static Iterable<String> searchPrefix(TST<LinkedHashMap<String, String>> tst, String prefix) {
@@ -413,9 +421,9 @@ public class FileHandler {
         if (pretty) {
             for (int i = 0; i < hm.values().size(); i++) {
                 if (which) {
-                    res += tab + prettyHead.get(head[i]) + ": " + hm.get(head[i]) + "\n";
+                    res += tab + prettyHeadStops.get(head[i]) + ": " + hm.get(head[i]) + "\n";
                 } else {
-                    res += tab + prettyHead.get(headTimes[i]) + ": " + hm.get(headTimes[i]) + "\n";
+                    res += "-" + tab + prettyHeadTimes.get(headTimes[i]) + ": " + hm.get(headTimes[i]) + "\n";
 
                 }
             }
@@ -447,7 +455,6 @@ public class FileHandler {
             // parse the string to a time and return it if valid
             res = timeFormatter.format(
                     LocalTime.of(Integer.parseInt(temp[0]), Integer.parseInt(temp[1]), Integer.parseInt(temp[2])));
-            // res = LocalTime.parse(res, timeFormatter).toString();
             return res;
         } catch (Exception e) {
             // if the string is not a valid time, return null
@@ -455,27 +462,40 @@ public class FileHandler {
         }
     }
 
-    // Sort an arraylist of stop time data by times
+    /**
+     * Sort an ArrayList of stop time data by their stop IDs
+     * @param list The ArrayList of data
+     * @return The sorted ArrayList of data
+     */
     private static ArrayList<LinkedHashMap<String, String>> sortHMArr(ArrayList<LinkedHashMap<String, String>> list) {
         Collections.sort(list, new Comparator<LinkedHashMap<String, String>>() {
             @Override
             public int compare(LinkedHashMap<String, String> a, LinkedHashMap<String, String> b) {
-                return (a.get(headTimes[1]).compareTo(b.get(headTimes[1])));
+                return (a.get(headTimes[0]).compareTo(b.get(headTimes[0])));
             }
         });
         return list;
     }
 
-    // convert a stack of directed edges to an arraylist of directed edges
-    public static ArrayList<DirectedEdge> arrayToList(Stack<DirectedEdge> arr) {
+    /**
+     * Convert a stack of {@code DirectedEdges} to an {@code ArrayList}
+     * @param stack The stack of {@code DirectedEdges}
+     * @return An {@code ArrayList} of {@code DirectedEdges}
+     */
+    public static ArrayList<DirectedEdge> arrayToList(Stack<DirectedEdge> stack) {
         ArrayList<DirectedEdge> p = new ArrayList<>();
-        for (DirectedEdge directedEdge : arr) {
+        for (DirectedEdge directedEdge : stack) {
             p.add(directedEdge);
         }
         return p;
     }
 
-    // Get the path to a bus stop while replacing all stop IDs with their names
+    /**
+     * Get the path to a bus stop while replacing all stop IDs with their names
+     * @param arr The shortest path between two bus stop IDs in the form of an ArrayList
+     * @param tabs The number of String tabs wanted
+     * @return The String representation of the path, with all bus stops named
+     */
     public static String namedPathTo(ArrayList<DirectedEdge> arr, int tabs) {
         if (arr == null) return "path invalid";
         String res = ""; // end result
@@ -494,6 +514,11 @@ public class FileHandler {
         return res;
     }
 
+    /**
+     * Return the bus stop ID of a stop name
+     * @param name The name of the bus stop
+     * @return The bus stop's ID value
+     */
     public static Integer nameToID(String name) {
         return stopInfoReverse.get(name);
     }

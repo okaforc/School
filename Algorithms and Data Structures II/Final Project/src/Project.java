@@ -29,14 +29,20 @@ public class Project {
                 switch (Integer.parseInt(s)) {
                     case 1:
                         // 1. Find the shortest path between two bus stops
-                        System.out.print("Where are you departing from? Please enter the stop name in its entirety: ");
+                        System.out.print("Where are you departing from? Please enter the stop name (or ID) in its entirety: ");
                         String res1 = sc.nextLine();
+                        
+                        if (exitPhrases.contains(res1)) {
+                            System.out.println("Goodbye.");
+                            break main;
+                        }
+
                         Integer t1 = -1, t2 = -1;
                         try {
-                            t1 = Integer.parseInt(res1);
+                            t1 = Integer.parseInt(res1.toUpperCase());
                         } catch (Exception e) {
                             // the user entry is a string, not an id
-                            t1 = FileHandler.nameToID(res1);
+                            t1 = FileHandler.nameToID(res1.toUpperCase());
                         }
 
                         if (t1 == null || !FileHandler.ewd.nodes().contains(t1)) {
@@ -48,11 +54,17 @@ public class Project {
                         System.out.print("Where are you getting off? Please enter the stop name in its entirety: ");
                         // int res2 = Integer.parseInt(sc.next());
                         String res2 = sc.nextLine();
+
+                        if (exitPhrases.contains(res2)) {
+                            System.out.println("Goodbye.");
+                            break main;
+                        }
+
                         try {
-                            t2 = Integer.parseInt(res2);
+                            t2 = Integer.parseInt(res2.toUpperCase());
                         } catch (Exception e) {
                             // the user entry is a string, not an id
-                            t2 = FileHandler.nameToID(res2);
+                            t2 = FileHandler.nameToID(res2.toUpperCase());
                         }
 
                         if (t2 == null || !FileHandler.ewd.nodes().contains(t2)) {
@@ -60,8 +72,8 @@ public class Project {
                                     "Sorry, that doesn't appear to be a valid bus stop. Try option 1 to see a list of matching bus stops.");
                             break;
                         }
-
-                        if (t1 == t2) {
+                        
+                        if (t2.equals(t1)) {
                             System.out.println("You cannot travel to the same bus stop. Please choose a different bus stop as your start or end point.");
                             break;
                         }
@@ -80,6 +92,12 @@ public class Project {
                         // 2. Search for a bus stop
                         System.out.print("Please enter the name of your stop: ");
                         String stop = sc.nextLine();
+
+                        if (exitPhrases.contains(stop)) {
+                            System.out.println("Goodbye.");
+                            break main;
+                        }
+
                         int count = 0;
                         boolean hasMultiple = false, iterated = false;
 
@@ -113,6 +131,12 @@ public class Project {
                         System.out.print(
                                 "When would you like to arrive? Please enter your time in the format hh:mm:ss: ");
                         String time = sc.nextLine();
+
+                        if (exitPhrases.contains(time)) {
+                            System.out.println("Goodbye.");
+                            break main;
+                        }
+
                         int count_t = 0;
                         boolean hasMultiple_t = false, iterated_t = false;
 
@@ -137,10 +161,6 @@ public class Project {
                         }
 
                         System.out.printf("- %s\n", FileHandler.get_b(FileHandler.getTimesTST(), time, 1, true));
-                        // System.out.printf("- %s\n", FileHandler.getTimesTST().get(time));
-                        // for (String str : FileHandler.searchb(FileHandler.getTimesTST(), time)) {
-                        //     // System.out.printf("- %s\n", FileHandler.get(FileHandler.getTimesTST(), str, 1, true));
-                        // }
                         break;
 
                     default:

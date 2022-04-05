@@ -1,6 +1,9 @@
 
 /**
- * @author: my big juicy ass
+ * This is a class adapted from the file found here: https://algs4.cs.princeton.edu/44sp/DijkstraSP.java.html
+ * The code written here was originally created by Robert Sedgewick and Kevin Wayne, but I have adapted it
+ * to suit my own needs.
+ * @author: Chike Okafor
  */
 
 import java.util.*;
