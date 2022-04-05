@@ -1,3 +1,4 @@
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.io.*;
 import java.time.*;
@@ -5,12 +6,12 @@ import java.time.format.*;
 
 public class FileHandler {
     public static final String[] movedKeywords = { "EB", "FLAGSTOP", "NB", "SB", "WB" };
-    private static HashMap<Integer, String> stopInfo = new HashMap<>(); // stop id, stop name
-    private static HashMap<String, Integer> stopInfoReverse = new HashMap<>(); // stop name, stop id
-    private static HashMap<String, String> prettyHeadStops = new HashMap<>();
-    private static HashMap<String, String> prettyHeadTimes = new HashMap<>();
-    private static TST<LinkedHashMap<String, String>> stopsTST = new TST<>();
-    private static TST<ArrayList<LinkedHashMap<String, String>>> timesTST = new TST<>();
+    private static final HashMap<Integer, String> stopInfo = new HashMap<>(); // stop id, stop name
+    private static final HashMap<String, Integer> stopInfoReverse = new HashMap<>(); // stop name, stop id
+    private static final HashMap<String, String> prettyHeadStops = new HashMap<>();
+    private static final HashMap<String, String> prettyHeadTimes = new HashMap<>();
+    private static final TST<LinkedHashMap<String, String>> stopsTST = new TST<>();
+    private static final TST<ArrayList<LinkedHashMap<String, String>>> timesTST = new TST<>();
     private static String[] head;
     private static String[] headTimes;
     public static EdgeWeightedDigraph ewd;
@@ -46,7 +47,7 @@ public class FileHandler {
     }
 
     /**
-     * {@brief} Populate the TST with the stops data found in {@code filename} and the edge weighted digraph associated with the files with nodes.
+     * Populate the TST with the stops data found in {@code filename} and the edge weighted digraph associated with the files with nodes.
      * @param filename The name of a .txt/.csv file (must have a header and comma-separated values) with data intended for a TST.
      * @return -1 if an error occurs, else 0.
      */
@@ -56,7 +57,7 @@ public class FileHandler {
         int maxVal = -1;
         try {
             BufferedReader br = new BufferedReader(
-                    new InputStreamReader(new FileInputStream(filename), "UTF-8"));
+                    new InputStreamReader(new FileInputStream(filename), StandardCharsets.UTF_8));
             // br.readLine();
             String line = br.readLine();
             // ArrayList<Integer> stops = new ArrayList<>();
@@ -112,7 +113,7 @@ public class FileHandler {
     }
 
     /**
-     * {@brief} Populate the TST with the stop times data found in {@code filename} and the edge weighted digraph associated with the files with edges.
+     * Populate the TST with the stop times data found in {@code filename} and the edge weighted digraph associated with the files with edges.
      * @param filename The name of a .txt/.csv file (must have a header and comma-separated values) with data intended for a TST.
      * @return -1 if an error occurs, else 0.
      */
@@ -126,7 +127,7 @@ public class FileHandler {
         System.out.print("[");
         try {
             BufferedReader br = new BufferedReader(
-                    new InputStreamReader(new FileInputStream(filename), "UTF-8"));
+                    new InputStreamReader(new FileInputStream(filename), StandardCharsets.UTF_8));
             String line = br.readLine();
             ArrayList<String> times = new ArrayList<>();
             int prevStopID = -1;
@@ -166,12 +167,11 @@ public class FileHandler {
                     if (!times.contains(time)) {
                         times.add(time);
                         // ArrayList<LinkedHashMap<String, String>> empty = new ArrayList<>();
-                        timesTST.put(time, new ArrayList<LinkedHashMap<String, String>>());
+                        timesTST.put(time, new ArrayList<>());
                     }
                     ArrayList<LinkedHashMap<String, String>> t = timesTST.get(time);
                     t.add(m); // add the hashmap to the times arraylist
-                    t = sortHMArr(t);
-                    timesTST.put(time, t);
+                    timesTST.put(time, sortHMArr(t));
 
                     int curStopID = Integer.parseInt(vals[3]); // get stop_id value for current line
                     if (Integer.parseInt(vals[4]) != 1) {
@@ -215,7 +215,7 @@ public class FileHandler {
         int exampleNode = -1;
         try {
             BufferedReader br = new BufferedReader(
-                    new InputStreamReader(new FileInputStream(filename), "UTF-8"));
+                    new InputStreamReader(new FileInputStream(filename), StandardCharsets.UTF_8));
             // br.readLine();
             String line = br.readLine();
             // ArrayList<Integer> stops = new ArrayList<>();
@@ -265,21 +265,11 @@ public class FileHandler {
     // If it is, move the value to the end of the string and return it. 
     // Otherwise, return the original string.
     private static String rewriteSpecialString(String str) {
-        // if (binarySearch(movedKeywords, str.split(" ")[0]) != -1) {
-        //     String a = str;
-        //     List<String> val = new ArrayList<>(Arrays.asList(str.split(" ")));
-        //     a = val.get(0);
-        //     val.remove(0);
-        //     val.add(a);
-        //     return String.join(" ", val);
-        // } else {
-        //     return str;
-        // }
         String res = str;
         int limit = res.split(" ").length;
         int count = 0;
         while (binarySearch(movedKeywords, res.split(" ")[0]) != -1 && count < limit) {
-            String a = res;
+            String a;
             List<String> val = new ArrayList<>(Arrays.asList(res.split(" ")));
             a = val.get(0);
             val.remove(0);
@@ -290,13 +280,9 @@ public class FileHandler {
         return res;
     }
 
-    // public static ArrayList<HashMap<String, String>> getStops() {
-    //     return stops;
-    // }
-
     private static void initPrettyHead(String type) {
         switch (type) {
-            case "stop":
+            case "stop" -> {
                 prettyHeadStops.put(head[0], "Stop ID");
                 prettyHeadStops.put(head[1], "Stop Code");
                 prettyHeadStops.put(head[2], "Stop Name");
@@ -307,23 +293,20 @@ public class FileHandler {
                 prettyHeadStops.put(head[7], "Stop URL");
                 prettyHeadStops.put(head[8], "Location Type");
                 prettyHeadStops.put(head[9], "Parent Station");
-
-                break;
-            case "time":
+            }
+            case "time" -> {
                 prettyHeadTimes.put(headTimes[0], "Trip ID");
                 prettyHeadTimes.put(headTimes[1], "Arrival Time");
                 prettyHeadTimes.put(headTimes[2], "Departure Time");
                 prettyHeadTimes.put(headTimes[3], "Stop ID");
                 prettyHeadTimes.put(headTimes[4], "Stop Sequence");
-                prettyHeadTimes.put(headTimes[5], "Stop Headsign");
+                prettyHeadTimes.put(headTimes[5], "Stop Head sign");
                 prettyHeadTimes.put(headTimes[6], "Pickup Type");
                 prettyHeadTimes.put(headTimes[7], "Drop-off Type");
                 prettyHeadTimes.put(headTimes[8], "Shape Distance Travelled");
-
-                break;
-
-            default:
-                break;
+            }
+            default -> {
+            }
         }
     }
 
@@ -349,8 +332,8 @@ public class FileHandler {
 
     /**
      * Allow user to search for station keys without case sensitivity.
-     * @param prefix The String to look for
      * @param tst The trie to search in
+     * @param prefix The String to look for
      * @return The string returned by {@code TST.keysWithPrefix(String)} without case prejudice.
      */
     public static Iterable<String> searchPrefix(TST<LinkedHashMap<String, String>> tst, String prefix) {
@@ -358,22 +341,25 @@ public class FileHandler {
     }
 
     /**
-     * Allow user to search for station keys without case sensitivity.
-     * @param prefix
-     * @return The string returned by {@code TST.keysWithPrefix(String)} without case prejudice.
+     * Allow user to search for exact station keys without case sensitivity.
+     * @param tst The true to search in
+     * @param prefix The String to search for
+     * @return The exact String returned by {@code TST.keysWithPrefix(String)} without case prejudice.
      */
     public static Iterable<String> search(TST<LinkedHashMap<String, String>> tst, String prefix) {
         return tst.keysThatMatch(prefix.toUpperCase());
     }
 
-    public static Iterable<String> searchb(TST<ArrayList<LinkedHashMap<String, String>>> tst, String prefix) {
+    public static Iterable<String> search_b(TST<ArrayList<LinkedHashMap<String, String>>> tst, String prefix) {
         return tst.keysThatMatch(prefix.toUpperCase());
     }
 
     /**
      * Get all the data of a specific key in the TST, with a specified amount of tabs.
-     * @param key
-     * @param tabs
+     * @param tst The trie to search in.
+     * @param key The key to look for.
+     * @param tabs The number of tabs wanted to be embedded in the string.
+     * @param pretty If the String should be prettified or not.
      * @return The formatted string.
      */
     public static String get(TST<LinkedHashMap<String, String>> tst, String key, int tabs, boolean pretty) {
@@ -398,60 +384,61 @@ public class FileHandler {
         ArrayList<LinkedHashMap<String, String>> x = tst.get(key);
         if (x == null)
             return null;
-        String res = "";
+        StringBuilder res = new StringBuilder();
         for (LinkedHashMap<String, String> hm : x) {
-            res += mapToString(hm, tabs, pretty, false) + "\n";
+            res.append(mapToString(hm, tabs, pretty, false)).append("\n");
         }
-        return res;
+        return res.toString();
     }
 
     /**
      * Return all formatted data of a string-string LinkedHashMap with tabs amount of tabs.
-     * @param hm
-     * @param tabs
+     * @param hm {@code LinkedHashMap} object to convert.
+     * @param tabs Number of tabs wanted.
+     * @param pretty If the String should be prettified or not.
+     * @param which If the String is using stops data or times data.
      * @return The formatted string.
      */
     private static String mapToString(LinkedHashMap<String, String> hm, int tabs, boolean pretty, boolean which) {
-        String res = "", tab = "";
+        StringBuilder res = new StringBuilder();
+        StringBuilder tab = new StringBuilder();
 
-        for (int i = 0; i < tabs; i++) {
-            tab += "\t";
-        }
+        tab.append("\t".repeat(tabs));
 
         if (pretty) {
             for (int i = 0; i < hm.values().size(); i++) {
                 if (which) {
-                    res += tab + prettyHeadStops.get(head[i]) + ": " + hm.get(head[i]) + "\n";
+                    res.append(tab).append(prettyHeadStops.get(head[i])).append(": ").append(hm.get(head[i])).append("\n");
                 } else {
-                    res += "-" + tab + prettyHeadTimes.get(headTimes[i]) + ": " + hm.get(headTimes[i]) + "\n";
+                    res.append("-").append(tab).append(prettyHeadTimes.get(headTimes[i])).append(": ").append(hm.get(headTimes[i])).append("\n");
 
                 }
             }
         } else {
             for (int i = 0; i < hm.values().size(); i++) {
                 if (which) {
-                    res += tab + head[i] + ": " + hm.get(head[i]) + "\n";
+                    res.append(tab).append(head[i]).append(": ").append(hm.get(head[i])).append("\n");
                 } else {
-                    res += tab + headTimes[i] + ": " + hm.get(headTimes[i]) + "\n";
+                    res.append(tab).append(headTimes[i]).append(": ").append(hm.get(headTimes[i])).append("\n");
                 }
             }
         }
 
-        return res;
+        return res.toString();
     }
 
     private static String parseTime(String time) {
         if (!time.contains(":"))
             return time;
 
-        String res = "";
+        //String res;
         DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
 
         try {
             // add leading zeroes (e.g. 9 -> 09) to time if absent
             String[] temp = time.split(":");
             temp[0] = String.format("%02d", Integer.parseInt(temp[0]));
-            res = String.join(":", temp);
+            String res = String.join(":", temp);
             // parse the string to a time and return it if valid
             res = timeFormatter.format(
                     LocalTime.of(Integer.parseInt(temp[0]), Integer.parseInt(temp[1]), Integer.parseInt(temp[2])));
@@ -468,12 +455,7 @@ public class FileHandler {
      * @return The sorted ArrayList of data
      */
     private static ArrayList<LinkedHashMap<String, String>> sortHMArr(ArrayList<LinkedHashMap<String, String>> list) {
-        Collections.sort(list, new Comparator<LinkedHashMap<String, String>>() {
-            @Override
-            public int compare(LinkedHashMap<String, String> a, LinkedHashMap<String, String> b) {
-                return (a.get(headTimes[0]).compareTo(b.get(headTimes[0])));
-            }
-        });
+        list.sort(Comparator.comparing(a -> a.get(headTimes[0])));
         return list;
     }
 
@@ -483,11 +465,7 @@ public class FileHandler {
      * @return An {@code ArrayList} of {@code DirectedEdges}
      */
     public static ArrayList<DirectedEdge> arrayToList(Stack<DirectedEdge> stack) {
-        ArrayList<DirectedEdge> p = new ArrayList<>();
-        for (DirectedEdge directedEdge : stack) {
-            p.add(directedEdge);
-        }
-        return p;
+        return new ArrayList<>(stack);
     }
 
     /**
@@ -498,20 +476,18 @@ public class FileHandler {
      */
     public static String namedPathTo(ArrayList<DirectedEdge> arr, int tabs) {
         if (arr == null) return "path invalid";
-        String res = ""; // end result
-        String tab = ""; // store amount of tabs wanted
+        StringBuilder res = new StringBuilder(); // end result
+        StringBuilder tab = new StringBuilder(); // store amount of tabs wanted
         int i = 1;
         int last = 0;
-        for (int j = 0; j < tabs; j++) {
-            tab += "\t";
-        }
+        tab.append("\t".repeat(Math.max(0, tabs)));
         for (DirectedEdge de : arr) {
-            res += tab + Integer.toString(i) + ". " + stopInfo.get(de.from()) + " (stop no. " + de.from() + ")\n";
+            res.append(tab).append(i).append(". ").append(stopInfo.get(de.from())).append(" (stop no. ").append(de.from()).append(")\n");
             i++;
             last = de.to(); // get the final stop
         }
-        res += tab + Integer.toString(i) + ". " + stopInfo.get(last) + " (stop no. " + last + ")\n";
-        return res;
+        res.append(tab).append(i).append(". ").append(stopInfo.get(last)).append(" (stop no. ").append(last).append(")\n");
+        return res.toString();
     }
 
     /**

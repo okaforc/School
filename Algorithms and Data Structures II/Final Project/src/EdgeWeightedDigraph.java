@@ -1,4 +1,3 @@
-
 /**
  * This is a class adapted from the file found here: https://algs4.cs.princeton.edu/44sp/EdgeWeightedDigraph.java.html
  * The code written here was originally created by Robert Sedgewick and Kevin Wayne, but I have adapted it
@@ -10,9 +9,10 @@
 import java.util.*;
 
 public class EdgeWeightedDigraph {
-    private int V, E;
-    private ArrayList<DirectedEdge>[] adj;
-    private List<Integer> nodes;
+    private final int V;
+    private int E;
+    private final ArrayList<DirectedEdge>[] adj;
+    private final List<Integer> nodes;
 
     // max is the highest value within the arraylist (not necessarily the last)
     EdgeWeightedDigraph(ArrayList<Integer> nds, int max) {
@@ -43,10 +43,6 @@ public class EdgeWeightedDigraph {
         return nodes;
     }
 
-    public void setNodes(List<Integer> nodes) {
-        this.nodes = nodes;
-    }
-
     public Iterable<DirectedEdge> adj(int v) {
         return adj[v];
     }
@@ -65,10 +61,9 @@ public class EdgeWeightedDigraph {
     // remove duplicate edges (where de.to(), de.from(), and de.weight() are equal values within another edge)
     public void purge() {
         for (int v : nodes) {
-            Set<DirectedEdge> s = new HashSet<>(); // create a new empty hashset
             ArrayList<DirectedEdge> arr = new ArrayList<>(); // create a new arraylist
             adj(v).forEach(arr :: add); // add each value from the iterable adj(v) to the arraylist
-            s.addAll(arr); // add each value in the arraylist to the hashset
+            Set<DirectedEdge> s = new HashSet<>(arr); // create a new hashset from the arraylist
             adj[v] = new ArrayList<>(); // clear adj[v]
             adj[v].addAll(s); // replace the value in adj[v] with the new hashset arraylist
         }
