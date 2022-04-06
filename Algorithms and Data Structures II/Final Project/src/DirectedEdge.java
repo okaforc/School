@@ -6,8 +6,8 @@
  */
 
 public class DirectedEdge {
-    private double weight;
-    private int v, w;
+    private final double weight;
+    private final int v, w;
 
     DirectedEdge(int v, int w, double weight) {
         this.v = v;
@@ -46,11 +46,8 @@ public class DirectedEdge {
     // checks if two DirectedEdges are the same
     @Override
     public boolean equals(Object de) {
-        if (de instanceof DirectedEdge) {
-            DirectedEdge temp = (DirectedEdge) de;
-            if (this.v == temp.from() && this.w == temp.to() && this.weight == temp.weight()) {
-                return true;
-            }
+        if (de instanceof DirectedEdge temp) {
+            return (this.v == temp.from() && this.w == temp.to() && this.weight == temp.weight());
         }
         return false;
     }
