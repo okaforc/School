@@ -1,5 +1,6 @@
 import java.nio.charset.StandardCharsets;
 import java.util.*;
+import java.util.stream.Stream;
 import java.io.*;
 import java.time.*;
 import java.time.format.*;
@@ -52,7 +53,12 @@ public class FileHandler {
      * @return -1 if an error occurs, else 0.
      */
     public static int initStops(String filename) {
+        int percentageLoaded = 0;
+        int portionFilled = 0;
+        int lines = 8757;
+        int portion = lines / 10;
         System.out.println("Loading stops...");
+        System.out.print("[");
         ArrayList<Integer> nodes = new ArrayList<>();
         int maxVal = -1;
         try {
@@ -87,14 +93,31 @@ public class FileHandler {
                     m.put(head[i], rewriteSpecialString(vals[i]));
                 }
 
-                // add the hashmap for each node with the stop name as the key to the TST
-                stopsTST.put(m.get(head[2]), m);
+                // if a stop already exists with this name, but a different ID, 
+                if (diffID(stopsTST, m.get(head[2]), m) > 0) {
+                    // add the hashmap for each node with the stop name plus the number copy it is as the key to the TST
+                    stopsTST.put(m.get(head[2]) + " " + diffID(stopsTST, m.get(head[2]), m), m);
+                } else {
+                    // add the hashmap for each node with the stop name as the key to the TST
+                    stopsTST.put(m.get(head[2]), m);
+                }
 
                 // add the stop's id (key) and name (value) to a lookup table
                 stopInfo.put(Integer.parseInt(m.get(head[0])), m.get(head[2]));
 
                 // add the stop's name (key) and id (value) to a lookup table
                 stopInfoReverse.put(m.get(head[2]), Integer.parseInt(m.get(head[0])));
+
+                percentageLoaded++;
+                if (percentageLoaded == portion) {
+                    portionFilled++;
+                    System.out.print(String.valueOf(Character.toChars(0x2588))); // print full block chars while loading
+                    if (portionFilled < 10) {
+                        System.out.print(" ");
+                    }
+                    percentageLoaded = 0;
+                    // System.out.println(portion);
+                }
 
                 line = br.readLine(); // move onto the next line
             }
@@ -106,6 +129,7 @@ public class FileHandler {
             return -1; // Return -1 if file name/data is invalid
         }
 
+        System.out.print("]\n");
         ewd = new EdgeWeightedDigraph(nodes, maxVal);
         maxValue = maxVal;
         // Return 0 if code runs normally
@@ -120,7 +144,7 @@ public class FileHandler {
 
     public static int initTimes(String filename) {
         int percentageLoaded = 0;
-        // private static int lines = 10001;
+        int portionFilled = 0;
         int lines = 1772369;
         int portion = lines / 10;
         System.out.println("Loading stop times...");
@@ -183,7 +207,11 @@ public class FileHandler {
 
                 percentageLoaded++;
                 if (percentageLoaded == portion) {
-                    System.out.print(String.valueOf(Character.toChars(0x2588)) + " "); // print full block chars while loading
+                    portionFilled++;
+                    System.out.print(String.valueOf(Character.toChars(0x2588))); // print full block chars while loading
+                    if (portionFilled < 10) {
+                        System.out.print(" ");
+                    }
                     percentageLoaded = 0;
                     // System.out.println(portion);
                 }
@@ -211,7 +239,12 @@ public class FileHandler {
      * @return -1 if an error occurs, else 0.
      */
     public static int initTransfers(String filename) {
+        int percentageLoaded = 0;
+        int portionFilled = 0;
+        int lines = 5083;
+        int portion = lines / 10;
         System.out.println("Loading transfers...");
+        System.out.print("[");
         int exampleNode = -1;
         try {
             BufferedReader br = new BufferedReader(
@@ -240,7 +273,19 @@ public class FileHandler {
                     nde = new DirectedEdge(Integer.parseInt(vals[0]), Integer.parseInt(vals[1]),
                             Double.parseDouble(vals[3]) / 100);
                 }
+
                 ewd.addEdge(nde);
+
+                percentageLoaded++;
+                if (percentageLoaded == portion) {
+                    portionFilled++;
+                    System.out.print(String.valueOf(Character.toChars(0x2588))); // print full block chars while loading
+                    if (portionFilled < 10) {
+                        System.out.print(" ");
+                    }
+                    percentageLoaded = 0;
+                    // System.out.println(portion);
+                }
 
                 line = br.readLine(); // move onto the next line
             }
@@ -252,6 +297,7 @@ public class FileHandler {
             return -1; // Return -1 if file name/data is invalid
         }
 
+        System.out.print("]\n");
         ewd.purge(); // remove any duplicate edges
         new DijkstraSP(ewd, exampleNode, maxValue); // node doesn't matter
         // throwaway.fullRelax(ewd); // re-relax all edges
@@ -337,8 +383,11 @@ public class FileHandler {
      * @param prefix The String to look for
      * @return The string returned by {@code TST.keysWithPrefix(String)} without case prejudice.
      */
-    public static Iterable<String> searchPrefix(TST<LinkedHashMap<String, String>> tst, String prefix) {
-        return tst.keysWithPrefix(prefix.toUpperCase());
+    public static List<String> searchPrefix(TST<LinkedHashMap<String, String>> tst, String prefix) {
+        Iterable<String> t = tst.keysWithPrefix(prefix.toUpperCase());
+        List<String> p = new ArrayList<>();
+        t.forEach(p::add);
+        return p;
     }
 
     /**
@@ -347,8 +396,12 @@ public class FileHandler {
      * @param prefix The String to search for.
      * @return The exact String returned by {@code TST.keysWithPrefix(String)} without case prejudice.
      */
-    public static Iterable<String> search(TST<LinkedHashMap<String, String>> tst, String prefix) {
-        return tst.keysThatMatch(prefix.toUpperCase());
+    public static List<String> search(TST<LinkedHashMap<String, String>> tst, String prefix) {
+        Iterable<String> t = tst.keysThatMatch(prefix.toUpperCase());
+        List<String> p = new ArrayList<>();
+        t.forEach(p::add);
+        // System.out.println(p.size());
+        return p;
     }
     
     /**
@@ -548,5 +601,26 @@ public class FileHandler {
      */
     public static String IDToName(int id) {
         return stopInfo.get(id);
+    }
+
+    /**
+     * Differentiate different values from their stop IDs, which are unique, rather than their names. If the LinkedHashMap obtained from {@code tst} is exactly the same as val, then return false.
+     * @param tst
+     * @param key
+     * @param val
+     * @return {@code true} if {@code tst.get(key)} is the same as val, otherwise {@code false}.
+     */
+    private static int diffID(TST<LinkedHashMap<String, String>> tst, String key, LinkedHashMap<String, String> val) {
+        Iterable<String> a = search(tst, key);
+        int sz = 0;
+        for (String string : a) {
+            sz++;
+        }
+
+        if (sz >= 1) {
+            return sz;
+        }
+        // return tst.get(key).equals(val);
+        return 0;
     }
 }
