@@ -1,11 +1,12 @@
 import java.nio.charset.StandardCharsets;
 import java.util.*;
-import java.util.stream.Stream;
 import java.io.*;
 import java.time.*;
 import java.time.format.*;
 
 public class FileHandler {
+    private static final String loadChar = String.valueOf(String.valueOf(Character.toChars(0x2588)));
+    // private static final String loadChar = "#";
     public static final String[] movedKeywords = { "EB", "FLAGSTOP", "NB", "SB", "WB" };
     private static final HashMap<Integer, String> stopInfo = new HashMap<>(); // stop id, stop name
     private static final HashMap<String, Integer> stopInfoReverse = new HashMap<>(); // stop name, stop id
@@ -17,12 +18,6 @@ public class FileHandler {
     private static String[] headTimes;
     public static EdgeWeightedDigraph ewd;
     public static int maxValue;
-
-    FileHandler(String stops, String times, String transfers) {
-        initStops(stops);
-        initTimes(times);
-        initTransfers(transfers);
-    }
 
     /**
      * Verify if a String {@code a} is in an array {@code arr} via a binary search.
@@ -57,8 +52,7 @@ public class FileHandler {
         int portionFilled = 0;
         int lines = 8757;
         int portion = lines / 10;
-        System.out.println("Loading stops...");
-        System.out.print("[");
+        System.out.print("Loading stops... \t[");
         ArrayList<Integer> nodes = new ArrayList<>();
         int maxVal = -1;
         try {
@@ -94,9 +88,9 @@ public class FileHandler {
                 }
 
                 // if a stop already exists with this name, but a different ID, 
-                if (diffID(stopsTST, m.get(head[2]), m) > 0) {
+                if (diffID(stopsTST, m.get(head[2])) > 0) {
                     // add the hashmap for each node with the stop name plus the number copy it is as the key to the TST
-                    stopsTST.put(m.get(head[2]) + " " + diffID(stopsTST, m.get(head[2]), m), m);
+                    stopsTST.put(m.get(head[2]) + " " + diffID(stopsTST, m.get(head[2])), m);
                 } else {
                     // add the hashmap for each node with the stop name as the key to the TST
                     stopsTST.put(m.get(head[2]), m);
@@ -111,7 +105,7 @@ public class FileHandler {
                 percentageLoaded++;
                 if (percentageLoaded == portion) {
                     portionFilled++;
-                    System.out.print(String.valueOf(Character.toChars(0x2588))); // print full block chars while loading
+                    System.out.print(loadChar); // print full block chars while loading
                     if (portionFilled < 10) {
                         System.out.print(" ");
                     }
@@ -147,22 +141,26 @@ public class FileHandler {
         int portionFilled = 0;
         int lines = 1772369;
         int portion = lines / 10;
-        System.out.println("Loading stop times...");
-        System.out.print("[");
+        Stopwatch sw = new Stopwatch();
+        double s = sw.elapsedTime();
+        System.out.print("Loading stop times... \t[");
         try {
             BufferedReader br = new BufferedReader(
                     new InputStreamReader(new FileInputStream(filename), StandardCharsets.UTF_8));
             String line = br.readLine();
-            ArrayList<String> times = new ArrayList<>();
+            Set<String> times = new HashSet<>(100000);
             int prevStopID = -1;
             boolean validStopTime;
+            String[] vals;
+            String time = "", ttime;
+            LinkedHashMap<String, String> m = new LinkedHashMap<>();
+            ArrayList<LinkedHashMap<String, String>> t;
 
             headTimes = line.split(","); // split the header by commas
             line = br.readLine();
             while (line != null) {
                 validStopTime = true;
-                String[] vals = line.split(","); // split each line by commas
-                String time = "";
+                vals = line.split(","); // split each line by commas
 
                 // in the event of a stop having no parent station, the empty value at that position isn't added. 
                 // this adds an empty string to that position.
@@ -172,13 +170,14 @@ public class FileHandler {
                 }
 
                 // create a new linkedhashmap for each node
-                LinkedHashMap<String, String> m = new LinkedHashMap<>();
+                m.clear();
                 for (int i = 0; i < headTimes.length; i++) {
                     // add the data to the hashmap, with the header as the key and the parsed there as the value.
-                    if (parseTime(vals[i].strip()) != null) {
-                        m.put(headTimes[i], parseTime(vals[i].strip()));
+                    ttime = parseTime(vals[i].strip());
+                    if (ttime != null) {
+                        m.put(headTimes[i], ttime);
                         if (i == 1) {
-                            time = parseTime(vals[i].strip());
+                            time = ttime;
                         }
                     } else {
                         validStopTime = false;
@@ -191,10 +190,10 @@ public class FileHandler {
                     if (!times.contains(time)) {
                         times.add(time);
                         // ArrayList<LinkedHashMap<String, String>> empty = new ArrayList<>();
-                        timesTST.put(time, new ArrayList<>());
-                    }
-                    ArrayList<LinkedHashMap<String, String>> t = timesTST.get(time);
-                    t.add(m); // add the hashmap to the times arraylist
+                        timesTST.put(time, new ArrayList<LinkedHashMap<String, String>>());
+                    } 
+                    t = timesTST.get(time);
+                    t.add((LinkedHashMap<String, String>)m.clone()); // add the hashmap to the times arraylist
                     timesTST.put(time, sortHMArr(t));
 
                     int curStopID = Integer.parseInt(vals[3]); // get stop_id value for current line
@@ -208,7 +207,9 @@ public class FileHandler {
                 percentageLoaded++;
                 if (percentageLoaded == portion) {
                     portionFilled++;
-                    System.out.print(String.valueOf(Character.toChars(0x2588))); // print full block chars while loading
+                    System.out.print(loadChar); // print full block chars while loading
+                    double e = sw.elapsedTime();
+                    // System.out.println(e - s);
                     if (portionFilled < 10) {
                         System.out.print(" ");
                     }
@@ -218,7 +219,6 @@ public class FileHandler {
 
                 line = br.readLine(); // move onto the next line
             }
-
             initPrettyHead("time");
             br.close();
         } catch (Exception e) {
@@ -243,8 +243,7 @@ public class FileHandler {
         int portionFilled = 0;
         int lines = 5083;
         int portion = lines / 10;
-        System.out.println("Loading transfers...");
-        System.out.print("[");
+        System.out.print("Loading transfers... \t[");
         int exampleNode = -1;
         try {
             BufferedReader br = new BufferedReader(
@@ -279,7 +278,7 @@ public class FileHandler {
                 percentageLoaded++;
                 if (percentageLoaded == portion) {
                     portionFilled++;
-                    System.out.print(String.valueOf(Character.toChars(0x2588))); // print full block chars while loading
+                    System.out.print(loadChar); // print full block chars while loading
                     if (portionFilled < 10) {
                         System.out.print(" ");
                     }
@@ -392,6 +391,7 @@ public class FileHandler {
 
     /**
      * Allow user to search for exact station keys without case sensitivity.
+     * @param <T> The type of TST used.
      * @param tst The trie to search in.
      * @param prefix The String to search for.
      * @return The exact String returned by {@code TST.keysWithPrefix(String)} without case prejudice.
@@ -403,7 +403,7 @@ public class FileHandler {
         // System.out.println(p.size());
         return p;
     }
-    
+
     /**
      * Allow user to search for an ArrayList that matches the time key.
      * @param tst The trie to search in.
@@ -454,7 +454,7 @@ public class FileHandler {
             return null;
         StringBuilder res = new StringBuilder();
         for (LinkedHashMap<String, String> hm : x) {
-            res.append(mapToString(hm, tabs, pretty, false)).append("\n");
+            res.append("-").append(mapToString(hm, tabs, pretty, false)).append("\n");
         }
         return res.toString();
     }
@@ -479,7 +479,7 @@ public class FileHandler {
                     res.append(tab).append(prettyHeadStops.get(head[i])).append(": ").append(hm.get(head[i]))
                             .append("\n");
                 } else {
-                    res.append("-").append(tab).append(prettyHeadTimes.get(headTimes[i])).append(": ")
+                    res.append(tab).append(prettyHeadTimes.get(headTimes[i])).append(": ")
                             .append(hm.get(headTimes[i])).append("\n");
 
                 }
@@ -523,7 +523,7 @@ public class FileHandler {
             return null;
         }
     }
-    
+
     /**
      * Parse the user entry string {@code time} as an actual time (in the format HH:mm:ss).
      * @param time The string to parse.
@@ -604,23 +604,12 @@ public class FileHandler {
     }
 
     /**
-     * Differentiate different values from their stop IDs, which are unique, rather than their names. If the LinkedHashMap obtained from {@code tst} is exactly the same as val, then return false.
-     * @param tst
-     * @param key
-     * @param val
-     * @return {@code true} if {@code tst.get(key)} is the same as val, otherwise {@code false}.
+     * Differentiate different values from their stop IDs, which are unique, rather than their names. Get the amount of nodes in the given TST that have the same name as the current one.
+     * @param tst The trie to look in.
+     * @param key The key to search for.
+     * @return The amount of similarly-named nodes in {@code tst}.
      */
-    private static int diffID(TST<LinkedHashMap<String, String>> tst, String key, LinkedHashMap<String, String> val) {
-        Iterable<String> a = search(tst, key);
-        int sz = 0;
-        for (String string : a) {
-            sz++;
-        }
-
-        if (sz >= 1) {
-            return sz;
-        }
-        // return tst.get(key).equals(val);
-        return 0;
+    private static int diffID(TST<LinkedHashMap<String, String>> tst, String key) {
+        return searchPrefix(tst, key).size();
     }
 }

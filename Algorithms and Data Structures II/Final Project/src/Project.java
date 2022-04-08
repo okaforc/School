@@ -9,8 +9,8 @@ public class Project {
         // 8757 stops
         // 5083 new edges
         FileHandler.initStops("stops.txt");
-        FileHandler.initTimes("10000_stop_times.txt");
-        // FileHandler.initTimes("stop_times.txt");
+        // FileHandler.initTimes("10000_stop_times.txt");
+        FileHandler.initTimes("stop_times.txt");
         FileHandler.initTransfers("transfers.txt");
         System.out.println(
                 "Welcome to the Vancouver public transport system API. There are various settings you can view: ");
@@ -34,7 +34,7 @@ public class Project {
                         // 1. Find the shortest path between two bus stops
                         System.out.print(
                                 "Where are you departing from? Please enter the stop name (or ID) in its entirety: ");
-                        String res1 = sc.nextLine();
+                        String res1 = sc.nextLine().strip();
                         if (exitPhrases.contains(res1)) {
                             break;
                         }
@@ -53,7 +53,7 @@ public class Project {
                         System.out.print(
                                 "Where are you getting off? Please enter the stop name (or ID) in its entirety: ");
                         // int res2 = Integer.parseInt(sc.next());
-                        String res2 = sc.nextLine();
+                        String res2 = sc.nextLine().strip();
                         if (exitPhrases.contains(res2)) {
                             break;
                         }
@@ -81,18 +81,16 @@ public class Project {
                             System.out.println("Unfortunately, there is no path from " + FileHandler.IDToName(t1)
                                     + " (stop no. " + t1 + ") to " + FileHandler.IDToName(t2) + " (stop no. " + t2
                                     + "). We apologise for the inconvenience.");
-                            break;
                         } else {
                             System.out.println(pt);
                             System.out.println("\tCost: " + dj.distTo(t2) + "\n");
                         }
 
                     }
-                    // 66 -> 55 = 29, 10000 vals
                     case 2 -> {
                         // 2. Search for a bus stop
                         System.out.print("Please enter the name of your stop: ");
-                        String stop = sc.nextLine();
+                        String stop = sc.nextLine().strip();
                         if (exitPhrases.contains(stop)) {
                             break;
                         }
@@ -100,7 +98,8 @@ public class Project {
                         boolean hasMultiple = false, iterated = false;
 
                         // check to see if the query returns 0 results, 1 result, or multiple results
-                        for (String ignored : FileHandler.searchPrefix(FileHandler.getStopsTST(), stop)) {
+
+                        for (String str : FileHandler.searchPrefix(FileHandler.getStopsTST(), stop)) {
                             iterated = true;
                             if (count >= 1) {
                                 hasMultiple = true;
@@ -123,17 +122,18 @@ public class Project {
                             System.out.printf("- %s\n", FileHandler.get(FileHandler.getStopsTST(), str, 1, true));
                         }
 
-                        // ! applies very specifically to the station "OLYMPIC VILLAGE STATION" (and others if i can find them)
+                        // If there is one or multiple stops for this result but an exact search returns nothing, note tell user that there are duplicate names for stations.
+                        // ! applies to duplicate stations
                         if (FileHandler.search(FileHandler.getStopsTST(), stop).size() != 0) {
                             System.out.println(
-                                    "Please note that there may be multiple bus stops with the same name. In such a scenario, using the name of a bus stop may not give you your desired result (e.g. try entering only part of the name). \nFor more precise searching (option 1) please use the ID of the bus stop you are looking for.\n");
+                                    "Please note that there may be multiple bus stops with the same name. In such a scenario, using the name of a bus stop may not give you your desired result (e.g. try entering only part of the name). \nFor more precise querying (e.g. option 1) please use the ID of the bus stop you are looking for.\n");
                         }
                     }
                     case 3 -> {
                         // 3. Search for a trip at a specified arrival time
                         System.out.print(
                                 "When would you like to arrive? Please enter your time in the format hh:mm:ss: ");
-                        String time = sc.nextLine();
+                        String time = sc.nextLine().strip();
                         if (exitPhrases.contains(time)) {
                             break;
                         }
@@ -141,19 +141,20 @@ public class Project {
                         boolean hasMultiple = false, iterated = false;
 
                         if (FileHandler.parseUserTime(time).length() > 8) {
-                            // If the length of the returned String is greater than 8 (more characters than hh:mm:ss), then it must have returned an error message.
+                            // If the length of the returned String is greater than 8 (more characters than "hh:mm:ss"), then it must have returned an error message.
                             System.out.println(FileHandler.parseUserTime(time));
                             break;
                         }
 
                         // check to see if the query returns 0 results, 1 result, or multiple results
-                        for (String ignored : FileHandler.search_time(FileHandler.getTimesTST(), time)) {
+                        for (String str : FileHandler.search_time(FileHandler.getTimesTST(), time)) {
                             iterated = true;
                             if (count > 1) {
                                 hasMultiple = true;
                             }
                             count++;
                         }
+
                         if (!iterated) {
                             System.out.println("Your search query returned no results.");
                             break;
@@ -163,7 +164,7 @@ public class Project {
                         } else {
                             System.out.println("Your search query returned one result: ");
                         }
-                        System.out.printf("- %s\n", FileHandler.get_time(FileHandler.getTimesTST(), time, 1, true));
+                        System.out.printf("%s\n", FileHandler.get_time(FileHandler.getTimesTST(), time, 1, true));
                     }
                     default ->
                         System.out.println("This is an invalid option (options are from 1-3). Please try again.\n");
@@ -179,7 +180,6 @@ public class Project {
 
             } catch (Exception e) {
                 System.out.println("This is an invalid option. Please try again.\n");
-                e.printStackTrace();
             }
         }
 
