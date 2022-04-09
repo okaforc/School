@@ -1,8 +1,17 @@
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
-import java.util.*;
-import java.io.*;
-import java.time.*;
-import java.time.format.*;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Set;
 
 public class FileHandler {
     private static final String loadChar = String.valueOf(String.valueOf(Character.toChars(0x2588))); // loading character
@@ -187,10 +196,10 @@ public class FileHandler {
                         times.add(time);
                         // ArrayList<LinkedHashMap<String, String>> empty = new ArrayList<>();
                         timesTST.put(time, new ArrayList<LinkedHashMap<String, String>>());
-                    } 
+                    }
                     // get the arraylist under time and add the current hash map to it
                     t = timesTST.get(time);
-                    t.add((LinkedHashMap<String, String>)m.clone()); // add the hashmap to the times arraylist
+                    t.add((LinkedHashMap<String, String>) m.clone()); // add the hashmap to the times arraylist
                     timesTST.put(time, sortHMArr(t));
 
                     int curStopID = Integer.parseInt(vals[3]); // get stop_id value for current line
@@ -557,7 +566,8 @@ public class FileHandler {
      * @return The String representation of the path, with all bus stops named
      */
     public static String namedPathTo(ArrayList<DirectedEdge> arr, int tabs) {
-        if (arr == null) return null;
+        if (arr == null)
+            return null;
         StringBuilder res = new StringBuilder(); // end result
         StringBuilder tab = new StringBuilder(); // store amount of tabs wanted
         int i = 1;
@@ -582,7 +592,7 @@ public class FileHandler {
     public static Integer nameToID(String name) {
         return stopInfoReverse.get(name);
     }
-    
+
     /**
      * Return the bus stop name of a stop ID
      * @param name The ID of the bus stop
