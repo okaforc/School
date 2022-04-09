@@ -9,7 +9,6 @@ public class Project {
         // 8757 stops
         // 5083 new edges
         FileHandler.initStops("stops.txt");
-        // FileHandler.initTimes("10000_stop_times.txt");
         FileHandler.initTimes("stop_times.txt");
         FileHandler.initTransfers("transfers.txt");
         System.out.println(
@@ -47,7 +46,7 @@ public class Project {
                         }
                         if (t1 == null || !FileHandler.ewd.nodes().contains(t1)) {
                             System.out.println(
-                                    "Sorry, that doesn't appear to be a valid bus stop. Try option 1 to see a list of matching bus stops.");
+                                    "Sorry, that doesn't appear to be a valid bus stop. Try option 2 to see a list of matching bus stops.");
                             break;
                         }
                         System.out.print(
@@ -123,7 +122,7 @@ public class Project {
                         }
 
                         // If there is one or multiple stops for this result but an exact search returns nothing, note tell user that there are duplicate names for stations.
-                        // ! applies to duplicate stations
+                        // ! applies to duplicate stations (olympic, tsawwassen)
                         if (FileHandler.search(FileHandler.getStopsTST(), stop).size() != 0) {
                             System.out.println(
                                     "Please note that there may be multiple bus stops with the same name. In such a scenario, using the name of a bus stop may not give you your desired result (e.g. try entering only part of the name). \nFor more precise querying (e.g. option 1) please use the ID of the bus stop you are looking for.\n");
@@ -140,14 +139,14 @@ public class Project {
                         int count = 0;
                         boolean hasMultiple = false, iterated = false;
 
-                        if (FileHandler.parseUserTime(time).length() > 8) {
-                            // If the length of the returned String is greater than 8 (more characters than "hh:mm:ss"), then it must have returned an error message.
+                        if (FileHandler.parseUserTime(time).length() != 8) {
+                            // If the length of the returned String is not 8 (# characters in "hh:mm:ss"), then it must have returned an error message.
                             System.out.println(FileHandler.parseUserTime(time));
                             break;
                         }
 
                         // check to see if the query returns 0 results, 1 result, or multiple results
-                        for (String str : FileHandler.search_time(FileHandler.getTimesTST(), time)) {
+                        for (LinkedHashMap<String, String> lhm : FileHandler.getTimesTST().get(time)) {
                             iterated = true;
                             if (count > 1) {
                                 hasMultiple = true;

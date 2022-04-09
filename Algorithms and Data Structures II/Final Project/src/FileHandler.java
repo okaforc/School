@@ -58,9 +58,7 @@ public class FileHandler {
         try {
             BufferedReader br = new BufferedReader(
                     new InputStreamReader(new FileInputStream(filename), StandardCharsets.UTF_8));
-            // br.readLine();
             String line = br.readLine();
-            // ArrayList<Integer> stops = new ArrayList<>();
 
             head = line.split(","); // split the header by commas
             line = br.readLine();
@@ -110,7 +108,6 @@ public class FileHandler {
                         System.out.print(" ");
                     }
                     percentageLoaded = 0;
-                    // System.out.println(portion);
                 }
 
                 line = br.readLine(); // move onto the next line
@@ -141,8 +138,6 @@ public class FileHandler {
         int portionFilled = 0;
         int lines = 1772369;
         int portion = lines / 10;
-        Stopwatch sw = new Stopwatch();
-        double s = sw.elapsedTime();
         System.out.print("Loading stop times... \t[");
         try {
             BufferedReader br = new BufferedReader(
@@ -181,7 +176,7 @@ public class FileHandler {
                         }
                     } else {
                         validStopTime = false;
-                        // System.out.println("invalid stop time; discarding");
+                        // discarding current line
                         break;
                     }
                 }
@@ -208,13 +203,10 @@ public class FileHandler {
                 if (percentageLoaded == portion) {
                     portionFilled++;
                     System.out.print(loadChar); // print full block chars while loading
-                    double e = sw.elapsedTime();
-                    // System.out.println(e - s);
                     if (portionFilled < 10) {
                         System.out.print(" ");
                     }
                     percentageLoaded = 0;
-                    // System.out.println(portion);
                 }
 
                 line = br.readLine(); // move onto the next line
@@ -227,7 +219,7 @@ public class FileHandler {
         }
 
         System.out.print("]\n");
-        ewd.purge();
+        ewd.purge(); // remove any duplicate edges
 
         // Return 0 if code runs normally
         return 0;
@@ -248,9 +240,7 @@ public class FileHandler {
         try {
             BufferedReader br = new BufferedReader(
                     new InputStreamReader(new FileInputStream(filename), StandardCharsets.UTF_8));
-            // br.readLine();
             String line = br.readLine();
-            // ArrayList<Integer> stops = new ArrayList<>();
 
             String[] transferHead = line.split(","); // split the header by commas
             line = br.readLine();
@@ -283,13 +273,11 @@ public class FileHandler {
                         System.out.print(" ");
                     }
                     percentageLoaded = 0;
-                    // System.out.println(portion);
                 }
 
                 line = br.readLine(); // move onto the next line
             }
 
-            // initPrettyHead("stop");
             br.close();
         } catch (Exception e) {
             e.printStackTrace();
@@ -298,8 +286,7 @@ public class FileHandler {
 
         System.out.print("]\n");
         ewd.purge(); // remove any duplicate edges
-        new DijkstraSP(ewd, exampleNode, maxValue); // node doesn't matter
-        // throwaway.fullRelax(ewd); // re-relax all edges
+        new DijkstraSP(ewd, exampleNode, maxValue); // re-relax all edges (node and result don't matter)
 
         // Return 0 if code runs normally
         return 0;

@@ -68,6 +68,4 @@ public class EdgeWeightedDigraph {
             adj[v].addAll(s); // replace the value in adj[v] with the new hashset arraylist
         }
     }
-
-    
 }
