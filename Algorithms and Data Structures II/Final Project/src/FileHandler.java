@@ -5,19 +5,18 @@ import java.time.*;
 import java.time.format.*;
 
 public class FileHandler {
-    private static final String loadChar = String.valueOf(String.valueOf(Character.toChars(0x2588)));
-    // private static final String loadChar = "#";
-    public static final String[] movedKeywords = { "EB", "FLAGSTOP", "NB", "SB", "WB" };
+    private static final String loadChar = String.valueOf(String.valueOf(Character.toChars(0x2588))); // loading character
     private static final HashMap<Integer, String> stopInfo = new HashMap<>(); // stop id, stop name
     private static final HashMap<String, Integer> stopInfoReverse = new HashMap<>(); // stop name, stop id
-    private static final HashMap<String, String> prettyHeadStops = new HashMap<>();
-    private static final HashMap<String, String> prettyHeadTimes = new HashMap<>();
-    private static final TST<LinkedHashMap<String, String>> stopsTST = new TST<>();
-    private static final TST<ArrayList<LinkedHashMap<String, String>>> timesTST = new TST<>();
-    private static String[] head;
-    private static String[] headTimes;
-    public static EdgeWeightedDigraph ewd;
-    public static int maxValue;
+    private static final HashMap<String, String> prettyHeadStops = new HashMap<>(); // map stops to prettier versions
+    private static final HashMap<String, String> prettyHeadTimes = new HashMap<>(); // map stops to prettier versions
+    private static final TST<LinkedHashMap<String, String>> stopsTST = new TST<>(); // trie for storing data about stops
+    private static final TST<ArrayList<LinkedHashMap<String, String>>> timesTST = new TST<>(); // trie for storing data about times
+    public static final String[] movedKeywords = { "EB", "FLAGSTOP", "NB", "SB", "WB" }; // special keywords to be moved to the end of stop names they appear in
+    private static String[] head; // stops head line (first line in stops.txt)
+    private static String[] headTimes; // times head line (1st line in stop_times.txt)
+    public static EdgeWeightedDigraph ewd; // the edge-weighted digraph used
+    public static int maxValue; // the largest stop ID in the graph
 
     /**
      * Verify if a String {@code a} is in an array {@code arr} via a binary search.
@@ -100,6 +99,7 @@ public class FileHandler {
                 // add the stop's name (key) and id (value) to a lookup table
                 stopInfoReverse.put(m.get(head[2]), Integer.parseInt(m.get(head[0])));
 
+                // loading bar
                 percentageLoaded++;
                 if (percentageLoaded == portion) {
                     portionFilled++;
@@ -140,6 +140,7 @@ public class FileHandler {
         int portion = lines / 10;
         System.out.print("Loading stop times... \t[");
         try {
+            // define objects outside of loop
             BufferedReader br = new BufferedReader(
                     new InputStreamReader(new FileInputStream(filename), StandardCharsets.UTF_8));
             String line = br.readLine();
@@ -157,7 +158,7 @@ public class FileHandler {
                 validStopTime = true;
                 vals = line.split(","); // split each line by commas
 
-                // in the event of a stop having no parent station, the empty value at that position isn't added. 
+                // in the event of a stop having no shape distance travelled, the empty value at that position isn't added. 
                 // this adds an empty string to that position.
                 if (vals.length < headTimes.length) {
                     vals = Arrays.copyOf(vals, headTimes.length);
@@ -187,6 +188,7 @@ public class FileHandler {
                         // ArrayList<LinkedHashMap<String, String>> empty = new ArrayList<>();
                         timesTST.put(time, new ArrayList<LinkedHashMap<String, String>>());
                     } 
+                    // get the arraylist under time and add the current hash map to it
                     t = timesTST.get(time);
                     t.add((LinkedHashMap<String, String>)m.clone()); // add the hashmap to the times arraylist
                     timesTST.put(time, sortHMArr(t));
@@ -247,7 +249,7 @@ public class FileHandler {
             while (line != null) {
                 String[] vals = line.split(","); // split each line by commas
 
-                // in the event of a stop having no parent station, the empty value at that position isn't added. 
+                // in the event of a stop having no minimum transfer time, the empty value at that position isn't added. 
                 // this adds an empty string to that position.
                 if (vals.length < transferHead.length) {
                     vals = Arrays.copyOf(vals, transferHead.length);
@@ -263,6 +265,7 @@ public class FileHandler {
                             Double.parseDouble(vals[3]) / 100);
                 }
 
+                // add this edge to the digraph
                 ewd.addEdge(nde);
 
                 percentageLoaded++;
@@ -378,7 +381,6 @@ public class FileHandler {
 
     /**
      * Allow user to search for exact station keys without case sensitivity.
-     * @param <T> The type of TST used.
      * @param tst The trie to search in.
      * @param prefix The String to search for.
      * @return The exact String returned by {@code TST.keysWithPrefix(String)} without case prejudice.
@@ -451,7 +453,7 @@ public class FileHandler {
      * @param hm {@code LinkedHashMap} object to convert.
      * @param tabs Number of tabs wanted.
      * @param pretty If the String should be prettified or not.
-     * @param which If the String is using stops data {@code true} or times data {@code false}.
+     * @param which If the String is using stops data ({@code true}) or times data ({@code false}).
      * @return The formatted string.
      */
     private static String mapToString(LinkedHashMap<String, String> hm, int tabs, boolean pretty, boolean which) {
@@ -591,7 +593,7 @@ public class FileHandler {
     }
 
     /**
-     * Differentiate different values from their stop IDs, which are unique, rather than their names. Get the amount of nodes in the given TST that have the same name as the current one.
+     * Get the amount of nodes in the given TST that have the same name as the current one. This differentiates different values from their stop IDs, which are unique, rather than their names, which may not be.
      * @param tst The trie to look in.
      * @param key The key to search for.
      * @return The amount of similarly-named nodes in {@code tst}.

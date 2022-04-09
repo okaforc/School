@@ -8,6 +8,8 @@ public class Project {
         // 1772369 edges
         // 8757 stops
         // 5083 new edges
+
+        // initialise files
         FileHandler.initStops("stops.txt");
         FileHandler.initTimes("stop_times.txt");
         FileHandler.initTransfers("transfers.txt");
