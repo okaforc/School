@@ -1,0 +1,19 @@
+
+<students>
+<Postgraduate studentId="99124">
+  
+    <Student.student_name>
+<firstname> Frank</firstname>
+<lastname>Clarke</lastname>
+</Student.student_name>
+    <Student.current_fees> 6500 </Student.current_fees>
+    <Postgraduate.primary_degree_name> BA   
+    </Postgraduate.primary_degree_name>
+    <Postgraduate.primary_degree_issued > 12 November 2003    
+    </Postgraduate.primary_degree_issued>
+    <Postgraduate.supervisor_name > John Smith 
+    </Postgraduate.supervisor_name>
+</Postgraduate>
+
+</students>
+

@@ -1,0 +1,52 @@
+% 3-node graph in p 20/26 of qpf.pdf
+%
+%| ?- show(5,0.5).
+% (s,a)-2 (s,g)-6 (a,g)-5
+% (s,a)-4.5 (s,g)-5.5 (a,g)-4.5
+% (s,a)-4.25 (s,g)-5.25 (a,g)-4.25
+% (s,a)-4.125 (s,g)-5.125 (a,g)-4.125
+% (s,a)-4.0625 (s,g)-5.0625 (a,g)-4.0625
+% (s,a)-4.03125 (s,g)-5.03125 (a,g)-4.03125
+% true
+%
+% for optimal soln, set gamma= 0.9
+% | ?- show(5,0.9).
+% (s,a)-2 (s,g)-6 (a,g)-5
+% (s,a)-6.5 (s,g)-5.1 (a,g)-4.1
+% (s,a)-5.6899999999999995 (s,g)-4.29 (a,g)-3.29
+% (s,a)-4.961 (s,g)-3.561 (a,g)-2.561
+% (s,a)-4.3049 (s,g)-2.9049 (a,g)-1.9049
+% (s,a)-3.71441 (s,g)-2.3144099999999996 (a,g)-1.3144099999999996
+% true
+
+
+/** <examples>
+
+?- show(5,0.5).
+
+?- show(9,0.9).
+
+*/
+
+
+:- dynamic qRes/5.
+q(0,s,a,-2).   q(0,a,g,-5).    q(0,g,g,1).    q(0,s,g,-6).
+v(X,a,V,G) :- q(X,a,g,V,G).
+v(X,g,V,G) :- q(X,g,g,V,G).
+q(X,S,A,Q,G) :-  qRes(X,S,A,Q,G),!.
+q(0,S,A,Q,G) :- q(0,S,A,Q), assert(qRes(0,S,A,Q,G)).
+q(s(X),S,A,Q,G) :-  q(0,S,A,Q0), v(X,A,V,G),
+                    Q is Q0 + G*V,
+                    assert(qRes(s(X),S,A,Q,G)).
+show(X,G) :-  q(0,s,a,Q,G), write('(s,a)'), write(Q),
+              q(0,s,g,Qq,G), write(' (s,g)'), write(Qq),
+              q(0,a,g,Qa,G), write(' (a,g)'), write(Qa), nl,
+              mkSu(X,Xs), show(0,Xs,G).
+show(X,X,_).
+show(X,N,G) :- q(s(X),s,a,Q,G), write('(s,a)'), write(Q),
+               q(s(X),s,g,Qg,G), write(' (s,g)'), write(Qg),
+               q(s(X),a,g,Qa,G), write(' (a,g)'), write(Qa), nl,
+               show(s(X),N,G).
+mkSu(N,S) :- mkSu(N,0,S).
+mkSu(0,X,X).
+mkSu(N,X,Y) :- N>0, M is N-1, mkSu(M,s(X),Y).

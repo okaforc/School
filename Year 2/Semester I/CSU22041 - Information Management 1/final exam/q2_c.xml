@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!DOCTYPE Zoo [
+    <!ELEMENT Zoo (Habitat+)>
+    <!ELEMENT Habitat (HabitatName, HabitatManager, Animal*)>
+    <!ELEMENT HabitatManager (title?, firstname+, lastname)>
+    <!ELEMENT HabitatName (#PCDATA)>
+    <!ELEMENT Animal (Species, Name?)>
+    <!ELEMENT Species (#PCDATA)>
+    <!ELEMENT Name (#PCDATA)>
+    <!ELEMENT title (#PCDATA)>
+    <!ELEMENT firstname (#PCDATA)>
+    <!ELEMENT lastname (#PCDATA)>
+    <!ATTLIST Habitat Code ID #REQUIRED>
+    <!ATTLIST Habitat NoOfAnimals CDATA #REQUIRED>
+    <!ATTLIST Animal Age CDATA #REQUIRED>
+    <!ATTLIST Animal parent CDATA #REQUIRED>
+]>
+
+<!-- 
+    The Zoo has mutiple Habitats. As it is unlikely that a zoo would have no habitats, I opted to give the zoo 1 or more habitats.
+    Each Habitat has its name, one manager, and 0 or more animals
+ -->
+
+<Zoo>
+    <Habitat Code= "AS" NoOfAnimals="20">
+        <HabitatName>African Savanna</HabitatName>
+        <HabitatManager>
+            <title>Ms</title>
+            <firstname>Amy</firstname>
+            <lastname>Walsh</lastname>
+        </HabitatManager>
+        <Animal Age= "10" parent= "no">
+            <Species>Elephant</Species>
+            <Name>Ellie</Name>
+        </Animal>
+        <Animal Age= "20" parent= "yes">
+            <Species>Rhinoceros</Species>
+        </Animal>
+    </Habitat>
+    <Habitat Code= "A" NoOfAnimals="50">
+        <HabitatName>Arctic</HabitatName>
+        <HabitatManager>
+            <title>Mr</title>
+            <firstname>Fred</firstname>
+            <firstname>Paul</firstname>
+            <lastname>Byrne</lastname>
+        </HabitatManager>
+        <Animal Age="5" parent= "no">
+            <Species />
+            <Name>Penny</Name>
+        </Animal>
+    </Habitat>
+    <Habitat Code= "FF" NoOfAnimals="100">
+        <HabitatName>FamilyFarm</HabitatName>
+        <HabitatManager>
+            <firstname>David</firstname>
+            <lastname>Smith</lastname>
+        </HabitatManager>
+    </Habitat>
+</Zoo>

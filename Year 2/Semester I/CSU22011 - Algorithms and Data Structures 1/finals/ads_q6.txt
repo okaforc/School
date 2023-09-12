@@ -1,0 +1,28 @@
+I will be using the asymptotic worst-case running time analysis for this algorithm.
+
+The worst-case input is any input where the the non-negative integer c does not have a square sum, as the code will have to iterate through every square number less than it. Due to the use of binary search, and the fact that there are floor(sqrt(c)) perfect squares less than c, this algorithm takes floor(sqrt(c))(log(c)) asymptotic worst-case running time. This can be shown going line by line.
+
+Lines 3-7: 
+All constant time operations Θ(1)
+Runs Θ(sqrt(N)) times [where N = c]
+Θ(1) * Θ(sqrt(N)) = Θ(sqrt(N))
+
+Line 8: 
+A single constant time operation
+Θ(1) * 1 = Θ(1)
+
+Lines 12-19:
+All constant time operations Θ(1)
+Runs Θ(log(N)) times (as the search field halves every recursion)
+Θ(1) * Θ(log(N)) = Θ(log(N)) time
+
+Total running time:
+Since the binary_search function is called within lines 3-7, it is also called Θ(sqrt(N)) times. Due to this,
+the asymptotic worst-case running time for this algorithm is Θ(log(N) * sqrt(N)) time.
+
+
+The binary_search algorithm is recursive, meaning that it calls itself. Due to this, call stack frames are repeatedly put on the call stack. 
+However, due to the algorithm only being called Θ(log(N)) times, there are only Θ(log(N)) calls stack frames being put on the stack. 
+No arrays are used throughout the algorithm. There are two additional integers created during it, b in hasSquareSum and mid in binary_search. 
+This shows that the algorithm takes constant space. 
+Overall, the entirety of the algorithm takes Θ(log(N)) * Θ(1) space, or Θ(log(N)) space.

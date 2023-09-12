@@ -1,0 +1,11 @@
+Sequential System (single-core)
+Time taken for Single-Precision (Float) Floating-Point: 0.978260 seconds
+Time taken for Double-Precision (Double) Floating-Point: 0.928624 seconds
+Full Time: 1.906902 seconds
+
+Parallel System (dual-core)
+Time taken for Single-Precision (Float) Floating-Point: 1.026726 seconds
+Time taken for Double-Precision (Double) Floating-Point: 0.976938 seconds
+Full Time: 1.036875 seconds
+
+Notes: When using dual-core, the time for the Wallis calculations is about 0.05 seconds slower than single-core, and in both cases, there is an approximately 0.05 second gap between float and double calculations. This is likely due to the order in which the calculations are performed.

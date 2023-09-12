@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!DOCTYPE PharmacyCatalog [
+    <!ELEMENT PharmacyCatalog (Pharmacy+)>
+    <!ELEMENT Pharmacy (PharmacyName, PharmacyManager, Drug*)>
+    <!ELEMENT PharmacyName (#PCDATA)>
+    <!ELEMENT PharmacyManager (title?, firstname+, lastname)>
+    <!ELEMENT Drug (Name, ActiveIngredient?)>
+    <!ELEMENT Name (#PCDATA)>
+    <!ELEMENT ActiveIngredient (#PCDATA)>
+    <!ELEMENT title (#PCDATA)>
+    <!ELEMENT firstname (#PCDATA)>
+    <!ELEMENT lastname (#PCDATA)>
+    <!ATTLIST Pharmacy PharmacyID CDATA #REQUIRED>
+    <!ATTLIST Pharmacy Category CDATA #IMPLIED>
+    <!ATTLIST Drug DrugID CDATA #REQUIRED>
+    <!ATTLIST Drug Controlled CDATA #REQUIRED>
+]>
+
+<PharmacyCatalog>
+    <Pharmacy PharmacyID="1" Category="community">
+        <PharmacyName>Greenhills Pharmacy</PharmacyName>
+        <PharmacyManager>
+            <title>Ms</title>
+            <firstname>Helen</firstname>
+            <lastname>Murphy</lastname>
+        </PharmacyManager>
+        <Drug DrugID="10" Controlled="No">
+            <Name>Neurofen</Name>
+            <ActiveIngredient>Ibuprofen</ActiveIngredient>
+        </Drug>
+        <Drug DrugID="2" Controlled="yes">
+            <Name>Methedone</Name>
+        </Drug>
+    </Pharmacy>
+    <Pharmacy PharmacyID="2" Category="Hospital">
+        <PharmacyName>Beaumont Pharmacy</PharmacyName>
+        <PharmacyManager>
+            <title>Mr</title>
+            <firstname>Frank</firstname>
+            <firstname>Brian</firstname>
+            <lastname>Dunne</lastname>
+        </PharmacyManager>
+        <Drug DrugID="5" Controlled="no">
+            <Name>Panadol</Name>
+            <ActiveIngredient />
+        </Drug>
+    </Pharmacy>
+    <Pharmacy PharmacyID="3">
+        <PharmacyName>Jones Pharmacy</PharmacyName>
+        <PharmacyManager>
+            <firstname>Annie</firstname>
+            <lastname>Doyle</lastname>
+        </PharmacyManager>
+    </Pharmacy>
+</PharmacyCatalog>

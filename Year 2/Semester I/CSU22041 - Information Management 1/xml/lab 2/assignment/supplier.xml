@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE Supplier [
+<!ELEMENT Supplier (Supplier.supplierName, Supplier.sellingAddress, Supplier.retailerDetails, Supplier.retailerDescription, Supplier.phoneNum, Supplier.email)>
+<!ATTLIST Supplier SUPPLIER_ID CDATA #REQUIRED>
+<!ELEMENT Supplier.supplierName (businessName, nameOfRepresentative?)>
+<!ELEMENT businessName (#PCDATA)>
+<!ELEMENT nameOfRepresentative (title?, firstName, middleName?, lastName)>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT firstName (#PCDATA)>
+<!ELEMENT middleName (#PCDATA)>
+<!ELEMENT lastName (#PCDATA)>
+<!ELEMENT Supplier.sellingAddress (Address)>
+<!ELEMENT Address (Address.street, Address.city, Address.state?, Address.postcode?, Address.country)>
+<!ATTLIST Address ADDRESS_ID CDATA #REQUIRED>
+<!ELEMENT Address.street (#PCDATA)>
+<!ELEMENT Address.city (#PCDATA)>
+<!ELEMENT Address.state (#PCDATA)>
+<!ELEMENT Address.postcode (#PCDATA)>
+<!ELEMENT Address.county (#PCDATA)>
+<!ELEMENT Address.country (#PCDATA)>
+<!ELEMENT Supplier.retailerDetails (retailerName, website?)>
+<!ELEMENT retailerName (#PCDATA)>
+<!ELEMENT website (#PCDATA)>
+<!ELEMENT Supplier.retailerDescription (#PCDATA)>
+<!ELEMENT Supplier.phoneNum (#PCDATA)>
+<!ELEMENT Supplier.email (#PCDATA)>
+]>
+
+<Supplier SUPPLIER_ID = "A1">
+  <Supplier.supplierName>
+    <businessName>Great Mediterranean Prices</businessName>
+    <nameOfRepresentative>
+      <title>Mrs.</title>
+      <firstName>Fleurette</firstName>
+      <middleName/>
+      <lastName>Rhéaume</lastName>
+    </nameOfRepresentative>
+  </Supplier.supplierName>
+  <Supplier.sellingAddress>
+    <Address ADDRESS_ID = "B2">
+      <Address.street>116 Cours Marechal-Joffre</Address.street>
+      <Address.city>DENAIN</Address.city>
+      <Address.state>Nord-Pas-de-Calais</Address.state>
+      <Address.postcode>59220</Address.postcode>
+      <Address.country>France</Address.country>
+    </Address>
+  </Supplier.sellingAddress>
+  <Supplier.retailerDetails>
+    <retailerName>Amazon.com, Inc.</retailerName>
+    <website>https://www.amazon.fr/</website>
+  </Supplier.retailerDetails>
+  <Supplier.retailerDescription>
+    Amazon.com, Inc. is an e-commerce focused retailer.
+  </Supplier.retailerDescription>
+  <Supplier.phoneNum>03.09.20.32734</Supplier.phoneNum>
+  <Supplier.email>gmp@email.fr</Supplier.email>
+</Supplier>

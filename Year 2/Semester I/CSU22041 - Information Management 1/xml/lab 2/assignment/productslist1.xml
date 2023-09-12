@@ -1,0 +1,69 @@
+<product productID="IYU76R4">
+	<name>Red Hat</name>
+	<description>It'll keep you warm</description>
+	<Address>
+		<street>Rathgar Road</street>
+		<city>Dublin</city>
+		<country> Ireland</country>
+		<postcode>O34 D4R6</postcode>
+	</Address>
+	<price>14.75</price>
+	<NumberInStock>45</NumberInStock>
+</product>
+<product productID="POW3215">
+	<name> Google Home</name>
+	<description>Like Alexa but worse</description>
+	<Address>
+		<street>South Circular Road</street>
+		<city>Rennes</city>
+		<country>France</country>
+		<postcode>I81 TR49</postcode>
+	</Address>
+	<price>21.86</price>
+	<NumberInStock>59</NumberInStock>
+</product>
+<product productID="NBI765J">
+	<name>Plushie Toy</name>
+	<description />
+	<Address>
+		<street />
+		<city>Hong Kong</city>
+		<country>China</country>
+		<postcode>TR3 E43R</postcode>
+	</Address>
+	<price>32.76</price>
+	<NumberInStock>1</NumberInStock>
+</product>
+<product productID="9JHGT54">
+	<name>Head and Shoulders Shampoo/Conditioner</name>
+	<description>Shampoo and conditioner for your hair</description>
+	<Address />
+	<price>23.89</price>
+	<NumberInStock>0</NumberInStock>
+</product>
+<product productID="HJKF45T">
+	<name>Dove Body Wash</name>
+	<description />
+	<Address />
+	<price>19.09</price>
+	<NumberInStock>10</NumberInStock>
+</product>
+<product productID="IOU1TOY">
+	<name>Collectors Edition Statue</name>
+	<description>Mark the event with a 6ft tall ______ statue</description>
+	<Address>
+		<street />
+		<city>West Side</city>
+		<country>Story</country>
+		<postcode />
+	</Address>
+	<price>123.45</price>
+	<NumberInStock>100</NumberInStock>
+</product>
+<product productID="BGT57624">
+	<name>Real Diamond Necklace</name>
+	<description>They're real, trust me</description>
+	<Address />
+	<price>2000</price>
+	<NumberInStock>0</NumberInStock>
+</product>

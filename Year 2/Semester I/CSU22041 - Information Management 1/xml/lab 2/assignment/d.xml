@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE orderInfo [
+    <!ELEMENT orderInfo (order+)>
+    <!ELEMENT order (customer, product+, shipment)> 
+    <!ELEMENT customer (customerName, orderDate)>
+    <!ELEMENT shipment (shippingPrice, totalPrice, dateShipped)>
+    <!ELEMENT customerName (firstname, midname*, lastname)>
+    <!ELEMENT dateShipped (day, month, year)>
+    <!ELEMENT orderDate (day, month, year)>
+    <!ELEMENT product (productPrice)>
+    <!ELEMENT day (#PCDATA)>
+    <!ELEMENT month (#PCDATA)>
+    <!ELEMENT year (#PCDATA)>
+    <!ELEMENT firstname (#PCDATA)>
+    <!ELEMENT midname (#PCDATA)>
+    <!ELEMENT lastname (#PCDATA)>
+    <!ELEMENT orderID (#PCDATA)>
+    <!ELEMENT customerID (#PCDATA)>
+    <!ELEMENT shippingID (#PCDATA)>
+    <!ELEMENT productPrice (#PCDATA)>
+    <!ELEMENT totalPrice (#PCDATA)>
+    <!ELEMENT productID (#PCDATA)>
+    <!ELEMENT shippingPrice (#PCDATA)>
+    <!ATTLIST order orderID CDATA #REQUIRED>
+    <!ATTLIST product productID CDATA #REQUIRED>
+    <!ATTLIST shipment shippingID CDATA #REQUIRED>
+    <!ATTLIST customer customerID CDATA #REQUIRED>
+]>
+
+<orderInfo>
+    <order orderID="1234">
+        <customer customerID="99109">
+            <customerName>
+                <firstname>Henry</firstname>
+                <lastname>James</lastname>
+            </customerName>
+            <orderDate>
+                <day>01</day>
+                <month>06</month>
+                <year>2021</year>
+            </orderDate>
+        </customer>
+        <product productID="1234323124323">
+            <productPrice>40.75</productPrice>
+        </product>
+        <product productID="3998121343">
+            <productPrice>199.58</productPrice>
+        </product>
+        <shipment shippingID="278163">
+            <shippingPrice>0.75</shippingPrice>
+            <totalPrice>241.08</totalPrice>
+            <dateShipped>
+                <day>03</day>
+                <month>06</month>
+                <year>2021</year>
+            </dateShipped>
+        </shipment>
+    </order>
+
+    <order orderID="1291">
+        <customer customerID="31838">
+            <customerName>
+                <firstname>Selene</firstname>
+                <midname>Lara</midname>
+                <lastname>Polkins</lastname>
+            </customerName>
+            <orderDate>
+                <day>22</day>
+                <month>08</month>
+                <year>2021</year>
+            </orderDate>
+        </customer>
+        <product productID="8183784">
+            <productPrice>12.65</productPrice>
+        </product>
+        <product productID="123887484">
+            <productPrice>110.33</productPrice>
+        </product>
+        <product productID="9327245">
+            <productPrice>443.99</productPrice>
+        </product>
+        <shipment shippingID="3789274">
+            <shippingPrice>0.00</shippingPrice>
+            <totalPrice>566.97</totalPrice>
+            <dateShipped>
+                <day>23</day>
+                <month>08</month>
+                <year>2021</year>
+            </dateShipped>
+        </shipment>
+    </order>
+</orderInfo>

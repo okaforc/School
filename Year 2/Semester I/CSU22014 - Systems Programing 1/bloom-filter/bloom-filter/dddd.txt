@@ -1,0 +1,82 @@
+// Sets (Arrays)
+// unsigned int/unsigned
+// return empty set
+unsigned empty_set() {
+  return 0;
+}
+
+int lookup_set(unsigned set, int item) {
+  unsigned mask = 1 << item;
+  unsigned bit = set & mask;
+  bit = bit >> item;
+  return bit;
+  // set = set >> item;
+  // set = set & 1;
+  // return set;
+}
+
+// insert into set
+unsigned insert_set(unsigned set, int item) {
+  unsigned mask = 1 << item;
+  return set | mask;
+}
+
+// remove from set
+unsigned remove_set(unsigned set, int item) {
+  unsigned mask = ~(1 << item);
+  return set & mask;
+}
+
+struct bitset {
+  int universe_size;
+  unsigned * bits;
+}
+
+//new empty bitset
+struct bitset * bitset_new(int universe_size) {
+  struct bitset * set = malloc(sizeof(struct bitset));
+  set -> universe_size = universe_size;
+  int bits_per_word = sizeof(unsigned) * 8;
+  int size_in_words = universe_size / bits_per_word + 1;
+  set -> size_in_words = size_in_words;
+  set -> bit = malloc(sizeof(unsigned)*size_in_words);
+  for (int i = 0; i < size-m.words; i++) {
+    bits[0] = 0;
+  }
+  return set;
+}
+// Hashing (hash functions)
+// input: fixed/variable length, lots of possible values
+// output: fixed length, many fewer variables, often 0..N-1
+
+// bloom filters used to avoid collision (2 inputs corresponding to 1 output)
+// using 2 or more hash functions that give different outputs
+// input1 -> hash 1 = 237
+//        -> hash 2 = 93
+//
+// input2 -> hash 1 = 237
+//        -> hash 2 = 398
+
+int hash_string(char * s, int seed, int range) {
+  int hash = 0;
+  // mix up chars of string
+  for (int i = 0; s[i] != '\0'; i++) {
+    // seed is generally an odd prime number
+    hash = hash * seed + s[i];
+  }
+  if (hash < 0) hash = -hash;
+  return hash % range;
+}
+
+struct bloomset {
+  int range;
+  struct bitset * set
+};
+
+// add string to set
+void bloomset_add(struct bloomset * this, char * string) {
+  int hash1 = hash_string(string, 17, this -> range);
+  int hash2 = hash_string(string, 29, this -> range);
+  bitsed_add(this -> set, hash1);
+  bitsed_add(this -> set, hash1);
+}

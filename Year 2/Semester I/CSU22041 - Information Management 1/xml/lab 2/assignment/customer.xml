@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE Customer [
+<!ELEMENT Customer (Customer.name, Customer.CusPassword, Customer.phone, Customer.email, Customer.address)>
+<!ATTLIST Customer CUS_ID CDATA #REQUIRED>
+<!ELEMENT Customer.name (firstName, lastName)>
+<!ELEMENT firstName (#PCDATA)>
+<!ELEMENT lastName (#PCDATA)>
+<!ELEMENT Customer.CusPassword (#PCDATA)>
+<!ELEMENT Customer.phone (#PCDATA)>
+<!ELEMENT Customer.email (#PCDATA)>
+<!ELEMENT Customer.address (Address)>
+<!ELEMENT Address (Address.ADDRESS_ID, Address.street, Address.city, Address.country, Address.postcode)>
+<!ELEMENT Address.ADDRESS_ID (#PCDATA)>
+<!ELEMENT Address.street (#PCDATA)>
+<!ELEMENT Address.city (#PCDATA)>
+<!ELEMENT Address.country (#PCDATA)>
+<!ELEMENT Address.postcode (#PCDATA)>
+]>
+
+<Customer CUS_ID="123456789">
+      <Customer.name>
+            <firstName> Henry </firstName>
+            <lastName> James </lastName>
+      </Customer.name>
+      <Customer.CusPassword> 123666666999 </Customer.CusPassword>
+      <Customer.phone> 0836669990 </Customer.phone>
+      <Customer.email> Henry@tcd.ie </Customer.email>
+      <Customer.address>
+         <Address>
+            <Address.ADDRESS_ID> 123456789 </Address.ADDRESS_ID>
+            <Address.street> College Green </Address.street>
+            <Address.city> Dublin </Address.city>
+            <Address.country> Ireland </Address.country>
+            <Address.postcode> D02 </Address.postcode>
+       </Address>
+  </Customer.address>
+</Customer>

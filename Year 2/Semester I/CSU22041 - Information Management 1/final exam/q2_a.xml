@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+
+<salespersondirectory>
+    <salesperson area="north" identification="123456">
+        <name>
+            <FirstName>Harold</FirstName>
+            <LastName>Murray </LastName>
+        </name>
+        <telephone Type="mobile">
+            <number>0871234567</number>
+        </telephone>
+        <telephone Type="Landline">
+            <number>014587884</number>
+        </telephone>
+    </salesperson>
+</salespersondirectory>
+<!-- 
+    Errors:
+    line 1: missing question mark before "xml"
+    line 3: area attribute not in quotes, should be "north"
+    line 5: closing tag </Firstname> doesn't match opening tag, should be </FirstName>
+    line 7: closing tag </Name> doesn't match opening tag, should be </name>
+    line 10: should close the opening tag on line 8; should be </telephone>
+    line 12: closing tag doesn't match opening tag on line 12, should be </number>
+    line 13: closing tag doesn't match opening tag on line 11, should be </telephone>
+    the program doesn't have a closing tag for<salespersondirectory> on line 2, should be </salespersondirectory>
+ -->
+
+
+<!-- 
+    A valid XML document has a well-structured DTD that includes elements, attributes, entities, and cardinalities. 
+    This may or may not be included in the file itself. The XML should have exactly one root element, showing at least one element. 
+    Any non-empty tag must have a closing tag, and for any element, its given attribute (if it has one associated with it) must be quoted.
+-->

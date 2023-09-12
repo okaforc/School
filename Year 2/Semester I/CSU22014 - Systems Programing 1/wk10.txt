@@ -1,0 +1,35 @@
+Making data smaller
+    - compaction
+    - compression
+        - lossy compression
+        - lossless compression
+            - dictionary
+            - statistical
+                - different space for each character
+                    - done via Huffman coding
+
+
+lossless compression
+    - non random data
+
+
+Huffman coding
+find two least frequent chars
+create a compound character
+repeat
+example:
+    - A = 30 times
+    - E = 40 times
+    - I = 15 times
+    - O = 20 times
+    - U = 10 times
+        - A = 30
+        - E = 40
+        - I, U = 25
+        - O = 20
+            - A = 30
+            - E = 40
+            - O, (I, U) = 45
+                - A, E = 70
+                - O, (I, U) = 45
+                    - (A, E), (O, (I, U)) = 115

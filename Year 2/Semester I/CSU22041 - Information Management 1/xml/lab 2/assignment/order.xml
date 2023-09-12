@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Used to define an order, each of which has a customer, a shipment, and at least one product.  -->
+<!DOCTYPE orderInfo [
+    <!-- Superset of all orders. Must have at least one order, as an order must be present to be shipped. -->
+    <!ELEMENT orderInfo (order+)>
+    <!-- A single order, made to group all products a customer may be ordering. Must have one customer, one shipment, and at least one product to be shipped. -->
+    <!ELEMENT order (customer, product+, shipment)>
+    <!-- A customer that orders products and creates an order. Has a name and an order date to track when the products were ordered. -->
+    <!ELEMENT customer (customerName, orderDate)>
+    <!-- A shipment that tracks the shipping price, the total price paid just before shipment, and the date of the shipment. Must have one shipping price, one total price, and one date of shipment. -->
+    <!ELEMENT shipment (shippingPrice, totalPrice, dateShipped)>
+    <!-- Customer's name, for use in the customer element. Necessary first and last name, with multiple optional middle names. -->
+    <!ELEMENT customerName (firstname, midname*, lastname)>
+    <!-- Date shipped and date ordered, for use in the shipment and customer elements respectively. These elements are dates, so they take in one day, month, and year each. -->
+    <!ELEMENT dateShipped (day, month, year)>
+    <!ELEMENT orderDate (day, month, year)>
+    <!-- Products ordered by the customer, kept track of in the order element. Takes in the price of the product. -->
+    <!ELEMENT product (productPrice)>
+    <!-- Day, month, and year of a date. For use in orderDate and dateShipped elements. -->
+    <!ELEMENT day (#PCDATA)>
+    <!ELEMENT month (#PCDATA)>
+    <!ELEMENT year (#PCDATA)>
+    <!-- A customer's first name. For use in the customerName element. -->
+    <!ELEMENT firstname (#PCDATA)>
+    <!-- A customer's optional middle name. For use in the customerName element, though not necessary as not everyone has a middle name. -->
+    <!ELEMENT midname (#PCDATA)>
+    <!-- A customer's  surname. For use in the customerName element. -->
+    <!ELEMENT lastname (#PCDATA)>
+    <!-- ID tag for an order. Used to keep track of an order through this value. For use as an attribute in the order element. -->
+    <!ELEMENT orderID (#PCDATA)>
+    <!-- ID tag for a customer. Used to differentiate between customers, who may have the same name. For use as an attribute in the customer element. -->
+    <!ELEMENT customerID (#PCDATA)>
+    <!-- ID tag for a shipment. Used to keep track of a shipment through this value. For use as an attribute in the shipment element. -->
+    <!ELEMENT shippingID (#PCDATA)>
+    <!-- ID tag for a product. Used to keep track of an individual product through this value. For use as an attribute in the product element. -->
+    <!ELEMENT productID (#PCDATA)>
+    <!-- Individual and total prices of products, where totalPrice is the final price of the order. totalPrice also includes the shipping price. For use in the product and shipping elements respectively. -->
+    <!ELEMENT productPrice (#PCDATA)>
+    <!ELEMENT totalPrice (#PCDATA)>
+    <!-- Shipping price paid by the customer. For use in the shipment element. -->
+    <!ELEMENT shippingPrice (#PCDATA)>
+    <!-- Each major step of the order process requires an ID number to differentiate them from other orders, products, shipments, and customers. -->
+    <!ATTLIST order orderID CDATA #REQUIRED>
+    <!ATTLIST product productID CDATA #REQUIRED>
+    <!ATTLIST shipment shippingID CDATA #REQUIRED>
+    <!ATTLIST customer customerID CDATA #REQUIRED>
+]>
+
+<orderInfo>
+    <order orderID="1234">
+        <customer customerID="99109">
+            <customerName>
+                <firstname>Henry</firstname>
+                <lastname>James</lastname>
+            </customerName>
+            <orderDate>
+                <day>01</day>
+                <month>06</month>
+                <year>2021</year>
+            </orderDate>
+        </customer>
+        <product productID="1234323124323">
+            <productPrice>40.75</productPrice>
+        </product>
+        <product productID="3998121343">
+            <productPrice>199.58</productPrice>
+        </product>
+        <shipment shippingID="278163">
+            <shippingPrice>0.75</shippingPrice>
+            <totalPrice>241.08</totalPrice>
+            <dateShipped>
+                <day>03</day>
+                <month>06</month>
+                <year>2021</year>
+            </dateShipped>
+        </shipment>
+    </order>
+
+    <order orderID="1291">
+        <customer customerID="31838">
+            <customerName>
+                <firstname>Selene</firstname>
+                <midname>Lara</midname>
+                <lastname>Polkins</lastname>
+            </customerName>
+            <orderDate>
+                <day>22</day>
+                <month>08</month>
+                <year>2021</year>
+            </orderDate>
+        </customer>
+        <product productID="8183784">
+            <productPrice>12.65</productPrice>
+        </product>
+        <product productID="123887484">
+            <productPrice>110.33</productPrice>
+        </product>
+        <product productID="9327245">
+            <productPrice>443.99</productPrice>
+        </product>
+        <shipment shippingID="3789274">
+            <shippingPrice>0.00</shippingPrice>
+            <totalPrice>566.97</totalPrice>
+            <dateShipped>
+                <day>23</day>
+                <month>08</month>
+                <year>2021</year>
+            </dateShipped>
+        </shipment>
+    </order>
+</orderInfo>

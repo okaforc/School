@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<Zoo>
+    <Habitat Code='AS' NoOfAnimals='2'>
+        <HabitatName>African Savanna</HabitatName>
+        <HabitatManager>
+            <title>Ms</title>
+            <firstname>Amy</firstname>
+            <lastname>Walsh</lastname>
+        </HabitatManager>
+        <HabitatManager>
+            <AnimalCollection CollectionID='10'>
+                <Collection_Name>White Rhino</Collection_Name>
+                <Status>Endangered</Status>
+            </AnimalCollection>
+        </HabitatManager>
+    </Habitat>
+</Zoo>
+
+<!-- 
+    Line 1: exclamation point at end of xml tag, should be question mark
+    Line 3: 'NoOfAnimals' attribute not quoted. 
+    Line 4: '<HabitatName>' tag doesn't have a closing tag. The '<Habitatname>' tag should be renamed to '</HabitatName>'
+    Line 5: '<HabitatManager>' tag doesn't have a closing tag. There should be a closing tag '</HabitatManager>' 
+            added at line 9.
+    Line 9: '<HabitatManager>' tag doesn't have a closing tag. There should be a closing tag '</HabitatManager>' 
+            added at line 14 (after previous changes, this becomes line 15).
+    Line 11: '<Collection_Name>' doesn't have a closing tag. The '<Collection-Name>' tag should be renamed to '</Collection_Name>'
+    Line 12: '<Status>' doesn't have a closing tag (as XML tags are case-sensitive). The '<status>' tag should be renamed to '</Status>'
+    Line 13: '</AnimalCollection> closing tag should not have an attribute attachted to it. The attribute should go to the opening tag <AnimalCollection>.'
+    Line 17: '<Habitat>' does not have a closing tag. The '</Habtat>' tag should be renamed to '</Habitat>'.
+ -->

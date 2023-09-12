@@ -1,0 +1,921 @@
+<html>
+<head>
+<title>PROLOG Cheat Sheet</title>
+</head>
+<body bgcolor="#ffffff" text="#000000" vlink="#0000ff" link="#0000ff">
+<b><u>PROLOG (PROgramming in LOGic) - Cheat Sheet</u></b>
+</p><p>
+
+<b><blockquote><font size="-1">Under construction ...</font></blockquote></b>
+</p><p>
+
+<hr align="center" size="2" width="400" noshade>
+</p><p>
+
+<a name="HISTORY">
+<u>PROLOG history</u></a>
+</p><p>
+
+Prolog originated in France [University of Marseilles
+(Prolog : Manuel de Reference et d'Utilisation by P. Roussel,
+Groupe d'Intelligence Artificielle, Marseille-Luminy, 1975]
+as a language for deductively analyzing logical arguments.
+</p><p>
+
+Its implementation makes it a relatively simple tool for parsing
+problems which can be phrased in terms of relations which have
+a natural representation as tree structures.
+Two easily appreciated examples are - <i>genealogy</i> and
+English <i>grammar</i>.
+</p><p>
+
+It also has a powerful <b>unification</b> mechanism which allows quick
+<i>prototyping</i> of ``template'' or ``pattern matching'' systems.
+</p><p>
+
+<hr align="center" size="2" width="400" noshade>
+</p><p>
+
+<a name="STRUCTURE">
+<u>Structure of a program</u></a>
+</p><p>
+
+Here are three distinct ways of describing the form and actions of a
+Prolog program. (Other interpretations are also useful.)
+<ul type="circle">
+   <li> Procedure view
+   <li> Logic view
+   <li> Data view
+</ul>
+</p><p>
+
+<hr align="center" size="2" width="400" noshade>
+</p><p>
+
+<a name="PROCEDUREVIEW">
+<u>Procedure View</u></a>
+</p><p>
+
+Like normal <i>imperative</i> programming languages, a Prolog program
+consists of procedures, which are collections of statements.
+A program is executed by running a sequence of statements.
+Each of these statements executes by "calling" a procedure, which calls
+other procedures, etc.
+</p><p>
+
+<blockquote>
+<pre>
+/* file: fac.pro */
+
+fac(0,1).
+fac(N,X) :- N &gt; 0, M is N - 1, fac(M,Y), X is Y * N.
+</pre>
+</blockquote>
+</p><p>
+
+<hr align="center" size="2" width="400" noshade>
+</p><p>
+
+<a name="LOGICVIEW">
+<u>Logic View</u></a>
+</p><p>
+
+A Prolog program consists of a collection of <b>theorems</b> (or rules)
+and <b>axioms</b> (its assertions). Running a program consists of asking
+a <b>query</b> (a set of "goals") to see if it is provable from
+the axioms by using the existing theorems.
+</p><p>
+
+<ul type="circle">
+
+  <li> Assertions <i>aka</i> Unit Clauses
+  </p><p>
+
+Examples of some assertions:
+</p><p>
+
+<pre>
+    English                        Prolog
+    -------                        ------
+    Life is good.           ===&gt;   good(life).
+    Doughnut is good.       ===&gt;   good(doughnut).
+    Mary loves computers.   ===&gt;   loves(mary,computers).
+</pre>
+</p><p>
+
+  <li> Theorems
+  </p><p>
+
+<pre>
+    English                               Prolog
+    -------                               ------
+    Something is worthwhile if    ==&gt;     worthwhile(X) :- good(X).
+       that something is good.
+
+    if someone loves computers    ==&gt;     right_for(X,joe) :-
+     then they are right for joe.            loves(X,computers).
+</pre>
+</p><p>
+
+  <li> Queries
+  </p><p>
+
+To determine what can be "proved" from the given assertions and
+theorems, a user issues a query:
+</p><p>
+
+<pre>
+   | ?- good(life).
+
+   yes
+</pre>
+</p><p>
+
+  <li> Nonground Queries (aka goals).
+  </p><p>
+
+The above are examples of <b>ground</b> queries, meaning there are
+no variables in the goal. Variables (anything which begins with
+an upper case letter) can be used instead.
+</p><p>
+
+<pre>
+   | ?- loves(mary,X).
+
+   X = computers
+
+   | ?- good(X).
+
+   X = life ;
+
+   X = doughnut ;
+
+   no
+</pre>
+</p><p>
+
+<hr align="center" size="2" width="400" noshade>
+<p>
+<a name="DATAVIEW">
+<b>Data View</b></a>
+<p>
+Because of its "pattern matching/unification" mechanism
+for binding actual arguments to formal arguments,
+Prolog provides a quick way to retrieve information
+stored in the fact base.
+<p>
+Consider the facts of before:
+<pre>
+good(life).
+good(doughnut).
+loves(mary,computers).
+worthwhile(X) :- good(X).
+right_for(X,joe) :- loves(X,computers).
+</pre>
+<p>
+These can be considered simply as either data structures,
+or access procedures to extract information from these
+structures.
+<p>
+Unit clauses can be thought of as data structures and
+procedures can be thought of as rules for extracting
+data which is not hard-wired as a fact.
+</p>
+
+<hr align="center" size="2" width="400" noshade>
+<p>
+<A NAME="DEFINITIONSTABLE">&nbsp;</a>
+<p>
+<table border="1" WIDTH="100%" CELLPADDING=5>
+<CAPTION ALIGN=TOP>
+Basic Definitions
+</CAPTION>
+   <tr>
+      <th align="left">Term</th>
+      <th align="left">Definition</th>
+   </tr>
+   <tr>
+      <td>statement</td>
+      <td>one of <B>fact</B>, <B>rule</B>, or <B>query</B></td>
+   </tr>
+   <tr>
+      <td>fact (<i>cf.</i> <B>unit clause</B>)</td>
+      <td><B>record</B> (<i>cf.</i> <B>data model</B>) of assumed true
+          information</td>
+   </tr>
+   <tr>
+      <td>rule (<i>cf.</i> <B>predicate</B>)</td>
+      <td>deductive formulation whereby new facts can be inferred
+          from existing facts</td>
+   </tr>
+   <tr>
+      <td>query</td>
+      <td>a <b>statement</b> asking about the existence of a fact(s)</td>
+   </tr>
+   <tr>
+      <td>logic program</td>
+      <td>collection of rules</td>
+   </tr>
+   <tr>
+      <td><i>meaning of</i> a logic program</td>
+      <td>collection of facts that can be deduced from any set
+          of initial facts</td>
+   </tr>
+</table>
+<p>
+<hr align="center" size="2" width="400" noshade>
+<p>
+<a name="LEXICALTABLE">&nbsp;</a>
+<table border="1" WIDTH="100%" CELLPADDING=5>
+<CAPTION ALIGN=TOP>
+Basic Lexical Elements
+</CAPTION>
+   <tr>
+      <th align="left">Entity</th>
+      <th align="left">Examples</th>
+   </tr>
+   <tr>
+      <td>atom</td>
+      <td><tt>homer 1.5 'plan-9' 'My name is Nobody'</tt></td>
+   </tr>
+   <tr>
+      <td>operators (are also atoms)</td>
+      <td><tt>+ - :- &lt; &gt;</tt></td>
+   </tr>
+   <tr>
+      <td>symbol - atoms are a special case of symbol</td>
+      <td><tt>32</tt></td>
+   </tr>
+   <tr>
+      <td>string (is not a defined <B>data type</B> in PROLOG, but
+          really a <B>list</B> of ASCII values)</td>
+      <td><tt>"Joe Friday"  "Son of Sam"</tt></td>
+   </tr>
+   <tr>
+      <td>variable - identifier beginning with uppercase letter or
+          underscore</td>
+      <td><tt>X Xs Joes_IQ _total</tt></td>
+   </tr>
+</table>
+<p>
+<hr align="center" size="2" width="400" noshade>
+<p>
+<b><i>Under construction ...</i></b>
+<p>
+<A NAME="SYNTAXTABLE">&nbsp;</a>
+<table border="1" WIDTH="100%" CELLPADDING=5>
+<CAPTION ALIGN=TOP>
+Basic Syntactic Elements - <i>have meaning according to position</i>
+</CAPTION>
+   <tr>
+      <th align="left">Entity</th>
+      <th align="left">Explanation</th>
+      <th align="left">Examples</th>
+   </tr>
+   <tr>
+      <td>list</td>
+      <td>series of terms</td>
+      <td><tt>[Name1, Name2 | Names]</tt></td>
+   </tr>
+</table>
+<p>
+<hr align="center" size="2" width="400" noshade>
+<p>
+<A NAME="CONTROLTABLE">&nbsp;</a>
+<table border="1" WIDTH="100%" CELLPADDING=5>
+<caption ALIGN=TOP>
+Basic Control Elements
+</caption>
+   <tr>
+      <th align="left">Task to Accomplish</th>
+      <th align="left">Commands</th>
+      <th align="left">Comments</th>
+   </tr>
+   <tr>
+      <td><a name="START">starting PROLOG</a> - at Unix $&gt; prompt</td>
+      <td><tt>$&gt; pl</tt>
+      </td>
+      <td>On ICC machines, your path variable must
+      contain <tt>/usr/local/bin</tt> for this to work.
+      Get help changing your
+      <tt>.cshrc</tt> file if necessary.
+      </td>
+   </tr>
+   <tr>
+      <td><a name="STOP">stopping PROLOG</a> - at <tt>| ?- </tt> prompt</td>
+      <TD COLSPAN=2><tt>| ?- halt.</tt></td>
+   </tr>
+   <tr>
+      <td><b>consultation</b> mode from terminal</td>
+      <td><tt>consult(user)</tt></td>
+      <td>User controls logical and data operation.</td>
+   </tr>
+   <tr>
+      <td><a name="CONSULT">consultation</a> mode from file</td>
+      <td><tt>consult(&lt;<i>filename</i>&gt;)</tt></td>
+      <td>User controls logical operation, but data are in file.</td>
+   </tr>
+   <tr>
+      <td>asserting facts</td>
+      <td><tt>assert(&lt;<i>term</i>&gt;)</tt></td>
+      <td>User controls data operation.</td>
+   </tr>
+   <tr>
+      <td>retracting facts</td>
+      <td><tt>retract(&lt;<i>rule-head</i>&gt;)</tt></td>
+      <td>User controls data operation.</td>
+   </tr>
+</table>
+<p>
+<hr align="center" size="2" width="400" noshade>
+<p>
+<A NAME="PREDICATETABLE">&nbsp;</a>
+<p>
+<table border="1" width="100%" cellpadding=5>
+<caption align="top">
+PROLOG - Description Of Common Predicates
+</CAPTION>
+   <tr>
+      <td colspan="2"><a name="DOCUMENTATION"><b>Notation</b></a> -
+         parameters prefixed by:
+         <dl compact><dt><b>+</b>
+             <dd>denote <i>input</i> parameters;
+             i.e., they must be ground
+             <dt><B>-</B>
+             <dd>denote <i>output</i> parameters;
+             i.e., they must be nonground
+             <dt><B>?</B>
+             <dd>denote <i>input/output</i> parameters;
+             i.e., they can be either ground or nonground
+         </dl>
+      </td>
+   </tr>
+   <tr>
+      <th align="center" COLSPAN=2>Loading files</th>
+   </tr>
+   <tr>
+      <th align="left">predicate</th>
+      <th align="left">examples</th>
+   </tr>
+   <tr>
+      <td>consult(<i>+Files</i>)</td>
+      <td><pre>
+consult('predicates.p').
+
+consult(['data1','data2']).
+
+['more-data'].
+
+[user].</pre></td>
+   </tr>
+   <tr>
+      <td>reconsult(<i>+Files</i>)</td>
+      <td><pre>
+reconsult('predicates.p').
+
+[-'more-data.dat'].</pre></td>
+   </tr>
+   <tr>
+      <th align="center" COLSPAN=2>Control</th>
+   </tr>
+   <tr>
+      <th align="left">predicate</th>
+      <th align="left">examples</th>
+   </tr>
+   <tr>
+      <td>abort</td>
+      <td><tt>abort</tt></td>
+   </tr>
+   <tr>
+      <td>halt</td>
+      <td><tt>halt.</tt></td>
+   </tr>
+   <tr>
+      <th align="center" COLSPAN=2>Terms</th>
+   </tr>
+   <tr>
+      <th align="left">predicate</th>
+      <th align="left">examples</th>
+   </tr>
+   <tr>
+      <td>var(?Term)</td>
+      <td><pre>
+| ?- var(X).
+X = _578
+
+| ?- has_fur(X), var(X).
+no</pre></td>
+   </tr>
+   <tr>
+      <td>nonvar(?Term)</td>
+      <td><pre>
+| ?- nonvar(X).
+no</pre></td>
+   </tr>
+   <tr>
+      <td>?Term1 = ?Term2</td>
+      <td><pre>
+| ?- X = bunny, is_soft(X).
+X = bunny
+
+| ?- has_fur(X), Y = snake, X = Y.
+no</pre></td>
+   </tr>
+   <tr>
+      <td>functor(?Term, ?Name, ?Arity)</td>
+      <td><pre>
+| ?- functor(is_soft(bunny),Name,Arity).
+Name = is_soft
+Arity = 1</pre></td>
+   </tr>
+   <tr>
+      <td>?Term =.. ?List</td>
+      <td><pre>
+| ?- Doit =.. [is_soft,X].
+Doit = is_soft(bunny).
+
+| ?- Doit =.. [is_soft,X], call(Doit).
+X = bunny
+Doit = is_soft(bunny).
+      </pre></td>
+   </tr>
+   <tr>
+      <td>length(?List, ?Length)</td>
+      <td><pre>
+| ?- length([green,eggs,and,ham],L).
+L = 4
+</pre></td>
+   </tr>
+   <tr>
+      <td>name(?Atom, ?Chars)
+      </td>
+      <td><pre>
+| ?- name(cat,AsciiList).
+AsciiList = [99,97,116]
+</pre></td>
+   </tr>
+   <tr>
+      <th align="center" COLSPAN=2>Term Comparison</th>
+   </tr>
+   <tr>
+      <th align="left">predicate</th>
+      <th align="left">examples</th>
+   </tr>
+   <tr>
+      <td>?Term1 == ?Term2
+      </td>
+      <td><pre>
+| ?- X == Y
+no
+
+| ?- X = Y, X == Y
+X = _45
+Y = _45
+</pre></td>
+   </tr>
+   <tr>
+      <td>?Term1 \== ?Term2
+      </td>
+      <td><pre>
+| ?- X \== Y
+X = _45
+Y = _60
+</pre></td>
+   </tr>
+   <tr>
+      <th align="center" COLSPAN=2>Arithmetic</th>
+   </tr>
+   <tr>
+      <th align="left">predicate</th>
+      <th align="left">examples</th>
+   </tr>
+   <tr>
+      <td><i>?Var</i> <B>is</B> <i>+Expression</i>
+      </td>
+      <td><pre>
+| ?- X is 2 + 3.
+X = 5
+
+| ?- 5 is 2 + 3.
+yes
+</pre></td>
+   </tr>
+   <tr>
+      <th align="center" COLSPAN=2>Arithmetic Operators</th>
+   </tr>
+   <tr>
+      <th align="left">operator(s) (infix predicate name)</th>
+      <th align="left">meaning</th>
+   </tr>
+   <tr>
+      <td><tt>+ - *</tt>
+      </td>
+      <td>overloaded floating point and integer operations</td>
+   </tr>
+   <tr>
+      <td><tt>/ //</tt>
+      </td>
+      <td>floating point and integer division, respectively</td>
+   </tr>
+   <tr>
+      <td><tt><B>rem</B> <B>mod</B></tt>
+      </td>
+      <td>remainder and modulo operations, respectively</td>
+   </tr>
+   <tr>
+      <th align="center" COLSPAN=2>Arithmetic relational Operators</th>
+   </tr>
+   <tr>
+      <th align="left">operator(s) (infix predicate name)</th>
+      <th align="left">meaning</th>
+   </tr>
+   <tr>
+      <td><tt>&lt; =&lt; &gt; &gt;= =:=</tt>
+      </td>
+      <td>relationships between two numeric expressions</td>
+   </tr>
+   <tr>
+      <th align="center" COLSPAN=2>Input/Output</th>
+   </tr>
+   <tr>
+      <th align="left">predicate</th>
+      <th align="left">examples</th>
+   </tr>
+   <tr>
+      <td>read(-Term)
+      </td>
+      <td><pre>
+| ?- read(X).  % user types, e.g., has_fur(bunny).
+X = has_fur(bunny)
+
+<B>Note</B> input term must be a valid Prolog term.
+</pre></td>
+   </tr>
+   <tr>
+      <td>
+write(?Term)
+      </td>
+      <td><pre>
+| ?- write(cat).
+cat
+yes
+
+| ?- write("cat").
+[99,97,116]
+yes
+</pre></td>
+   </tr>
+   <tr>
+      <th align="center" COLSPAN=2>I/O of Sentences
+         <a href="#IOEXT">extensions</a> necessary for parsing
+         natural language constructs.</th>
+   </tr>
+   <tr>
+      <th align="left">predicate</th>
+      <th align="left">notes</th>
+   </tr>
+   <tr>
+      <td>
+         <a name="READSENT">read_sentence(-ListOfAtoms)</a>
+      </td>
+      <td>
+         May have to be modified to handle special <i>lexical</i> constraints.
+      </td>
+   </tr>
+   <tr>
+      <td>
+         <a name="WRITESENT">write_sentence(+ListOfAtoms)</a>
+      </td>
+      <td>
+         &nbsp;
+      </td>
+   </tr>
+   <tr>
+      <th align="center" COLSPAN=2>Clause Database</th>
+   </tr>
+   <tr>
+      <th align="left">predicate</th>
+      <th align="left">examples</th>
+   </tr>
+   <tr>
+      <td>
+         assert(+Clause)
+      </td>
+      <td><pre>
+| ?- assert(has_fur(bunny)).
+</pre></td>
+   </tr>
+   <tr>
+      <td>
+         <a name="ASSERT">asserta(+Clause)</a>
+      </td>
+      <td><pre>
+| ?- asserta((is_soft(X) :- has_fur(X))).
+</pre>
+         note: extra parentheses required for clause with a body.
+         <b>This will be the most usual version for our purposes.</b>
+      </td>
+   </tr>
+   <tr>
+      <td>
+         assertz(+Clause)
+      </td>
+      <td>
+         Add assertion at bottom of search path - will be found last.
+      </td>
+   </tr>
+   <tr>
+      <td>
+clause(+Head,?Body)
+      </td>
+      <td><pre>
+| ?- clause(is_soft(_),B).
+B = has_fur(_419)
+</pre></td>
+   </tr>
+   <tr>
+      <td>
+         <a name="RETRACT">retract(+Clause)</a>
+      </td>
+      <td>
+         Retract the clause matching <i>Clause</i>
+      </td>
+   </tr>
+   <tr>
+      <td>
+         retractall(+Head)
+      </td>
+      <td>
+         Retract all clauses with head matching <i>Head</i>
+         E.g., <tt>retractall(stuff(_)).</tt> erases all clauses of
+         predicate stuff/1
+      </td>
+   </tr>
+   <tr>
+      <td>
+         abolish(+Predicates)
+      </td>
+      <td>
+         Abolish all clauses with head matching any in the list
+         <i>Predicates</i> E.g., <tt>abolish(stuff/1).</tt>
+         erases all clauses of predicate stuff/1 and makes
+         predicate stuff/1 unknown
+      </td>
+   </tr>
+   <tr>
+      <th align="center" COLSPAN=2>Sets and Bags</th>
+   </tr>
+   <tr>
+      <th align="left">predicate</th>
+      <th align="left">examples</th>
+   </tr>
+   <tr>
+      <td>
+setof(?Template,+Generator,-Set)
+      </td>
+      <td>
+<pre>
+| ?- setof(X,has_fur(X),S).
+   S = [bunny]
+</pre>
+      </td>
+   </tr>
+   <tr>
+      <td>
+member(+Term,+List)
+      </td>
+      <td>
+<pre>
+| ?- member(joe,[bill, joe, ted, sally]).
+   yes
+</pre>
+      </td>
+   </tr>
+   <tr>
+      <td>
+nonmember(+Term,+List)
+      </td>
+      <td>
+<pre>
+| ?- nonmember(joe,[bill, joe, ted, sally]).
+   no
+</pre>
+      </td>
+   </tr>
+   <tr>
+      <td>
+make_set(+List1,-List2)
+      </td>
+      <td>
+Remove duplicates from <i>List1</i>.
+<pre>
+| ?- make_set([bill, joe, ted, joe, bill, sally],Z).
+   Z = [bill, joe, ted, bill, sally]
+</pre>
+      </td>
+   </tr>
+   <tr>
+      <td>
+delete(+Term,+List1,-List2)
+      </td>
+      <td>
+Remove item <i>Term</i> from <i>List1</i>.
+<pre>
+| ?- Pets = [dog(rover), cat(mittens), canary(tweetie)],
+     delete(dog(rover),Pets,NewPets).
+   NewPets = [cat(mittens), canary(tweetie)]
+</pre>
+      </td>
+   </tr>
+   <tr>
+      <td>
+insert(+Term,+List1,-List2)
+      </td>
+      <td>
+Add item <i>Term</i> to <i>List1</i>.
+<pre>
+| ?- Pets = [cat(mittens), canary(tweetie)],
+     insert(hamster(smelly),Pets,NewPets).
+   NewPets = [cat(mittens), canary(tweetie),hamster(smelly)]
+</pre>
+      </td>
+   </tr>
+   <tr>
+      <td>
+subset(+List1,+List2)
+      </td>
+      <td>
+Is <i>List1</i> a subset of <i>List2</i>?
+<pre>
+| ?- subset([bill, joe, ted],[joe, bill, sally, ted]).
+   yes
+</pre>
+      </td>
+   </tr>
+   <tr>
+      <td>
+equal(+List1,+List2)
+      </td>
+      <td>
+Do <i>List1</i> and <i>List2</i> have same elements?
+<pre>
+| ?- subset([bob, carol, ted, sally],[carol, bob, sally, ted]).
+   yes
+</pre>
+      </td>
+   </tr>
+   <tr>
+      <td>
+difference(+List1,+List2,-List3)
+      </td>
+      <td>
+Remove items in <i>List2</i> from <i>List1</i> (set difference).
+<pre>
+| ?- Pets = [dog(rover), cat(mittens), canary(tweetie)],
+     difference(Pets,[dog(rover),canary(tweety)],NewPets).
+   NewPets = [cat(mittens)]
+</pre>
+      </td>
+   </tr>
+   <tr>
+      <td>
+union(+List1,+List2,-List3)
+      </td>
+      <td>
+Add items in <i>List2</i> to <i>List1</i> (set union).
+<pre>
+| ?- Pets = [dog(rover), cat(mittens), canary(tweetie)],
+     union(Pets,[dog(rover),fish(goldie)],NewPets).
+   NewPets = [dog(rover), cat(mittens), canary(tweetie), fish(goldie)]
+</pre>
+      </td>
+   </tr>
+   <tr>
+      <td>
+append(+List1,+List2,-List3)
+      </td>
+      <td>
+Add items in <i>List2</i> to <i>List1</i> (duplicates are presered).
+<pre>
+| ?- Pets = [dog(rover), cat(mittens)],
+     append(Pets,[dog(rover),fish(goldie)],NewPets).
+   NewPets = [dog(rover), cat(mittens), dog(rover), fish(goldie)]
+</pre>
+      </td>
+   </tr>
+   <tr>
+      <td>
+nth(+List,+Number,+Term)
+      </td>
+      <td>
+Get nth item in a list.
+<pre>
+| ?- Pets = [dog(rover), cat(mittens), canary(tweetie)],
+     nth(Pets,2,FavoritePet).
+   FavoritePet = cat(mittens)
+</pre>
+      </td>
+   </tr>
+<tr>
+  <th align="center" colspan="2">Useful extensions to the built-in
+     predicates. (<i><a href="#EXTENSIONS">source code</a></i>)</th></tr>
+</table>
+
+<p>
+<hr align="center" size="2" width="400" noshade>
+<p>
+<a name="EXTENSIONS"><b>Useful Extensions.</b></a>
+(Some Prolog implementations have most of these built-in.)
+<p>
+<a name="IOEXT"><b>I/O of Sentences.</b></a>
+<p><b><i>Under construction ...</i></b><p>
+<a name="SETS"><b>Set Operations.</b></a>
+<blockquote>Note, most of these are built-in to our version
+of Prolog and you should NOT re-write them. Test first!
+</blockquote>
+<pre>
+   % --- SUPPORT PREDICATES ---
+   
+   not(P) :- call(P), !, fail.
+   not(P).
+   
+   % --- SET OPERATIONS ---
+   % ---    all assume that given lists have no duplicates:
+   % ---    use make_set to ensure this if necessary
+   
+   % --- is X a member of given set? 
+   
+   member(X,[X|_]).
+   member(X,[_|Y]) :- member(X,Y).
+   
+   % --- More efficient to define non_member separately instead of
+   % --- as not(member(X,L))
+   
+   non_member(X,[Y|T]) :- X \== Y, non_member(X,T).
+   non_member(X,[]).
+   
+   % --- Remove duplicates from list 
+   
+   make_set([],[]).
+   make_set(X,Y) :- setof(Z,member(Z,X),Y).
+   
+   % --- append two lists (duplicates ARE preserved) 
+   % --- note why append(X,L,[X|L]). can cause trouble
+   
+   append([],X,X).
+   append([X|Y],Z,[X|W]) :- append(Y,Z,W).
+   
+   % --- make a new set with all members except A 
+   
+   delete(A,[A|X],X).
+   delete(A,[B|X],[B|Z]) :- delete(A,X,Z).
+   
+   % --- is X a subset of Y ? 
+   
+   subset([A|X],Y) :- member(A,Y), subset(X,Y).
+   subset([],Y).
+   
+   % --- set intersection 
+   
+   intersect([],Y,[]).
+   intersect([X|R],Y,[X|Z]) :- member(X,Y),!,intersect(R,Y,Z).
+   intersect([X|R],Y,Z) :- non_member(X,Y),!,intersect(R,Y,Z).
+   
+   % --- set difference 
+   
+   difference([],Y,[]).
+   difference([X|R],Y,Z) :- member(X,Y),!,difference(R,Y,Z).
+   difference([X|R],Y,[X|Z]) :- difference(R,Y,Z).
+   
+   % --- set union 
+   
+   union([],X,X).
+   union([X|R],Y,Z) :- member(X,Y), !, union(R,Y,Z).
+   union([X|R],Y,[X|Z]) :- union(R,Y,Z).
+   
+   % --- make a new set Y with new element A and old set X
+   
+   insert(A,X,Y) :- union([A],X,Y).
+   
+   % --- get the nth member of list 
+   
+   nth([F|R],1,F).
+   nth([F|R],N,M) :- N &gt; 1, N1 is N-1, nth(R,N1,M).
+   
+   % --- are two sets equal? 
+   
+   equal(X,X).
+   equal(X,Y) :- difference(X,Y,[]), difference(Y,X,[]).
+   
+   % --- flatten list of lists into list 
+   
+   flatten([],[]).
+   flatten([[]|L],L).
+   flatten([X|L1],[X|L2]) :- atomic(X), flatten(L1,L2).
+   flatten([X|L1],L4) :- flatten(X,L2),
+                         flatten(L1,L3),
+                         append(L2,L3,L4).
+
+</pre>
+</body>
+</html>

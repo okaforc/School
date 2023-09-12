@@ -1,0 +1,43 @@
+color(WA,NT,SA,Q,NSW,V) :-
+     member(WA,[r,b,g]),
+     member(NT,[r,b,g]),
+     member(SA,[r,b,g]),
+     member(Q,[r,b,g]),
+     member(NSW,[r,b,g]),
+     member(V,[r,b,g]),
+     WA \= NT,
+     WA \= SA,
+     NT \= Q,
+     NT \= SA,
+     Q \= NSW,
+     SA \= NSW,
+     SA \= V,
+     NSW \= V.
+
+
+crypt(D,E,M,N,O,R,S,Y) :-
+      D1 = [0,1,2,3,4,5,6,7,8,9],
+      D2 = [0,1],
+      member(D,D1),
+      member(E,D1),
+      member(M,D2),      
+      member(N,D1),
+      member(O,D1),
+      member(R,D2),
+      member(S,D1),
+      member(Y,D1),
+        member(C1,D2),
+        member(C2,D2),
+        member(C3,D2),
+         D+E =:= Y+ 10*C1,
+      C1+N+R =:= E+ 10*C2,
+      C2+E+O =:= N+ 10*C3,
+      C3+S+M =:= O+ 10*M,
+           0 =\= M. 
+
+
+/** <examples>
+?- color(WA,NT,SA,Q,NSW,V).
+?- crypt(D,E,M,N,O,R,S,Y).
+*/
+                 

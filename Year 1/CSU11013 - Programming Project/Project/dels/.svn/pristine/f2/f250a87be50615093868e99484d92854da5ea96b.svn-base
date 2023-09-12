@@ -1,0 +1,55 @@
+class Scrollbar {
+  float xpos, ypos, dif;
+  float backupx, backupy;
+  String scrollbar;
+  int scrollCol = 150;
+  Scrollbar(float x, float y, String type) {
+    xpos = x;
+    ypos = y;
+    backupx = x; 
+    backupy = y;
+    scrollbar = type;
+  }
+  void draw() {
+    fill(scrollCol);
+    if (scrollbar == "y") {
+      rect(xpos, ypos, 15, dif);
+    } else if (scrollbar == "x") {
+      rect(xpos, ypos, dif, 15);
+    }
+  }
+  void updatex() {
+    if (scrollbar== "x") {
+      if (mousePressed) {
+        if (mouseX>=xpos)offsetX = mouseX-xpos;
+        if (mouseX<=width-dif)xpos = mouseX;
+      }
+      if (mouseY >= ypos && mouseY <= ypos+dif && mouseX >= xpos && mouseX <= xpos+dif)scrollCol = 150;
+    }
+  }
+  void updatey() {
+    if (scrollbar== "y") {
+      if (mousePressed) {
+        if (ypos != mouseY)offsetX = mouseY-ypos;
+        if (mouseY<=height-dif)ypos = mouseY;
+      }
+      if (mouseY >= ypos && mouseY <= ypos+dif && mouseX >= xpos && mouseX <= xpos+dif)scrollCol = 150;
+    }
+  }
+  void reset() {
+    xpos = backupx;
+    ypos = backupy;
+    draw();
+  }
+  boolean hover() {
+    boolean toReturn = false;
+    if (mouseY >= ypos-50 && mouseY <= ypos+dif && mouseX >= xpos-50 && mouseX <= xpos+dif) toReturn = true;
+    else scrollCol = 175;
+    return toReturn;
+  }
+  String currentBar() {
+    String toReturn = "";
+    if (mouseY >= ypos && mouseY <= ypos+dif && mouseX >= xpos && mouseX <= xpos+dif) toReturn = scrollbar;
+    return toReturn;
+  }
+}

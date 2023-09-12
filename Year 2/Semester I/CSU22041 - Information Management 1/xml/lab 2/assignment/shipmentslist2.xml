@@ -1,0 +1,31 @@
+<Shipment SHIPPING_ID="278163">
+  <shippingType> 
+    <shippingCost>0.75</shippingCost>
+    <type>Express</type> 
+  </shippingType>
+  <shippedDate>
+    <day> 03 </day>
+    <month> 06 </month>
+    <year> 2021 </year>
+  </shippedDate>
+  <shippingAddress>
+    <Address>
+      <ADDRESS_ID> 123456789 </ADDRESS_ID>
+      <street> College Green </street>
+      <city> Dublin </city>
+      <country> Ireland </country>
+      <postcode> D02 </postcode>
+     </Address>
+  </shippingAddress>
+    <warehouseAddress> 
+      <Address>
+        <ADDRESS_ID> 689438806 </ADDRESS_ID>
+        <street> Unit 39, Boeing Rd, Airways Industrial Estate </street>
+        <city> Dublin </city>
+        <country> Ireland </country>
+        <postcode> D17 A728 </postcode>
+      </Address>
+    </warehouseAddress>
+    <shippingSignature> True </shippingSignature>
+    <shippedTracking> HJ4994337 </shippedTracking>
+</Shipment>

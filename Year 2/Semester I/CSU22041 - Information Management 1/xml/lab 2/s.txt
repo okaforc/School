@@ -1,0 +1,45 @@
+for $k in //customerName
+
+let $productTotal := fn:sum(
+  for $item in //order
+  return $item//product/productPrice
+)
+
+let $shippingTotal := fn:sum(
+  for $item in //shippingPrice
+  return $item
+)
+
+let $subtotal := $productTotal + $shippingTotal
+return $subtotal
+
+
+
+
+
+
+
+
+declare function local:getOrder($id as xs:string) {
+  for $s in doc("order.xml")/orderInfo/order
+  where $id = string($s/@orderID)
+  let $productTotal := fn:sum(
+    for $item in $s//productPrice
+    return $item
+  )
+  
+  let $shippingTotal := fn:sum(
+    for $item in $s//shippingPrice
+    return $item
+  )
+  
+  let $subtotal := $productTotal + $shippingTotal
+  return 
+  <order> 
+  {$s//customerName}
+  <totalCost>
+  {$subtotal}
+  </totalCost>
+  </order>
+};
+local:getOrder("1234")

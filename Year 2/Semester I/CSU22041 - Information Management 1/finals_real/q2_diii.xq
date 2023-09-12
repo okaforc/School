@@ -1,0 +1,1 @@
+(for $i in doc("q2_c.xml")//PharmacyManager return ($i/firstname)[1])

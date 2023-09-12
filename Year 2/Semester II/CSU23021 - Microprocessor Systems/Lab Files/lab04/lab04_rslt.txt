@@ -1,0 +1,131 @@
+info registers
+28-thread-select 1
+29-stack-select-frame 0
+30-interpreter-exec console "info registers"
+-> 28^done,new-thread-id="1",frame={level="0",addr="0x10000352",func="main",args=[],file="D:\\School\\CSU23021 - MS\\pico-apps\\pico-apps\\labs\\lab04\\lab04.c",fullname="D:\\School\\CSU23021 - MS\\pico-apps\\pico-apps\\labs\\lab04\\lab04.c",line="63",arch="armv6s-m"}
+GDB -> App: {"token":28,"outOfBandRecord":[],"resultRecords":{"resultClass":"done","results":[["new-thread-id","1"],["frame",[["level","0"],["addr","0x10000352"],["func","main"],["args",[]],["file","D:\\School\\CSU23021 - MS\\pico-apps\\pico-apps\\labs\\lab04\\lab04.c"],["fullname","D:\\School\\CSU23021 - MS\\pico-apps\\pico-apps\\labs\\lab04\\lab04.c"],["line","63"],["arch","armv6s-m"]]]]}}
+-> 29^done
+GDB -> App: {"token":29,"outOfBandRecord":[],"resultRecords":{"resultClass":"done","results":[]}}
+-> ~"r0             0x20000420          536871968\n"
+GDB -> App: {"outOfBandRecord":[{"isStream":true,"type":"console","content":"r0             0x20000420          536871968\n"}]}
+r0             0x20000420          536871968
+-> ~"r1             0x10000353          268436307\n"
+GDB -> App: {"outOfBandRecord":[{"isStream":true,"type":"console","content":"r1             0x10000353          268436307\n"}]}
+r1             0x10000353          268436307
+-> ~"r2             0x200001b0          536871344\n"
+GDB -> App: {"outOfBandRecord":[{"isStream":true,"type":"console","content":"r2             0x200001b0          536871344\n"}]}
+r2             0x200001b0          536871344
+-> ~"r3             0x2000026c          536871532\n"
+GDB -> App: {"outOfBandRecord":[{"isStream":true,"type":"console","content":"r3             0x2000026c          536871532\n"}]}
+r3             0x2000026c          536871532
+-> ~"r4             0x10000264          268436068\n"
+GDB -> App: {"outOfBandRecord":[{"isStream":true,"type":"console","content":"r4             0x10000264          268436068\n"}]}
+r4             0x10000264          268436068
+-> ~"r5             0x20041f01          537140993\n"
+GDB -> App: {"outOfBandRecord":[{"isStream":true,"type":"console","content":"r5             0x20041f01          537140993\n"}]}
+r5             0x20041f01          537140993
+-> ~"r6             0x18000000          402653184\n"
+GDB -> App: {"outOfBandRecord":[{"isStream":true,"type":"console","content":"r6             0x18000000          402653184\n"}]}
+r6             0x18000000          402653184
+-> ~"r7             0x0                 0\n"
+GDB -> App: {"outOfBandRecord":[{"isStream":true,"type":"console","content":"r7             0x0                 0\n"}]}
+r7             0x0                 0
+-> ~"r8             0xffffffff          -1\n"
+GDB -> App: {"outOfBandRecord":[{"isStream":true,"type":"console","content":"r8             0xffffffff          -1\n"}]}
+r8             0xffffffff          -1
+-> ~"r9             0xffffffff          -1\n"
+GDB -> App: {"outOfBandRecord":[{"isStream":true,"type":"console","content":"r9             0xffffffff          -1\n"}]}
+r9             0xffffffff          -1
+-> ~"r10            0xffffffff          -1\n"
+GDB -> App: {"outOfBandRecord":[{"isStream":true,"type":"console","content":"r10            0xffffffff          -1\n"}]}
+r10            0xffffffff          -1
+-> ~"r11            0xffffffff          -1\n"
+GDB -> App: {"outOfBandRecord":[{"isStream":true,"type":"console","content":"r11            0xffffffff          -1\n"}]}
+r11            0xffffffff          -1
+-> ~"r12            0x34000040          872415296\n"
+GDB -> App: {"outOfBandRecord":[{"isStream":true,"type":"console","content":"r12            0x34000040          872415296\n"}]}
+r12            0x34000040          872415296
+-> ~"sp             0x20042000          0x20042000\n"
+GDB -> App: {"outOfBandRecord":[{"isStream":true,"type":"console","content":"sp             0x20042000          0x20042000\n"}]}
+sp             0x20042000          0x20042000
+-> ~"lr             0x10000223          268436003\n"
+GDB -> App: {"outOfBandRecord":[{"isStream":true,"type":"console","content":"lr             0x10000223          268436003\n"}]}
+lr             0x10000223          268436003
+-> ~"pc             0x10000352          0x10000352 <main>\n"
+GDB -> App: {"outOfBandRecord":[{"isStream":true,"type":"console","content":"pc             0x10000352          0x10000352 <main>\n"}]}
+pc             0x10000352          0x10000352 <main>
+-> ~"xPSR           0x61000000          1627389952\n"
+GDB -> App: {"outOfBandRecord":[{"isStream":true,"type":"console","content":"xPSR           0x61000000          1627389952\n"}]}
+xPSR           0x61000000          1627389952
+-> ~"msp            0x20042000          0x20042000\n"
+GDB -> App: {"outOfBandRecord":[{"isStream":true,"type":"console","content":"msp            0x20042000          0x20042000\n"}]}
+msp            0x20042000          0x20042000
+-> ~"psp            0xfffffffc          0xfffffffc\n"
+GDB -> App: {"outOfBandRecord":[{"isStream":true,"type":"console","content":"psp            0xfffffffc          0xfffffffc\n"}]}
+psp            0xfffffffc          0xfffffffc
+-> ~"primask        0x0                 0\n"
+GDB -> App: {"outOfBandRecord":[{"isStream":true,"type":"console","content":"primask        0x0                 0\n"}]}
+primask        0x0                 0
+-> ~"basepri        0x0                 0\n"
+GDB -> App: {"outOfBandRecord":[{"isStream":true,"type":"console","content":"basepri        0x0                 0\n"}]}
+basepri        0x0                 0
+-> ~"faultmask      0x0                 0\n"
+GDB -> App: {"outOfBandRecord":[{"isStream":true,"type":"console","content":"faultmask      0x0                 0\n"}]}
+faultmask      0x0                 0
+-> ~"control        0x0                 0\n"
+GDB -> App: {"outOfBandRecord":[{"isStream":true,"type":"console","content":"control        0x0                 0\n"}]}
+control        0x0                 0
+-> 30^done
+GDB -> App: {"token":30,"outOfBandRecord":[],"resultRecords":{"resultClass":"done","results":[]}}
+{"token":30,"outOfBandRecord":[],"resultRecords":{"resultClass":"done","results":[]}}
+
+disassemble main_asm, +26
+31-thread-select 1
+32-stack-select-frame 0
+33-interpreter-exec console "disassemble main_asm, +26"
+-> 31^done,new-thread-id="1",frame={level="0",addr="0x10000352",func="main",args=[],file="D:\\School\\CSU23021 - MS\\pico-apps\\pico-apps\\labs\\lab04\\lab04.c",fullname="D:\\School\\CSU23021 - MS\\pico-apps\\pico-apps\\labs\\lab04\\lab04.c",line="63",arch="armv6s-m"}
+GDB -> App: {"token":31,"outOfBandRecord":[],"resultRecords":{"resultClass":"done","results":[["new-thread-id","1"],["frame",[["level","0"],["addr","0x10000352"],["func","main"],["args",[]],["file","D:\\School\\CSU23021 - MS\\pico-apps\\pico-apps\\labs\\lab04\\lab04.c"],["fullname","D:\\School\\CSU23021 - MS\\pico-apps\\pico-apps\\labs\\lab04\\lab04.c"],["line","63"],["arch","armv6s-m"]]]]}}
+-> 32^done
+GDB -> App: {"token":32,"outOfBandRecord":[],"resultRecords":{"resultClass":"done","results":[]}}
+-> ~"Dump of assembler code from 0x10000360 to 0x1000037a:\n"
+GDB -> App: {"outOfBandRecord":[{"isStream":true,"type":"console","content":"Dump of assembler code from 0x10000360 to 0x1000037a:\n"}]}
+Dump of assembler code from 0x10000360 to 0x1000037a:
+-> ~"   0x10000360 <main_asm+0>:\tmovs\tr0, #25\n"
+GDB -> App: {"outOfBandRecord":[{"isStream":true,"type":"console","content":"   0x10000360 <main_asm+0>:\tmovs\tr0, #25\n"}]}
+   0x10000360 <main_asm+0>:	movs	r0, #25
+-> ~"   0x10000362 <main_asm+2>:\tbl\t0x1000030c <asm_gpio_init>\n"
+GDB -> App: {"outOfBandRecord":[{"isStream":true,"type":"console","content":"   0x10000362 <main_asm+2>:\tbl\t0x1000030c <asm_gpio_init>\n"}]}
+   0x10000362 <main_asm+2>:	bl	0x1000030c <asm_gpio_init>
+-> ~"   0x10000366 <main_asm+6>:\tmovs\tr0, #25\n"
+GDB -> App: {"outOfBandRecord":[{"isStream":true,"type":"console","content":"   0x10000366 <main_asm+6>:\tmovs\tr0, #25\n"}]}
+   0x10000366 <main_asm+6>:	movs	r0, #25
+-> ~"   0x10000368 <main_asm+8>:\tmovs\tr1, #1\n"
+GDB -> App: {"outOfBandRecord":[{"isStream":true,"type":"console","content":"   0x10000368 <main_asm+8>:\tmovs\tr1, #1\n"}]}
+   0x10000368 <main_asm+8>:	movs	r1, #1
+-> ~"   0x1000036a <main_asm+10>:\tbl\t0x10000314 <asm_gpio_set_dir>\n"
+GDB -> App: {"outOfBandRecord":[{"isStream":true,"type":"console","content":"   0x1000036a <main_asm+10>:\tbl\t0x10000314 <asm_gpio_set_dir>\n"}]}
+   0x1000036a <main_asm+10>:	bl	0x10000314 <asm_gpio_set_dir>
+-> ~"   0x1000036e <loop+0>:\tldr\tr0, [pc, #36]\t; (0x10000394 <led_set_state+8>)\n"
+GDB -> App: {"outOfBandRecord":[{"isStream":true,"type":"console","content":"   0x1000036e <loop+0>:\tldr\tr0, [pc, #36]\t; (0x10000394 <led_set_state+8>)\n"}]}
+   0x1000036e <loop+0>:	ldr	r0, [pc, #36]	; (0x10000394 <led_set_state+8>)
+-> ~"   0x10000370 <loop+2>:\tbl\t0x10000e28 <sleep_ms>\n"
+GDB -> App: {"outOfBandRecord":[{"isStream":true,"type":"console","content":"   0x10000370 <loop+2>:\tbl\t0x10000e28 <sleep_ms>\n"}]}
+   0x10000370 <loop+2>:	bl	0x10000e28 <sleep_ms>
+-> ~"   0x10000374 <loop+6>:\tbl\t0x1000037a <sub_toggle>\n"
+GDB -> App: {"outOfBandRecord":[{"isStream":true,"type":"console","content":"   0x10000374 <loop+6>:\tbl\t0x1000037a <sub_toggle>\n"}]}
+   0x10000374 <loop+6>:	bl	0x1000037a <sub_toggle>
+-> ~"   0x10000378 <loop+10>:\tb.n\t0x1000036e <loop>\n"
+GDB -> App: {"outOfBandRecord":[{"isStream":true,"type":"console","content":"   0x10000378 <loop+10>:\tb.n\t0x1000036e <loop>\n"}]}
+   0x10000378 <loop+10>:	b.n	0x1000036e <loop>
+-> ~"End of assembler dump.\n"
+GDB -> App: {"outOfBandRecord":[{"isStream":true,"type":"console","content":"End of assembler dump.\n"}]}
+End of assembler dump.
+-> 33^done
+GDB -> App: {"token":33,"outOfBandRecord":[],"resultRecords":{"resultClass":"done","results":[]}}
+{"token":33,"outOfBandRecord":[],"resultRecords":{"resultClass":"done","results":[]}}
+
+
+
+Q1: blink_asm entry point was 0x10000360
+Q2: main_asm entry point was 0x10000360
+Q3: 

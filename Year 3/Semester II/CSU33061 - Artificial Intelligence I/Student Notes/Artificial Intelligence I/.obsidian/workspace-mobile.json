@@ -1,0 +1,126 @@
+{
+  "main": {
+    "id": "9cc03cca2820fbe8",
+    "type": "split",
+    "children": [
+      {
+        "id": "757dcf9263d531ed",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "56526e10d59fa845",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "PDF/2.pdf"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "58f91c45983ebf63",
+    "type": "mobile-drawer",
+    "children": [
+      {
+        "id": "1b955a47966d75c9",
+        "type": "leaf",
+        "state": {
+          "type": "file-explorer",
+          "state": {
+            "sortOrder": "alphabetical"
+          }
+        }
+      },
+      {
+        "id": "93fd6b826d0b4df0",
+        "type": "leaf",
+        "state": {
+          "type": "search",
+          "state": {
+            "query": "",
+            "matchingCase": false,
+            "explainSearch": false,
+            "collapseAll": false,
+            "extraContext": false,
+            "sortOrder": "alphabetical"
+          }
+        }
+      },
+      {
+        "id": "76ded57e8ac31121",
+        "type": "leaf",
+        "state": {
+          "type": "tag",
+          "state": {
+            "sortOrder": "frequency",
+            "useHierarchy": true
+          }
+        }
+      },
+      {
+        "id": "832490990bf55981",
+        "type": "leaf",
+        "state": {
+          "type": "starred",
+          "state": {}
+        }
+      }
+    ],
+    "currentTab": 0
+  },
+  "right": {
+    "id": "74aeda14f778a5e7",
+    "type": "mobile-drawer",
+    "children": [
+      {
+        "id": "01f0c97391cbcde3",
+        "type": "leaf",
+        "state": {
+          "type": "backlink",
+          "state": {
+            "file": "PDF/2.pdf",
+            "collapseAll": false,
+            "extraContext": false,
+            "sortOrder": "alphabetical",
+            "showSearch": false,
+            "searchQuery": "",
+            "backlinkCollapsed": false,
+            "unlinkedCollapsed": true
+          }
+        }
+      },
+      {
+        "id": "1cec8614fc63f981",
+        "type": "leaf",
+        "state": {
+          "type": "outgoing-link",
+          "state": {
+            "file": "PDF/2.pdf",
+            "linksCollapsed": false,
+            "unlinkedCollapsed": true
+          }
+        }
+      },
+      {
+        "id": "76462fc09741686f",
+        "type": "leaf",
+        "state": {
+          "type": "outline",
+          "state": {
+            "file": "PDF/2.pdf"
+          }
+        }
+      }
+    ],
+    "currentTab": 0
+  },
+  "active": "56526e10d59fa845",
+  "lastOpenFiles": [
+    "1. Introduction/1. Background.md"
+  ]
+}

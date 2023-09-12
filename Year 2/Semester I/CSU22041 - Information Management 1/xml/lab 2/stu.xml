@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE student_info [ <!ELEMENT student_info (student)*>
+<!ELEMENT student (fname, lname, fav_music, fav_county, grad_date)>
+<!ELEMENT fname (#PCDATA)>
+<!ELEMENT lname (#PCDATA)>
+<!ELEMENT fav_music (#PCDATA)>
+<!ELEMENT fav_county (#PCDATA)>
+<!ELEMENT grad_date (#PCDATA)>
+<!ATTLIST student stu_id CDATA #REQUIRED>
+]>
+
+<student_info>
+  <student stu_id="20332400">
+    <fname>Iris</fname>
+    <lname>Okafor</lname>
+    <fav_music>None</fav_music>
+    <fav_county>Dublin</fav_county>
+    <grad_date>2025</grad_date>
+  </student>
+</student_info>

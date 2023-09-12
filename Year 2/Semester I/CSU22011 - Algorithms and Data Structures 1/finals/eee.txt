@@ -1,0 +1,469 @@
+Algorithms Sample Exam
+Question 1
+(a)
+SID:
+
+2
+0
+3
+3
+2
+0
+1
+5
+
+
+(b)
+SID²:
+
+4
+1
+3
+3
+9
+0
+8
+3
+3
+9
+6
+0
+2
+2
+5
+
+
+(c)
+dᵢ:
+
+4
+1
+3
+3
+9
+0
+8
+3
+3
+9
+6
+0
+2
+2
+5
+d1
+d2
+d3
+d4
+d5
+d6
+d7
+d8
+d9
+d10
+d11
+d12
+d13
+d14
+d15
+
+
+(d)
+uᵢ:
+
+4
+1
+3
+9
+0
+8
+6
+2
+5
+7
+u1
+u2
+u3
+u4
+u5
+u6
+u7
+u8
+u9
+u10
+
+
+Question 2
+First, the args.length will be = 10, so will continue past the if statement.
+The new integer array will be made, input:
+index
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+value
+?
+?
+?
+?
+?
+?
+?
+?
+?
+?
+
+
+The first for loop will set these values, giving input:
+index
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+value
+4
+1
+3
+9
+0
+8
+6
+2
+5
+7
+
+
+Then, a StackQueue is created, which starts off empty. We’ll represent the inner workings as below, as we only have access to the API and don’t know the actual structure. buffer:
+size
+0
+list
+NULL
+
+
+The for loop’s iterator is used to iterate through the input array. The value from input is added to the buffer, and then, based on the value of the input, something is popped or dequeued from the buffer, or nothing happens. Then the loop repeats. 
+
+So, the first time in the loop, 4 is added to the StackQueue.
+size
+1
+list
+
+4
+
+
+
+
+As 4 mod 3 = 1, nothing is popped off. But, 4 mod 2 = 0, so we dequeue the first item on the list, so, 4 is printed, and the buffer is empty again.
+size
+0
+list
+NULL
+
+
+The next time around the loop, 1 is added to the list and nothing is removed, leaving
+size
+1
+list
+
+1
+
+
+
+
+
+The next time, 3 is added.
+size
+2
+list
+
+1
+3
+
+
+
+
+
+As 3 mod 3 = 0, something is popped from the list, here being 3. So 3 is printed and the buffer is
+size
+1
+list
+
+1
+
+
+
+
+
+The next time, 9 is added
+size
+2
+list
+
+1
+9
+
+
+
+
+As 9 mod 3 = 0, 9 is popped back off of the list and printed, leaving:
+size
+1
+list
+
+1
+
+
+
+
+
+Next, 0 is added
+size
+2
+list
+
+1
+0
+
+
+
+
+As 0 mod 3 = 0, 0 is popped back off and printed, leaving,
+size
+1
+list
+
+1
+
+
+
+
+
+Next, 8 is added
+size
+2
+list
+
+1
+8
+
+
+
+
+As 8 mod 2 = 0, something is dequeued (1) and printed, leaving
+size
+1
+list
+
+8
+
+
+
+
+
+Next, 6 is added.
+size
+2
+list
+
+8
+6
+
+
+
+
+As 6 mod 3 = 0, 6 is popped and printed, leaving
+size
+1
+list
+
+8
+
+
+
+
+
+Next, 2 is added
+size
+2
+list
+
+8
+2
+
+
+
+
+As 2 mod 2 = 0, something is dequeued and printed (8), leaving
+size
+1
+list
+
+2
+
+
+
+
+
+Next, 5 is added and nothing is removed, leaving
+size
+2
+list
+
+2
+5
+
+
+
+
+
+Finally, 7 is added and nothing is removed, leaving
+size
+3
+list
+
+2
+5
+7
+
+
+
+
+ After this for loop, the list is dequeued until it is empty, printing out 2, 5 and 7 in that order. In the end, the following has been printed:
+4 
+3 
+9 
+0 
+1 
+6 
+8 
+2 
+5 
+7
+
+Question 3
+Inserting u1:
+
+Inserting u2:
+
+Inserting u3:
+
+Splits to 
+
+
+Inserting u4:
+
+
+Inserting u5:
+
+
+Inserting u6:
+
+Splits to:
+
+
+Inserting u7:
+
+
+Inserting u8:
+
+Splits to:
+
+
+Inserting u9:
+
+Splits to
+
+
+Inserting u10:
+
+Question 4
+
+
+Question 5
+Points to be inserted:
+(u1, u10),(u2, u9),(u3, u8),(u4, u7),(u5, u6),(u6, u5),(u7, u4),(u8, u3)
+(4 , 7  ),(1 , 5 ),(3 , 2 ),(9 , 6 ),(0 , 8 ),(8 , 0 ),(6 , 9 ),(2 , 3 )
+
+
+
+Question 6
+The three types of asymptotic notation are O, Θ, Ω (Big O, Big Theta, Big Omega). All of them express the order of growth of the runtime of an algorithm as the input (n) approaches infinity. While Big Theta notation gives the exact order of growth of the running time (in asymptotic notation, where constants are all equivalent to 1 and only the highest order terms are kept), Big O notation and Big Omega notation gives bounds the the order of growth of running time.
+
+O gives the upper bound of the order of growth of the running time of an algorithm. For example, if an algorithm had order of growth of the algorithm = T(N) = Θ(N²), it would be correct to say that  T(N) = O(N³). You use Big O notation when you cannot define exactly what T(N) is, but can give the upper bound for T(N). 
+
+Conversely, Ω gives the lower bound of the order of growth of the running time of an algorithm. In the same example as earlier, where T(N) = Θ(N²), it would be valid to say T(N) = Ω(N). You use Big Omega notation when you cannot define exactly what T(N) is, but you can give a lower bound.
+
+Question 7
+For easier explanation of the running time of this algorithm, it is copied here and given line numbers. (An error on line 3 was fixed, changing length to length).
+
+1
+public Integer findKthLargest(int[] nums, int k)
+2
+{
+3
+    if (nums.length < k) return null;
+4
+    MinPQ heap = new MinPQ(k+1); 
+5
+    for (int i = 0; i < nums.length; i++)
+6
+    {
+7
+       heap.add(nums[i]);
+8
+       if (heap.size() > k)
+9
+          heap.delMin();
+10
+    }
+11
+    return heap.delMin();
+12
+}
+
+
+
+I will assume this priority queue is based on an ordered array (where insert has a T(N)=Θ(N) and removeMin has a T(N)=Θ(1)), although if it were based on an unordered queue (and the running times for insert and removeMin were swapped), there would be no significant change, as any constant coefficient is equivalent to 1 in asymptotic notation.
+I will analyse the performance of this code using asymptotic analysis of the worst case.
+
+The worst case for this code is any input where the length of nums[] is greater than or equal to k, as the code will then have to iterate through the whole of nums. Although specific values may give a stronger worst case, these would not affect the asymptotic worst case.
+
+Lines 3,4,11:
+Times executed: Θ(1)
+Time taken to execute: Θ(1)
+Θ(1) * Θ(1) = Θ(1)
+
+Lines 5,6,10:
+Times executed: Θ(N) //N=length of nums[]
+Time taken to execute: Θ(1)
+Θ(N) * Θ(1) = Θ(N)
+
+Line 7,8,9:
+Times executed: Θ(N)
+Time taken to execute: Θ(N+1)=Θ(N)
+Θ(N) * Θ(N) = Θ(N²)
+Total Running Time:
+T(N) = Θ(1) + Θ(N) + Θ(N²) = Θ(N²)
+
+I will use tilde notation and discuss the memory use (space) of this function as a function of N (the size of nums[]).
+An integer array of size N takes up 4N+24 bytes, so nums takes up 4N+24 bytes. An int takes up 4 bytes, so k takes up 4 bytes.
+
+For the object itself of heap (MinPQ<Integer>), assuming it is made up of an integer array and an int for size, the memory usage is 16 bytes (object overhead) + (4(k + 1) + 24) bytes (int array) + 4 bytes. This adds up to about 4(k+1) + 34 bytes which is simplified using tilde notation to ~4(k+1) bytes.
+
+The reference to heap uses 8 bytes.
+
+The iteration variable i uses 4 bytes.
+
+Overall, this code will use ~4N bytes, as N must be >= k.
+

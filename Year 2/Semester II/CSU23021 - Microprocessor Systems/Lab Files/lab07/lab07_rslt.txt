@@ -1,0 +1,33 @@
+Single Core
+Cache enabled: 1
+Sequential System (single-core)
+Time taken for Single-Precision (Float) Floating-Point: 0.978260 seconds
+Time taken for Double-Precision (Double) Floating-Point: 0.928624 seconds
+Full Time: 1.906899 seconds
+
+Cache disabled: 0
+Sequential System (single-core)
+Time taken for Single-Precision (Float) Floating-Point: 4.814210 seconds
+Time taken for Double-Precision (Double) Floating-Point: 4.452584 seconds
+Full Time: 9.266817 seconds
+
+When using the cache and one core, the speed of the operation is approximately 4.9 times faster than without it.
+
+
+Dual Core
+Cache enabled: 1
+Parallel System (dual-core)
+Time taken for Single-Precision (Float) Floating-Point: 1.026728 seconds
+Time taken for Double-Precision (Double) Floating-Point: 0.976940 seconds
+Full Time: 1.036881 seconds
+
+Cache disabled: 0
+Parallel System (dual-core)
+Time taken for Single-Precision (Float) Floating-Point: 7.784656 seconds
+Time taken for Double-Precision (Double) Floating-Point: 7.430426 seconds
+Full Time: 7.796007 seconds
+
+When using the cache and two cores, the speed of the operation is approximately 7.5 times faster than without it.
+
+
+

@@ -1,0 +1,48 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE ShoppingCart [
+<!ELEMENT ShoppingCart (dateAdded, quantity, totalItems)>
+<!ELEMENT customer (firstName+, middleName?, lastName)>
+<!ELEMENT product (productName, productPrice, quantityInStock)>
+<!ATTLIST ShoppingCart cartID CDATA #REQUIRED>
+<!ATTLIST product productID CDATA #REQUIRED>
+<!ATTLIST customer customerID CDATA #REQUIRED>
+<!ELEMENT dateAdded (day, month, year)>
+<!ELEMENT day (#PCDATA)>
+<!ELEMENT month (#PCDATA)>
+<!ELEMENT year (#PCDATA)>
+<!ELEMENT quantity (#PCDATA)>
+<!ELEMENT totalItems (#PCDATA)>
+<!ELEMENT firstName (#PCDATA)>
+<!ELEMENT middleName (#PCDATA)>
+<!ELEMENT lastName (#PCDATA)>
+<!ELEMENT productName (#PCDATA)>
+<!ELEMENT productPrice (#PCDATA)>
+<!ELEMENT quantityInStock (#PCDATA)>
+]>
+
+<ShoppingCart cartID = "16">
+  <dateAdded>
+    <day> 16 </day>
+    <month> 11 </month>
+    <year> 2021 </year>
+  </dateAdded>
+  <customer customerID = "378291"> 
+    <customerName>
+      <firstName> Riley </firstName>
+      <lastName> Conroy </lastName>
+    </customerName>
+  </customer>
+  <product productID = "2784957347">
+    <productName> BEATS : Solo3 Wireless On-Ear Headphones </productName>
+    <productPrice> 113.06 </productPrice>
+    <quantityInStock> 147 </quantityInStock>
+  </product>
+  <product productID = "3729493054">
+    <productName> JBL : Flip Portable Wireless Speaker </productName>
+    <productPrice> 69.95 </productPrice>
+    <quantityInStock> 394 </quantityInStock>
+  </product>
+  <quantity> 2 </quantity>
+  <totalItems> Cart total is : €183.01 </totalItems>
+</ShoppingCart>
+   

@@ -1,0 +1,316 @@
+{
+  "main": {
+    "id": "2249603ac8adf519",
+    "type": "split",
+    "children": [
+      {
+        "id": "5622a9f334934033",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "642780c3a02d9c7a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Assignments/a1.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "e563b70bd911048d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2. Search/1. Search.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "b74c59010e24991e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2. Search/2. Frontier Search - Blind Searches (BFS,DFS).md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "c45cec16c5c2e2ff",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2. Search/3. Costs, Heuristics, A-star.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "8dfe7872a7eae8cb",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2. Search/Search Cheat Sheet.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "2b303b86ba8f467c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "3. Markov Decision Processes _ Q-learning/1. Shifting Perspectives - From Searching to Learning.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "04a41f4db1677a48",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "3. Markov Decision Processes _ Q-learning/2. Deterministic Case.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "d1cb70926b508bd3",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "3. Markov Decision Processes _ Q-learning/3. Non-Deterministic Case.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "0d039997136dfa58",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "3. Markov Decision Processes _ Q-learning/MDP Cheat Sheet.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "066414df2cd61934",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "3. Markov Decision Processes _ Q-learning/4. Learning.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ],
+        "currentTab": 8
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "f66f278beb450813",
+    "type": "split",
+    "children": [
+      {
+        "id": "b69fada6a0d1b983",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b9cfb298522cf4c2",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "40f74a30f082532e",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "sort",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "95a113565e75320b",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200
+  },
+  "right": {
+    "id": "5dd4fa2e7e8dd692",
+    "type": "split",
+    "children": [
+      {
+        "id": "f25a69688aaa9ebc",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e70d3b93bce33931",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "3. Markov Decision Processes _ Q-learning/MDP Cheat Sheet.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "326ff1584ae45f1e",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "3. Markov Decision Processes _ Q-learning/MDP Cheat Sheet.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "bffb52d0d16399dd",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "0879087563b81dd5",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "3. Markov Decision Processes _ Q-learning/MDP Cheat Sheet.md"
+              }
+            }
+          },
+          {
+            "id": "ad88817c98f8910b",
+            "type": "leaf",
+            "state": {
+              "type": "advanced-tables-toolbar",
+              "state": {}
+            }
+          }
+        ],
+        "currentTab": 3
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "table-editor-obsidian:Advanced Tables Toolbar": false
+    }
+  },
+  "active": "0d039997136dfa58",
+  "lastOpenFiles": [
+    "2. Search/Search Cheat Sheet.md",
+    "3. Markov Decision Processes _ Q-learning/MDP Cheat Sheet.md",
+    "3. Markov Decision Processes _ Q-learning/3. Non-Deterministic Case.md",
+    "3. Markov Decision Processes _ Q-learning/2. Deterministic Case.md",
+    "3. Markov Decision Processes _ Q-learning/1. Shifting Perspectives - From Searching to Learning.md",
+    "Pasted image 20230429124406.png",
+    "Pasted image 20230429015324.png",
+    "3. Markov Decision Processes _ Q-learning/4. Learning.md",
+    "Pasted image 20230428210842.png",
+    "PDF/mdp.pdf",
+    "Pasted image 20230428204824.png",
+    "Pasted image 20230428204726.png",
+    "2. Search/3. Costs, Heuristics, A-star.md",
+    "Assignments/a1.md",
+    "2. Search/1. Search.md",
+    "2. Search/2. Frontier Search - Blind Searches (BFS,DFS).md",
+    "Assignments/a1.pdf",
+    "Pasted image 20230425230354.png",
+    "Untitled.md",
+    "1. Introduction/3. Finite Automata to Turing Machines.md",
+    "1. Introduction/2. Logic, Automata and Neurons.md",
+    "1. Introduction/1. Background.md",
+    "5. Bayes _ Markov Networks/1. Probabilities, Conditional Independence _ Belief Networks.md",
+    "Assignments/Assignment 2.md",
+    "Introduction.md",
+    "4. Constraint Satisfaction _ Knowledge Representation/3. Interpretations _ Logical Consequence.md",
+    "PDF/ilc.pdf",
+    "4. Constraint Satisfaction _ Knowledge Representation/2. Constraint Satisfaction Problem.md",
+    "4. Constraint Satisfaction _ Knowledge Representation/1. Non-determinism and SAT.md",
+    "Assignments/Assignment 2 Submission.md",
+    "PDF/qpf.pdf",
+    "PDF/2.pdf",
+    "Pasted image 20230419125306.png",
+    "3. Markov Decision Processes & Q-learning/1. Shifting Perspectives - From Searching to Learning.md",
+    "3. Markov Decision Processes & Q-learning/2. Deterministic Case.md",
+    "3. Markov Decision Processes & Q-learning/3. Non-Deterministic Case.md",
+    "4. Constraint Satisfaction & Knowledge Representation/3. Interpretations & Logical Consequence.md",
+    "Pasted image 20230419174601.png",
+    "Pasted image 20230419174506.png",
+    "Pasted image 20230419174257.png",
+    "PDF/sumR.pdf",
+    "PDF/Unconfirmed 373782.crdownload",
+    "PDF/bn.pdf",
+    "5. Bayes & Markov Networks/desktop.ini",
+    "5. Bayes & Markov Networks"
+  ]
+}

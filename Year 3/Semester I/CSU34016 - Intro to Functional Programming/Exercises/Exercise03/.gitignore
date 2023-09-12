@@ -1,0 +1,11 @@
+.stack-work
+MAIN.pdf
+*.out
+*.code-workspace
+prfchk.cabal
+MAIN.aux
+MAIN.fdb_latexmk
+MAIN.fls
+MAIN.log
+MAIN.synctex.gz
+MAIN.toc

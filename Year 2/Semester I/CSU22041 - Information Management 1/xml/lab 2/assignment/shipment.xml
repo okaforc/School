@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE Shipment [
+<!ELEMENT Shipment (shippingType, shippedDate, shippingAddress, warehouseAddress, shippingSignature, shippedTracking)>
+<!ATTLIST Shipment SHIPPING_ID CDATA #REQUIRED>
+<!ELEMENT shippingType (shippingCost, type)>
+<!ELEMENT shippingCost (#PCDATA)>
+<!ELEMENT type (#PCDATA)>
+<!ELEMENT shippedDate (day, month, year)>
+<!ELEMENT day (#PCDATA)>
+<!ELEMENT month (#PCDATA)>
+<!ELEMENT year (#PCDATA)>
+<!ELEMENT shippingAddress (Address)>
+<!ELEMENT warehouseAddress (Address)>
+<!ELEMENT Address (ADDRESS_ID, street, city, country, postcode)>
+<!ELEMENT ADDRESS_ID (#PCDATA)>
+<!ELEMENT street (#PCDATA)>
+<!ELEMENT city (#PCDATA)>
+<!ELEMENT country (#PCDATA)>
+<!ELEMENT postcode (#PCDATA)>
+<!ELEMENT shippingSignature (#PCDATA)>
+<!ELEMENT shippedTracking (#PCDATA)>
+]>
+
+<Shipment SHIPPING_ID = "278163">
+  <shippingType> 
+    <shippingCost>0.75</shippingCost>
+    <type>Express</type> 
+  </shippingType>
+  <shippedDate>
+    <day> 03 </day>
+    <month> 06 </month>
+    <year> 2021 </year>
+  </shippedDate>
+  <shippingAddress>
+    <Address>
+      <ADDRESS_ID> 123456789 </ADDRESS_ID>
+      <street> College Green </street>
+      <city> Dublin </city>
+      <country> Ireland </country>
+      <postcode> D02 </postcode>
+     </Address>
+  </shippingAddress>
+  <warehouseAddress> 
+    <Address>
+      <ADDRESS_ID> 689438806 </ADDRESS_ID>
+      <street> Unit 39, Boeing Rd, Airways Industrial Estate </street>
+      <city> Dublin </city>
+      <country> Ireland </country>
+      <postcode> D17 A728 </postcode>
+    </Address>
+  </warehouseAddress>
+  <shippingSignature> True </shippingSignature>
+  <shippedTracking> HJ4994337 </shippedTracking>
+</Shipment>

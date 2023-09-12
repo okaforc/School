@@ -1,0 +1,48 @@
+
+Start nodes: 0(50), 0(50), 0(50)
+0.0
+0: time = 0.0, path = a: [], b: [], c: []
+150.0
+1: time = 3000.0, path = a: [0 -> 1, 150.0], b: [0 -> 1, 150.0], c: [0 -> 1, 150.0]
+
+Start nodes: 0(50), 0(50), 1(50)
+Infinity
+0: time = Infinity, path = a: [], b: [], c: null
+Infinity
+1: time = Infinity, path = a: [0 -> 1, 150.0], b: [0 -> 1, 150.0], c: []
+
+Start nodes: 0(50), 1(50), 0(50)
+Infinity
+0: time = Infinity, path = a: [], b: null, c: []
+Infinity
+1: time = Infinity, path = a: [0 -> 1, 150.0], b: [], c: [0 -> 1, 150.0]
+
+Start nodes: 0(50), 1(50), 1(50)
+Infinity
+0: time = Infinity, path = a: [], b: null, c: null
+Infinity
+1: time = Infinity, path = a: [0 -> 1, 150.0], b: [], c: []
+
+Start nodes: 1(50), 0(50), 0(50)
+Infinity
+0: time = Infinity, path = a: null, b: [], c: []
+Infinity
+1: time = Infinity, path = a: [], b: [0 -> 1, 150.0], c: [0 -> 1, 150.0]
+
+Start nodes: 1(50), 0(50), 1(50)
+Infinity
+0: time = Infinity, path = a: null, b: [], c: null
+Infinity
+1: time = Infinity, path = a: [], b: [0 -> 1, 150.0], c: []
+
+Start nodes: 1(50), 1(50), 0(50)
+Infinity
+0: time = Infinity, path = a: null, b: null, c: []
+Infinity
+1: time = Infinity, path = a: [], b: [], c: [0 -> 1, 150.0]
+
+Start nodes: 1(50), 1(50), 1(50)
+Infinity
+0: time = Infinity, path = a: null, b: null, c: null
+Infinity
+1: time = Infinity, path = a: [], b: [], c: []

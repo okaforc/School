@@ -1,0 +1,62 @@
+<Shipment SHIPPING_ID="245663">
+  <shippingType> 
+    <shippingCost>14.75</shippingCost>
+    <type>Regular</type> 
+  </shippingType>
+  <shippedDate>
+    <day> 04 </day>
+    <month> 12 </month>
+    <year> 2020 </year>
+  </shippedDate>
+  <shippingAddress>
+    <Address>
+      <ADDRESS_ID> 123456789 </ADDRESS_ID>
+      <street> College Green </street>
+      <city> Dublin </city>
+      <country> Ireland </country>
+      <postcode> D02 </postcode>
+     </Address>
+  </shippingAddress>
+    <warehouseAddress> 
+      <Address>
+        <ADDRESS_ID> 120NGT5 </ADDRESS_ID>
+        <street>Dame St.</street>
+	<city>Dublin</city>
+	<country>Ireland</country>
+	<postcode>D03 8O56</postcode>
+      </Address>
+    </warehouseAddress>
+    <shippingSignature> False </shippingSignature>
+    <shippedTracking> KLO09856 </shippedTracking>
+</Shipment>
+<Shipment SHIPPING_ID="245663">
+  <shippingType> 
+    <shippingCost>12.99</shippingCost>
+    <type>Regular</type> 
+  </shippingType>
+  <shippedDate>
+    <day> 17 </day>
+    <month> 09 </month>
+    <year> 2021 </year>
+  </shippedDate>
+  <shippingAddress>
+    <Address>
+      <ADDRESS_ID> 123456789 </ADDRESS_ID>
+      <street> College Green </street>
+      <city> Dublin </city>
+      <country> Ireland </country>
+      <postcode> D02 </postcode>
+     </Address>
+  </shippingAddress>
+    <warehouseAddress> 
+      <Address>
+        <ADDRESS_ID> 120NGT5 </ADDRESS_ID>
+        <street>Dame St.</street>
+	<city>Dublin</city>
+	<country>Ireland</country>
+	<postcode>D03 8O56</postcode>
+      </Address>
+    </warehouseAddress>
+    <shippingSignature> False </shippingSignature>
+    <shippedTracking> FGH78543 </shippedTracking>
+</Shipment>

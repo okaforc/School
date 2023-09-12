@@ -1,0 +1,17 @@
+S -> G
+
+S -> A = 4
+S -> B = 3	(chosen)
+
+B -> C = 1	(chosen)
+
+C -> A = 3
+C -> D = 1	(chosen)
+
+D -> E = 4
+D -> F = 1	(chosen)
+
+F -> C = 3
+F -> G = 2	(chosen)
+
+Shortest path length: S-B-C-D-F-G = 3+1+1+1+2 = 8

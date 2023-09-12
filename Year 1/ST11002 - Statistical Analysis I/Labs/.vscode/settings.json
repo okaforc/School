@@ -1,0 +1,17 @@
+{
+    "r.linting.enable": true,
+    "r.editor.formatScope": true,
+    "r.bracketedPaste": true,
+    "r.rterm.windows": "C:\\Users\\user\\AppData\\Roaming\\Python\\Python37\\Scripts\\radian.exe",
+    "r.lsp.windows": "C:\\Program Files\\R\\R-4.0.3\\bin\\R.exe",
+    "r.lsp.debug": true,
+    "r.lsp.diagnostics": true,
+    "r.rterm.option": [
+            "--no-save",
+            "--no-restore",
+            "--r-binary=C:\\Program Files\\R\\R-4.0.3\\bin\\R.exe"
+        ],
+
+    "python.pythonPath": "C:\\ProgramData\\Anaconda3\\python.exe",
+    
+}

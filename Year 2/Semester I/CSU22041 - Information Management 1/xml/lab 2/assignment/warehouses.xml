@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<!DOCTYPE warehouses [
+	<!ELEMENT warehouses (warehouse*)>
+	<!ELEMENT warehouse (currentInventory?, Address?, currentShipments*)>
+	<!ELEMENT currentInventory (product*)>
+	<!ELEMENT address (street, city, country, postcode)>
+	<!ELEMENT shippingAddress (Address)>
+	<!ELEMENT warehouseAddress (Address)>
+	<!ELEMENT Address (ADDRESS_ID*,street, city, country, postcode)>
+	<!ELEMENT ADDRESS_ID (#PCDATA)>
+	<!ELEMENT currentShipments (Shipment*)>
+	<!ELEMENT product (name,description?,Address?,price, NumberInStock)>
+	<!ELEMENT Shipment (shippingType, shippedDate, shippingAddress, warehouseAddress, shippingSignature, shippedTracking)>
+	<!ATTLIST Shipment SHIPPING_ID CDATA #REQUIRED>
+	<!ELEMENT name (#PCDATA)>
+	<!ELEMENT description (#PCDATA)>
+	<!ELEMENT price (#PCDATA)>
+	<!ELEMENT NumberInStock (#PCDATA)>
+	<!ELEMENT street (#PCDATA)>
+	<!ELEMENT city (#PCDATA)>
+	<!ELEMENT country (#PCDATA)>
+	<!ELEMENT postcode (#PCDATA)>
+	<!ELEMENT shippingType (shippingCost, type)>
+	<!ELEMENT shippingCost (#PCDATA)>
+	<!ELEMENT type (#PCDATA)>
+	<!ELEMENT shippedDate (day?, month, year)>
+	<!ELEMENT day (#PCDATA)>
+	<!ELEMENT month (#PCDATA)>
+	<!ELEMENT year (#PCDATA)>
+	<!ELEMENT shippingSignature (#PCDATA)>
+	<!ELEMENT shippedTracking (#PCDATA)>
+	<!ATTLIST product productID CDATA #REQUIRED>
+	<!ATTLIST Shipment SHIPPING_ID CDATA #REQUIRED>
+	<!ATTLIST Address ADDRESS_ID CDATA #IMPLIED>
+	<!ATTLIST warehouse warehouseID CDATA #IMPLIED>
+	<!ENTITY shipmentFile1 SYSTEM "shipmentslist1.xml">
+	<!ENTITY stockFile1 SYSTEM "productslist1.xml">
+	<!ENTITY shipmentFile2 SYSTEM "shipmentslist2.xml">
+	<!ENTITY stockFile2 SYSTEM "productslist2.xml">
+]>
+
+<warehouses>
+	<warehouse>
+		<currentInventory>
+			&stockFile1;
+		</currentInventory>
+		<Address ADDRESS_ID="120NGT5">
+			<street>Dame St.</street>
+			<city>Dublin</city>
+			<country>Ireland</country>
+			<postcode>D03 8O56</postcode>
+		</Address>
+		<currentShipments>
+			&shipmentFile1;
+		</currentShipments>
+	</warehouse>
+	<warehouse warehouseID="AMZN08352">
+		<currentInventory>
+			&stockFile2;
+		</currentInventory>
+		<Address ADDRESS_ID="123456789">
+			<street> College Green </street>
+			<city> Dublin </city>
+			<country> Ireland </country>
+			<postcode> D02 </postcode>
+		</Address>
+		<currentShipments>
+			&shipmentFile2;
+		</currentShipments>
+	</warehouse>
+</warehouses>

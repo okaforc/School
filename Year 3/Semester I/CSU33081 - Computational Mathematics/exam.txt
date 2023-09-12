@@ -1,0 +1,6 @@
+10 multiple choice questions
+All must be answered,
+All steps shown
+Some MATLAB code to be written out
+3 hours long
+In-person

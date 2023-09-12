@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE products [
+	<!ELEMENT products (product*)>
+	<!ELEMENT product (name, description?, Address?, price, NumberInStock)>
+	<!ELEMENT name (#PCDATA)>
+	<!ELEMENT description (#PCDATA)>
+	<!ELEMENT Address (street*, city, country, postcode?)>
+	<!ELEMENT price (#PCDATA)>
+	<!ELEMENT NumberInStock (#PCDATA)>
+	<!ELEMENT street (#PCDATA)>
+	<!ELEMENT city (#PCDATA)>
+	<!ELEMENT country (#PCDATA)>
+	<!ELEMENT postcode (#PCDATA)>
+	<!ATTLIST product productID CDATA #REQUIRED>
+	<!ATTLIST Address addressID CDATA #IMPLIED>
+]>
+
+<products>
+	<product productID="ECHO0542">
+		<name>Echo Dot (3rd Gen) - Smart speaker with Alexa - Charcoal Fabric</name>
+		<description>Echo Dot is a voice-controlled smart speaker with Alexa that's 
+			perfect for any room. Just ask for music, news, information and more. 
+			You can also call almost anyone, and control compatible smart home 
+			devices with your voice.</description>
+		<!--<Address />-->
+		<price>18.99</price>
+		<NumberInStock>518</NumberInStock>
+	</product>
+	<product productID="BEATS2387">
+		<name>Beats Studio3 Wireless Noise Cancelling Over-Ear Headphones</name>
+		<description>
+			High-performance wireless noise cancelling headphones
+			Compatible with iOS and Android devices.
+			Pure adaptive noise canceling (pure ANC) actively blocks external noise
+			Real-time Audio calibration preserves a Premium listening experience
+			Up to 22 hours of battery life enables full-featured all-day wireless playback
+		</description>
+		<Address>
+			<street />
+			<city>Culver City</city>
+			<country>United States of America</country>
+			<postcode />
+		</Address>
+		<price>249.99</price>
+		<NumberInStock>13</NumberInStock>
+	</product>
+	<product productID="SWTCH5647">
+		<name>Nintendo Switch Neon Red/Neon Blue with Mario Kart 8 Deluxe</name>
+		<description />
+		<!--<Address />-->
+		<price>289.99</price>
+		<NumberInStock>0</NumberInStock>
+	</product>
+</products>

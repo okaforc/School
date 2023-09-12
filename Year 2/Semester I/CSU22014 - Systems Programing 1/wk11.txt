@@ -1,0 +1,15 @@
+Huffman tree: all left nodes assigned 0, all right nodes assigned 1
+
+                      [(A, B, C, D, E, F, G)]
+                          0/             \1
+                [(A, B), (C, D, E)]      [(F, G)]
+                   0/           \1          0/ \1
+               [(A, B)]    [(C, D), E]   [F] [G]
+                0/  \1       0/     \1
+               [A]  [B]    [(C, D)]  [E]
+                            0/    \1
+                            [C]   [D]
+
+e.g.: C = 0100
+      A = 000 (padded out)
+

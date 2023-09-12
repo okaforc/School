@@ -1,0 +1,88 @@
+class Widget {
+  int x, y, width, height;
+  String label; 
+  int event;
+  color widgetColor, labelColor;
+  PFont widgetFont;
+  boolean borderIsWhite = false;
+
+  Widget(int x, int y, int width, int height, String label, color widgetColor, color labelColor, PFont widgetFont, int event) {
+    this.x=x;
+    this.y=y; 
+    this.width = width; 
+    this.height= height;
+    this.label=label; 
+    this.event=event;
+    this.widgetColor=widgetColor; 
+    this.widgetFont=widgetFont;
+    this.labelColor= labelColor;
+  }
+
+  void drawTheWidget() {
+    fill(widgetColor);
+    rect(x, y, width, height, 10);
+    fill(labelColor);
+    textFont(widgetFont);
+    textSize(12);
+    text(label, x+10, y+height-10);
+    //println(x + "  " + y);
+  }
+
+  int getEvent(int mX, int mY) {
+    if (mX>x && mX < x+width && mY >y && mY <y+height) {
+      return event;
+    }
+    return EVENT_NULL;
+  }
+
+  boolean getBorderIsWhite() {
+    return borderIsWhite;
+  }
+
+  void setBorderIsWhite(boolean updatedBorderIsWhite) {
+    borderIsWhite = updatedBorderIsWhite;
+  }
+}
+
+/*
+class Radio extends Widget {
+  Radio( int x, int y, int width, int height, String label, color widgetColor, PFont widgetFont, int event) {
+    super(x, y, width, height, label, widgetColor, widgetFont, event);
+  }
+}
+*/
+
+class CheckBox extends Widget {
+  boolean ticked = false;
+  CheckBox( int x, int y, int width, int height, String label, color widgetColor, color labelColor, PFont widgetFont, int event) {
+    super(x, y, width, height, label, widgetColor, labelColor, widgetFont, event);
+  }
+
+  void changeStatus() {
+    if (ticked) {
+      ticked = false;
+    }
+    else {
+      ticked = true;
+    }
+  }
+  
+  void checkTheBox() {
+    if (ticked) {
+      widgetColor = color(LIGHT_GREY);
+    }
+    else {
+      widgetColor = color(BLACK);
+    }
+  }
+}
+
+class SearchBar extends Widget {
+  SearchBar( int x, int y, int width, int height, String label, color widgetColor, color labelColor, PFont widgetFont, int event) {
+    super(x, y, width, height, label, widgetColor, labelColor, widgetFont, event);
+  }
+  
+  void setLabel(String label) {
+    this.label = label;
+  }
+}

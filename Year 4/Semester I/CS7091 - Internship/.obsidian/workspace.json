@@ -1,0 +1,207 @@
+{
+  "main": {
+    "id": "3e2684dc41a3b053",
+    "type": "split",
+    "children": [
+      {
+        "id": "1a7ade31cafcddb4",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "09e6adde0e1b5eae",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Potential Internships.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "4decf6b99401c653",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "technical-cv.pdf"
+              }
+            }
+          },
+          {
+            "id": "b82cd746ebce8179",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "Session 1 Internship Orientation.pdf"
+              }
+            }
+          },
+          {
+            "id": "748573cf3fb44dfb",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Overview.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "b8d424ee37529fbf",
+    "type": "split",
+    "children": [
+      {
+        "id": "033675ed562632f4",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "0192bc00dd64189a",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "ab02abe701341f52",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "a6e73b4046a87124",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "c68368d3481a3c1d",
+    "type": "split",
+    "children": [
+      {
+        "id": "799289bd172064c1",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b468f1c1108a9091",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "technical-cv.pdf",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "cf16139297fd025e",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "technical-cv.pdf",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "84f7499e2dd4b28a",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "155a881077555f58",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "technical-cv.pdf"
+              }
+            }
+          },
+          {
+            "id": "aa1469105b650010",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "table-editor-obsidian:Advanced Tables Toolbar": false,
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "4decf6b99401c653",
+  "lastOpenFiles": [
+    "Potential Internships.md",
+    "Overview.md",
+    "Session 1 Internship Orientation.pdf",
+    "msoA572.tmp",
+    "~$Session 1 Internship Orientation(2).pptx",
+    "technical-cv.pdf",
+    "INTEL-Client-AI-Movidius-Internships-Job-Description-2023_2024.pdf",
+    "INTEL-Client-AI-Movidius-Lab-Services-and-Remote-Operations-Internships-2023_2024.pdf",
+    "Pasted image 20230905204047.png",
+    "Workday-Internships-2024-Ireland.pdf",
+    "PROPYLON-Intern-Developer-Job-Spec-2023.pdf"
+  ]
+}

@@ -1,0 +1,17 @@
+Search: IVANA
+Pattern: ANVAIVAAIVANAAN
+
+A - skip
+N - skip
+V - skip
+A - skip
+I - continue
+	V - continue
+		A - continue
+			A - skip
+I - continue
+	V - continue
+		A - continue
+			N - continue
+				A - complete
+[finsh]

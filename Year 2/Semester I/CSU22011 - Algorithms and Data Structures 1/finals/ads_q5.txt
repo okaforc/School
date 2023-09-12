@@ -1,0 +1,8 @@
+The amortised analysis of an algorithm measures its average running time. That is, given an algorithms worst-case running time with N operations (we'll call this T(N)), the amortised running time is that worst-case running time divided by the number of operations. In other words, it would be T(N)/N. 
+
+The worst-case running time, however, is a measure of the time an algorithm would take given a worst case input. This is achieved by checking the algorithm's order of growth, or how well it scales as the number of operations tends to infinity. 
+
+
+A worst-case analysis would be preferred for a doubly linked list, as this ADT makes use of insertBefore and deleteAt, both of which take O(N) time. Additionally, this ADT lacks an imbalance of time complexities. That is, most functions used by a doubly linked list take somewhere relatively close to O(N) time, and there aren't severe outliers that may make this analysis unuseable. 
+
+An amortised analysis would be preferred for a queue. This is because insertion and deletion in a queue take O(1), but queue accessing and searching take O(N) time. An amortised analysis makes a more accurate look into how a queue actually functions with respect to its time complexity than a worst-case analysis does.

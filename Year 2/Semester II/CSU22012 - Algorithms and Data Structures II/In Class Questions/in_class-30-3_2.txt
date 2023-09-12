@@ -1,0 +1,10 @@
+Search: BANANA
+Pattern: ANANAABANAABANANANABAN
+
+
+
+		j	0	1	2	3	4	5
+     pat.charAt(j)	B	A	N	A	N	A
+		A	0	2	0	4	0	6
+   dfa[][j]	B	1	1	1	1	1	1
+		N	0	0	3	0	5	0
