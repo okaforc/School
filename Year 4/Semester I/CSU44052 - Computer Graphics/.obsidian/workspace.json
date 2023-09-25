@@ -1,0 +1,173 @@
+{
+  "main": {
+    "id": "4584e478ee0a60f1",
+    "type": "split",
+    "children": [
+      {
+        "id": "fbe6d5a2bdfc23ff",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "728ae287a2460ee3",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "part/CG2.pdf"
+              }
+            }
+          },
+          {
+            "id": "1eb191fc543b18ad",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Linear Algebra.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "1663d88329cdbef8",
+    "type": "split",
+    "children": [
+      {
+        "id": "3bb76dcb51fac87e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e5f445e277391592",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "22c60c5e0908a3f8",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "bd4f0ef748095b3d",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "242258fb4a2719b1",
+    "type": "split",
+    "children": [
+      {
+        "id": "8fff785a22c83741",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "223daa76b7f80069",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Linear Algebra.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "bc278c11f4482228",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Linear Algebra.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "5e6b03b071802c17",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "2d0345fcea8a9b99",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Linear Algebra.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "table-editor-obsidian:Advanced Tables Toolbar": false
+    }
+  },
+  "active": "1eb191fc543b18ad",
+  "lastOpenFiles": [
+    "part/CG2.pdf",
+    "Linear Algebra.md",
+    "part/CG1.pdf",
+    "Overview.md",
+    "part",
+    "New folder",
+    "OpenGLExamples/example.exe",
+    "OpenGLExamples/example.c",
+    "OpenGLExamples"
+  ]
+}

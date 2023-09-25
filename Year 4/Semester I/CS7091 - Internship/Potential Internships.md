@@ -87,7 +87,13 @@ We work to connect and power an inclusive, digital economy that benefits everyon
 ## Why?
 - Looking for C# or .NET Core, which I'm looking to improve in
 
-
+## Key Words
+- [x] Coding, CI/CD tools, Java, JavaScript, C++, C#, .NET Core and Python.
+- [ ] Agile development
+- [ ] Business results
+- [ ] Design practices
+- [x] Payments
+- [ ] Solutions
 # Workday
 https://www.tcd.ie/scss/courses/undergraduate/internships-for-students/current-opportunities/workday/
 
@@ -340,3 +346,164 @@ BearingPoint is an equal opportunities employer.
 - Also vague but seems open-ended; teaches C# and Java which I already know/am learning
 
 
+
+
+Applied:
+- [x] Propylon
+- [ ] Mastercard
+- [ ] Workday
+- [x] Intel
+- [ ] Xelda
+- [ ] BearingPoint
+- [ ] Genesys
+- [ ] Rapid7
+- [ ] Dell (when available)
+
+
+# Revenue Commissioners
+https://www.tcd.ie/scss/courses/undergraduate/internships-for-students/current-opportunities/revenue-commissioners/
+
+## Their Description
+Revenue is the Irish Tax and Customs administration. Its mission is “To serve the Community by fairly and efficiently collecting taxes and duties and implementing import and export controls”. Revenue has just over 6,000 staff and deals with 3.5 million personal and business taxpayers. We collected €50.7 billion in taxes and duties for the Exchequer in 2017. Revenue is also responsible for trade facilitation and frontier control. It is a highly decentralised organisation with offices in all parts of the country’.
+
+### Relevant Degree Courses:
+
+B.Sc. Computer Applications Software Engineering, B.Sc. Enterprise Computing, B.Sc. Computational Problem Solving & Software Development, B.Eng. Electronic and Computer Engineering, B.Sc. Data Science
+
+### Job Description:
+
+These positions offer ICT students an excellent opportunity in Revenue to gain relevant work experience in one of Ireland’s top Public Sector ICT environments embracing a wide range of sophisticated technologies. They will be engaged in a range of functions, including 
+1. Software development on complex bespoke frameworks and business applications including Revenue’s award-winning Revenue On-Line Services (ROS) utilising Rich Internet applications and mobile apps. fusing ‘commercial off the shelf’ and open source components with these frameworks. 
+2. Service oriented architecture development and database administration. 
+3. Support for the development of ICT strategic and operational policy including input to the overarching eGovernment, information sharing and shared services agenda, conformance to international standards and benchmarks. A commitment to ongoing training and development and a lively interest in Information Technology generally will be essential for roles typically focused on ongoing technological service improvement and delivery.
+
+Staff in the ICT Division of Revenue work across a broad range of disciplines and as an intern you can expect to work on exciting projects and experience one or more of the following:
+
+| **Discipline**           | **Sample Projects**              |
+| ------------------------ | -------------------------------- |
+| Software Development     | Real Time Paye                   |
+| Automated Testing        | Covid Wage Subsidiaries          |
+| Dev Ops                  | Customs & Brexit Administration  |
+| Data Analytics           | Analytics & Fraud Detection      |
+| Technical Architecture   | Public Facing Websites           |
+| Systems Administration   | Taxation Collection Applications |
+| Business Analysis        |                                  |
+| Agile Development        |                                  |
+| ICT Infrastructure       |                                  |
+| ICT Security & Forensics |                                  |
+| Quality Assurance        |                                  |
+| Project Management       |                                  |
+
+### Required:
+
+Be enrolled in the penultimate or final year of a recognised honours degree in Information and Communications Technology or Engineering at least Level 8 of the National Framework of Qualifications – [www.nfq.ie](http://www.nfq.ie/)  (or an equivalent qualification acceptable to the Revenue Commissioners).
+
+### Desirable:
+
+Have a strong Working knowledge of one or more of the following:  
+
+- Java
+- C
+- COBOL
+- Javascript
+- AngularJS
+- HTML5
+- Spring
+- Hadoop
+- Database Administration
+- IT Security
+
+### Job Conditions
+
+The salary will be based on the Executive Officer starting point, which is currently €31,698 per annum.
+
+Posts are based in Dublin, Limerick & Castlebar.
+
+  
+Hours of attendance will be 37 hours per week. Flexible working hours are available. The annual leave allowance for the period of the employment with Revenue will be based on a yearly rate of 23 days.
+
+### Duration
+
+Up to and including 9 Month placements
+
+### Things to note:
+
+Please note in your CV the **specific areas** that you would like work in from the table above:  
+Example: **Areas of Interest:** Software Development, Automated Testing
+
+## Keywords
+- Software Development
+- Applications
+- Information sharing
+- Database
+
+
+
+# SIG
+## Their Description
+https://www.tcd.ie/scss/courses/undergraduate/internships-for-students/current-opportunities/sig-susquehanna-international-group/
+
+[[Software-Development-Placement-2024---Copy.pdf|PDF explaining the internship]]
+SIG Founded in 1987, SIG has grown from an options trading firm on the Philadelphia Stock Exchange to one of the world’s largest privately held financial institutions. Today, with offices around the world, we trade almost every major financial product, and we are recognized for our disciplined and quantitative trading approach, and our leading-edge trading systems. We established our European headquarters in Dublin 20 years ago and now employ over 500 people here in Trading, Technology, Research, Operations, Compliance, Legal, Finance, and HR.
+
+We offer fantastic internship opportunities in our Dublin office. This area is responsible for researching, designing and implementing the full trading capability for the European office, using leading edge hardware and software technologies. A SIG Internship allows you to get involved with development teams that are competing at a world-class level in the financial sector.
+
+# Stripe
+https://www.tcd.ie/scss/courses/undergraduate/internships-for-students/current-opportunities/stripe/
+
+## Their Description
+### About Stripe
+
+Stripe is a financial infrastructure platform for businesses. Millions of companies—from the world’s largest enterprises to the most ambitious startups—use Stripe to accept payments, grow their revenue, and accelerate new business opportunities. Our mission is to increase the GDP of the internet, and we have a staggering amount of work ahead. That means you have an unprecedented opportunity to put the global economy within everyone’s reach while doing the most important work of your career.
+
+### About the team
+
+Our internship program will provide an opportunity to work on meaningful products that will grow the GDP of the internet. Through the internship, you will work with many systems and technologies, gain experience in systems design and testing, and have opportunities to present your work to your team and the wider org. Each intern has a dedicated intern manager, and every project is part of the team’s roadmap and will directly help Stripe’s mission.
+
+### What you’ll do
+
+Every internship at Stripe centers around a real, legitimate project that our customers urgently need, touching many parts of our operations and stack. We will support you in shipping it. Yes, you will actually ship it. Some recent projects include rebuilding our statistics aggregation service, building new service discovery systems, and many user facing projects like making it easy to understand error messages on Stripe Checkout. As a Stripe intern, you'll be tackling important projects to increase global commerce, while working alongside exceptional people who insist on doing their best work. You’ll learn from people with high standards who are great at inspiring others to do more and go further. We value technical and personal growth, and see our internship program as a vehicle to foster both.
+
+### Responsibilities
+
+- Write software that will be used in production, and has meaningful impact to Stripe
+- Give and receive technical feedback through code reviews or design discussions
+- Collaborate with other engineers and cross-functional stakeholders to proactively seek and incorporate feedback
+- Learn quickly by asking great questions, by working with your intern manager and teammates effectively, and by communicating the status of your work clearly
+
+### Who you are
+
+We’re looking for someone who meets the minimum requirements to be considered for the role. If you meet these requirements, you are encouraged to apply. The preferred qualifications are a bonus, not a requirement.
+
+### Minimum requirements
+
+- A strong fundamental understanding of computer science through pursuit of a Bachelor’s, Master’s, or PhD degree in computer science, math, or a related discipline
+- Some experience and familiarity with programming, either through side projects or classwork. We work mostly in Java, Ruby, JavaScript, Scala, and Go. We believe new programming languages can be learned if the fundamentals and general knowledge are present
+- Experience from previous internships or other multi-person projects, including open source contributions, that demonstrate evaluating and receiving feedback from mentors, peers, and stakeholders
+- Ability to learn unfamiliar systems and form an understanding of those systems, through independent research and working with a mentor and subject matter experts
+
+### Preferred qualifications
+
+- At least 2 years of university education, or equivalent work experience
+- One or more areas of specialized knowledge balanced with general skills and knowledge, such as knowing more frontend technologies and, at a high level, how a service handles an HTTP request
+- Understanding and some experience writing high quality pull requests, with good test coverage, and working knowledge to complete projects with minimal defects
+- Familiarity with navigating and managing your work in new code bases, with multiple languages
+- Ability to write clearly to explain your work to stakeholders, team members, and other Stripes
+
+### Hybrid work at Stripe
+
+Our Chicago, Dublin, and Singapore teams spend at least 50% of their time in their local offices. We believe that more in-person interactions will contribute to better results for our employees and Stripe. Increased office time allows for improved collaboration, efficiency, and informal learning opportunities, fostering a stronger community and building our culture. We will apply the insights gained from these initial three locations to continue refining our hybrid approach.
+# Internships Applied
+- [x] Propylon
+- [x] Mastercard
+- [x] Intel
+- [x] Revenue Commissioners
+- [x] Workday
+- [x] LexisNexis
+- [x] SIG
+- [ ] Rapid7
+- [ ] Genesys
+- [x] HubSpot
+- [ ] Analog Devices
+- [ ] Fathom
+- [ ] Stripe

@@ -1,0 +1,1 @@
+**Referential Transparency**: The idea that one can freely replace variables by their values and vice versa as there are no side effects. Running the same function with the same parameters guarantees the same outcome. ^referential-transparency

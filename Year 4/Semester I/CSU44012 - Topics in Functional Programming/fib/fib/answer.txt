@@ -1,0 +1,23 @@
+My attempt to write the `parallelMap` function was to write it out as similar to the regular `map` function, but using `par` to speed up recursion. The goal was to evaluate the mapped function in parallel with the next recursive cycle of the function. In this case, `par` was used to evaluate `x` (the list value) parallel to `f x` (the function `f` applied to the list value `x`) and the recursion of `parallelMap`.
+
+In theory, the evaluation of `x` was supposed to speed up mapping by forcing the function to be non-lazy, but the results show that the program was slightly slower than `map`. It can be assumed that there was no real change between `map` and `parallelMap`, if not a slight slowdown. The results were obtained from Threadscope and are shown below.
+
+Results:
+n = 10560
+mapped function = (+7)
+
+map: 
+- 25.035
+- 22.305
+- 38.101
+- 29.823
+- 26.826
+avg: 28.418ms
+
+parallelMap:
+- 39.296
+- 23.435
+- 26.871
+- 37.587
+- 17.979
+avg: 29.037ms

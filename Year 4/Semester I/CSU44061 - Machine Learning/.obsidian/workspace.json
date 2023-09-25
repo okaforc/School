@@ -1,0 +1,180 @@
+{
+  "main": {
+    "id": "094429c1c798662d",
+    "type": "split",
+    "children": [
+      {
+        "id": "e15d407a9b4512e5",
+        "type": "tabs",
+        "dimension": 64.73607038123167,
+        "children": [
+          {
+            "id": "c3fab5fdbccac309",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Logistic Regression.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "21b1c98da079921c",
+        "type": "tabs",
+        "dimension": 35.26392961876833,
+        "children": [
+          {
+            "id": "199a7fc72cf15e6f",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "part/2.1.LogisticRegression.pdf"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "16cfc89760c92d75",
+    "type": "split",
+    "children": [
+      {
+        "id": "b672b07fc235cd61",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b4b5e142e7b2f524",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "3014a1fa0b2fc363",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "c7b1735400b9b13b",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "right": {
+    "id": "44c1bf87d8bcea2a",
+    "type": "split",
+    "children": [
+      {
+        "id": "c182962306f45d27",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d6de170a6559174e",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Logistic Regression.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "75628f6f40282675",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Logistic Regression.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "4f78528138872b83",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "b081fc4ddfab10b2",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Logistic Regression.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "table-editor-obsidian:Advanced Tables Toolbar": false,
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "c3fab5fdbccac309",
+  "lastOpenFiles": [
+    "part/2.1.LogisticRegression.pdf",
+    "Logistic Regression.md",
+    "part/2.2.features1.pdf",
+    "part/1.1.intro.pdf",
+    "part/1.2.LinearRegression1.pdf",
+    "Overview.md",
+    "part",
+    "New folder"
+  ]
+}
