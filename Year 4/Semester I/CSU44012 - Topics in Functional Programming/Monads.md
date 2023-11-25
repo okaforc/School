@@ -96,3 +96,64 @@ With lambda functions, we can use:
 incrementEverything numList = 
 	map (\x -> x + 1) numList
 ```
+## The Monad Class
+IO and Maybe can both be monads because **Monad is a class of things**. It can be represented in Haskell by a type class "Monad" that captures the important operations.
+
+```haskell
+class Monad m where
+	(>>=)  :: m a -> (a -> m b) -> m b
+	return :: a -> m a
+```
+(also at [[Function Examples#^monad-class-old|monad-class]])
+A monad is something with two essential operations:
+- `(>>=)`
+	`(>>=)` binds two actions. The second action can be affected by the result of the first, so this is made a function.
+- `return`
+	`return` constructs an action that does nothing but produce a value.
+
+### Monad Laws
+The functions must both be type-correct and satisfy three *monad laws*:
+- Left identity
+	- `return a >>= f`              =            `f a`
+- Right identity
+	- `m >>= return`                  =            `m`
+- Associativity
+	- `(m >>= f) >>= g`             =             `m >>= (\x -> f x >>= g)`
+
+Also, see the following:
+![[Kleisli_Composition_Operator.png]]
+
+### An instance for `Maybe`
+We can create a Monad instance for our `Maybe` type by giving implementations for these two functions.
+
+(see [[Function Examples#^maybe-type|maybe-type]])
+![[Monad_other_non-base_operation.png]]
+
+## The `Eval` Monad
+The Control.Parallel library also has utilities that separate algorithm and evaluation strategy. This is all represented by a monad used for parallelism: Eval
+
+```haskell
+data Eval a 
+instance Monad Eval where 
+	-- lots of stuff here… 
+runEval :: Eval a -> a 
+rpar :: a -> Eval a 
+rseq :: a -> Eval a
+```
+
+`rpar`: My argument could be run in parallel
+`rseq`: Evaluate my argument and wait for the result
+
+Fibonacci could therefore be written like so:
+```haskell
+fib d n = runEval $ do 
+	nf1 <- rpar $ fib (d-1) (n-1) 
+	nf2 <- rseq $ fib (d-1) (n-2) 
+	return $ nf1 + nf2
+```
+
+
+## The State Monad
+The State Monad is a way of modelling programs that maintain and update a set of values. The idea is to have a computation in a function and a state that can be updated and referenced as part of the computation.
+
+For example, a random number generator

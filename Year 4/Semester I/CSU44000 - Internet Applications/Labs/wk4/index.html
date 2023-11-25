@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<title>iris' lovely world</title>
+
+<head>uhh???</head>
+<h3 id="start">start: </h3>
+<!-- <script type="module" src="countdown.js"></script> -->
+<script>
+    // console.log("goodbye world");
+// 
+    // for (let index = 25; index >= 0; index--) {
+    //     console.log(index);
+    //     document.getElementById("start").innerHTML += index + "\n\n";
+    // }
+
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+    
+    async function demo() {
+        for (let i = 25; i >= 0; i--) {
+            document.getElementById("start").innerHTML = i;
+            await sleep(1000);
+        }
+        // console.log('Done');
+    }
+    
+    demo();
+</script>

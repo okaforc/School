@@ -28,6 +28,71 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "089b869857a87468",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Fuzzy Sets.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "f35413020271358a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Overview.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "96bde92d06de2ba9",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Backpropagation.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "08b4bd76d467acff",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Definitions.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ],
+        "currentTab": 4
+      },
+      {
+        "id": "c4c5f135c9adcec2",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3e121d9332c1febd",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "part/Lecture 7 Neuro-Fuzzy_Models and Backpropagation_1.pdf"
+              }
+            }
           }
         ]
       }
@@ -95,7 +160,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "part/Lecture 1 Fuzzy Logic and Fuzzy Control.pdf",
+                "file": "Backpropagation.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -112,7 +177,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "part/Lecture 1 Fuzzy Logic and Fuzzy Control.pdf",
+                "file": "Backpropagation.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -135,7 +200,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "part/Lecture 1 Fuzzy Logic and Fuzzy Control.pdf"
+                "file": "Backpropagation.md"
               }
             }
           },
@@ -166,21 +231,26 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "b1e22da599d303a3",
+  "active": "96bde92d06de2ba9",
   "lastOpenFiles": [
-    "Fuzziness.md",
-    "part/Lecture 1 Fuzzy Logic and Fuzzy Control.pdf",
-    "Note Pictures/Fuzziness.png",
+    "part/Lecture 7 Neuro-Fuzzy_Models and Backpropagation_1.pdf",
+    "Backpropagation.md",
+    "part/mso6AB9.tmp",
+    "part/mso5EF0.tmp",
+    "part/~$Lecture 7 Neuro-Fuzzy_Models and Backpropagation_1.pptx",
+    "part/Lecture 6 Neuro-Fuzzy_Models.pdf",
+    "part/msoBE1A.tmp",
+    "part/mso941A.tmp",
+    "part/~$Lecture 6 Neuro-Fuzzy_Models.pptx",
+    "part/Lecture 5 Mamdani_Takagi_Sugeno_.pdf",
+    "part/mso4A42.tmp",
     "Overview.md",
+    "Fuzzy Sets.md",
+    "Definitions.md",
+    "Fuzziness.md",
+    "Note Pictures/Fuzziness.png",
     "Note Pictures/L1_pg1.png",
     "Note Pictures/L1_pg6.png",
-    "Note Pictures.md",
-    "Note Pictures",
-    "part/mso5A72.tmp",
-    "part/mso15C6.tmp",
-    "part/~$Lecture 1 Fuzzy Logic and Fuzzy Control.pptx",
-    "part/Lecture 1 Fuzzy Logic and Fuzzy Control.pptx",
-    "part",
-    "New folder"
+    "Note Pictures.md"
   ]
 }

@@ -1,0 +1,134 @@
+import { weatherBroadcast } from "./process.js"
+
+var app = new Vue({
+    el: '#app',
+    data: {
+        cityName: "Dublin",
+        cityCountry: "null",
+        randCity: "null",
+        avg_weather: {},
+        daily_forecast: {},
+        day_0_weather: {},
+        day_1_weather: {},
+        day_2_weather: {},
+        day_3_weather: {},
+        day_4_weather: {},
+        days: 0,
+        userPlace: null,
+        pollution: null,
+        gif_res: null
+    },
+    methods: {
+        RandomCity: randomCity,
+        GetWeather: getWeatherName,
+        GetPollution: getPollutionName,
+        GetGIF: getGIF,
+        GetGIFN: getGIFN,
+        NewWeather: newWeather
+    },
+    beforeMount() {
+        this.RandomCity()
+        this.GetGIFN(this.cityName)
+    }
+})
+
+var regionNames = new Intl.DisplayNames(['en'], {type: 'region'});
+
+
+function getWeatherName() {
+    let prom = fetch("getWeatherName/" + this.cityName)
+    prom.then(response => response.json())
+        .then(response => {
+            try {
+                console.log(this.cityCountry);
+                var weather_data = weatherBroadcast(response.result)
+                this.avg_weather = weather_data["avg"]
+                this.days = weather_data["days"]
+                this.userPlace = weather_data["place"]["name"] + ", " + regionNames.of(weather_data["place"]["country"])
+                this.cityCountry = regionNames.of(weather_data["place"]["country"])
+                
+                this.daily_forecast["weather"] = []
+                
+                this.day_0_weather = weather_data["day_0"]
+                this.daily_forecast["weather"][0] = weather_data["day_0"]
+                
+                this.day_1_weather = weather_data["day_1"]
+                this.daily_forecast["weather"][1] = weather_data["day_1"]
+                
+                this.day_2_weather = weather_data["day_2"]
+                this.daily_forecast["weather"][2] = weather_data["day_2"]
+                
+                this.day_3_weather = weather_data["day_3"]
+                this.daily_forecast["weather"][3] = weather_data["day_3"]
+                console.log(this.days);
+                if (this.days == 5) {
+                    this.day_4_weather = weather_data["day_4"]
+                    this.daily_forecast["weather"][4] = weather_data["day_4"]
+                }
+                
+                this.GetGIF()
+            } catch (error) {
+                if (error instanceof TypeError) {
+                    this.days = 0
+                } else {
+                    console.log("Weather messed up, somewhere.");
+                    console.error(error);
+                }
+            }
+        })
+}
+
+function getPollutionName() {
+    let prom = fetch("GetPollution/" + this.cityName)
+    prom.then(response => response.json())
+        .then(response => {
+            this.pollution = response.result
+            this.daily_forecast["pollution"] = response.result
+        })
+}
+
+
+function randomCity() {
+    let rlat = (Math.random() * (90 - -90)) + -90;
+    let rlong = (Math.random() * (180 - -180)) + -180;
+    let prom = fetch("getCityNameR/" + rlat + "/" + rlong)
+    prom.then(response => response.json())
+        .then(response => {
+            this.randCity = response.result.city
+            this.cityName = this.randCity
+            this.NewWeather()
+            // console.log(this.randCity)
+            // getWeatherName()
+            // console.log(todays_weather)
+            // getGIF()
+        })
+}
+
+function getGIF() {
+    let modifiers = ["weather", "outside", "outdoors", "out", "climate"]
+    let mind1 = Math.round((Math.random() * modifiers.length) + modifiers.length);
+    // let mind2 = Math.round((Math.random() * modifiers.length) + modifiers.length);
+    // let mind3 = Math.round((Math.random() * modifiers.length) + modifiers.length);
+    let prom = fetch(`getGIF/${this.cityName}+${this.cityCountry}+${modifiers[mind1]}`)
+    prom.then(response => response.json())
+        .then(response => {
+            this.gif_res = response.result["embed_url"]
+        })
+}
+
+function getGIFN(name) {
+    let modifiers = ["weather", "outside", "outdoors", "out", "climate"]
+    let mind1 = Math.round((Math.random() * modifiers.length) + modifiers.length);
+    let mind2 = Math.round((Math.random() * modifiers.length) + modifiers.length);
+    let mind3 = Math.round((Math.random() * modifiers.length) + modifiers.length);
+    let prom = fetch(`getGIF/${name}+${modifiers[mind1]}+${modifiers[mind2]}+${modifiers[mind3]}`)
+    prom.then(response => response.json())
+        .then(response => {
+            this.gif_res = response.result["embed_url"]
+        })
+}
+
+function newWeather() {
+    this.GetWeather()
+    this.GetPollution()
+}

@@ -1,0 +1,230 @@
+var dateOptions = { weekday: 'long', month: 'long', day: 'numeric' };
+
+// Process a single dictionary of weather data (i.e., the amount of information in one 3-hour gap)
+function processAtom(wdict) {
+    var dt = wdict["dt"]
+    var dt_txt = wdict["dt_txt"]
+    var temp = wdict["main"]["temp"]
+    var feels_like = wdict["main"]["feels_like"]
+    var min_temp = wdict["main"]["temp_min"]
+    var max_temp = wdict["main"]["temp_max"]
+    var humidity = wdict["main"]["humidity"]
+    var weather_title = wdict["weather"][0]["main"]
+    var weather_desc = wdict["weather"][0]["description"]
+    var weather_icon = wdict["weather"][0]["icon"]
+    var cloudiness = wdict["clouds"]["all"]
+    var wind_speed = wdict["wind"]["speed"]
+    var visibility = wdict["visibility"]
+    var rainfall = wdict["rain"] === undefined ? 0 : wdict["rain"]["3h"]
+    var rain_occurances = wdict["rain"] === undefined ? 0 : 1
+    var chance_of_rain = wdict["pop"]
+
+    return {
+        "dt": dt,
+        "dt_txt": dt_txt,
+        "temp": temp,
+        "feels_like": feels_like,
+        "min_temp": min_temp,
+        "max_temp": max_temp,
+        "humidity": humidity,
+        "weather_title": weather_title,
+        "weather_desc": weather_desc,
+        "weather_icon": weather_icon,
+        "cloudiness": cloudiness,
+        "wind_speed": wind_speed,
+        "rainfall": rainfall,
+        "rain_occurances": rain_occurances,
+        "visibility": visibility,
+        "chance_of_rain": chance_of_rain
+    }
+}
+
+// Process a day of weather data, made of up to 8 weather atoms (see processAtom()).
+function processDay(atoms) {
+    var n = atoms.length
+    var dt, dt_txt, temp = 0, feels_like = 0, min_temp = 0, max_temp = 0, humidity = 0, weather_titles = [], weather_descs = [], weather_icons = [], cloudiness = 0, wind_speed = 0, visibility = 0, rainfall = 0, chance_of_rain = 0
+    var rain_occurances = 0
+    atoms.forEach(atom => {
+        temp += atom.temp
+        feels_like += atom.feels_like
+        min_temp += atom.min_temp
+        max_temp += atom.max_temp
+        humidity += atom.humidity
+
+        let tw1 = weather_titles
+        tw1.push(atom.weather_title)
+        weather_titles = tw1
+        
+        let tw2 = weather_descs
+        tw2.push(atom.weather_desc)
+        weather_descs = tw2
+        
+        let tw3 = weather_icons
+        tw3.push(atom.weather_icon)
+        weather_icons = tw3
+
+        cloudiness += atom.cloudiness
+        wind_speed += atom.wind_speed
+        visibility += atom.visibility
+        rainfall += atom.rainfall
+        rain_occurances += atom.rain_occurances
+        chance_of_rain += atom.chance_of_rain
+    });
+    chance_of_rain = Math.round(chance_of_rain * 100)
+
+    var temp_note = "", rain_note = "", mask_note = ""
+    if (Math.round(temp/n) <= 13) {
+        temp_note = "Seems a bit chilly. Make sure to stay warm! Maybe bring a jacket?"
+    } else if (Math.round(temp/n) > 13 && Math.round(temp/n) <= 23) {
+        temp_note = "Nice, cool weather today. Try not to get too warm or cold!"
+    } else {
+        temp_note = "Very warm weather today. Try to cool yourself off! Take off some layers, maybe...?"
+    }
+    
+    rain_note = (chance_of_rain/n) >= 35 ? "Looks like it might rain. Make sure to bring that umbrella!" : "Low chance of raining today. You can leave that umbrella at home!"
+
+    return {
+        // "dt": dt,
+        // "dt_txt": dt_txt,
+        "temp": Math.round(temp/n),
+        "feels_like": Math.round(feels_like/n),
+        "min_temp": Math.round(min_temp/n),
+        "max_temp": Math.round(max_temp/n),
+        "humidity": Math.round(humidity/n),
+        "weather_title": mode(weather_titles),
+        "weather_desc": mode(weather_descs),
+        "weather_icon": mode(weather_icons),
+        "cloudiness": Math.round(cloudiness/n),
+        "wind_speed": Math.round(wind_speed/n),
+        "rainfall": roundDP(rainfall/n),
+        "rain_occurances": rain_occurances,
+        "visibility": Math.round(visibility/n),
+        "chance_of_rain": roundDP(chance_of_rain/n),
+        "temp_note": temp_note,
+        "rain_note": rain_note
+    }
+}
+
+// Process the weather forecase over the next 5 days
+export function weatherBroadcast(wdict) {
+    let broadcast = {} // 5 day weather broadcast
+    broadcast["avg"] = {
+        "temp": 0,
+        "feels_like": 0,
+        "min_temp": 0,
+        "max_temp": 0,
+        "humidity": 0,
+        "weathers": [],
+        "weather_title": "weather_title",
+        "weather_desc": "weather_desc",
+        "cloudiness": 0,
+        "wind_speed": 0,
+        "rainfall": 0,
+        "visibility": 0,
+        "chance_of_rain": 0
+    }
+    
+    let place = wdict["city"] // info about current city
+    let wlist = wdict["list"] // list of weather atoms
+    let cday = [] // current day to add atom to
+    let cdate = dateTxtToDateTime(wlist[0]["dt_txt"])[0] // current date of day
+    let day = 0 // day out of 5 for broadcast
+    let wts = [] // weather titles
+    let wds = [] // weather descriptions
+    for (let i = 0; i < wlist.length; i++) {
+        const d = processAtom(wlist[i]);
+        if (dateTxtToDateTime(d["dt_txt"])[0] == cdate) {
+            cday.push(d)
+        } else {
+            var wday = processDay(cday)
+            wday["date"] = cdate
+            broadcast[`day_${day}`] = wday
+            day++
+            cday = [d] // empty list and push new day to it
+            cdate = dateTxtToDateTime(d["dt_txt"])[0] // next day
+            
+            broadcast["avg"]["temp"] += wday.temp
+            broadcast["avg"]["feels_like"] += wday.feels_like
+            broadcast["avg"]["min_temp"] += wday.min_temp
+            broadcast["avg"]["max_temp"] += wday.max_temp
+            broadcast["avg"]["humidity"] += wday.humidity
+            wts.push(wday.weather_title)
+            wds.push(wday.weather_desc)
+            broadcast["avg"]["cloudiness"] += wday.cloudiness
+            broadcast["avg"]["wind_speed"] += wday.wind_speed
+            broadcast["avg"]["rainfall"] += wday.rainfall
+            broadcast["avg"]["visibility"] += wday.visibility
+            broadcast["avg"]["chance_of_rain"] += wday.chance_of_rain
+        }
+    }
+    var weather_note = ""
+    switch (mode(wts)) {
+        case "Clouds":
+            weather_note = broadcast["avg"]["temp"]/5 > 13 ? 
+                broadcast["avg"]["cloudiness"]/5 <= 50 ? 
+                    "The week's looking a little cloudy, but with some warmth." 
+                    : "Very warm, fuzzy clouds this week."
+            : "This week's looking a cloudy and a little cold."
+            break;
+        case "Clear":
+            weather_note = broadcast["avg"]["temp"]/5 > 13 ? "The week's looking up! Warmth and heat." : "Clear, blue skies for this week."
+            break;
+        case "Rain":
+            weather_note = "Try not to get <i>too</i> wet this week."
+            break;
+        case "Snow":
+            weather_note = broadcast["avg"]["visibility"]/5 <= 50 ? "When was the last time you made a snow angel? Would you like to change that? You have your chance this week." : "Be careful on the ice. But if you slip, make sure someone's recording."
+            break;
+        default:
+            weather_note = "I don't even know how to describe this forecast..."
+            break;
+    }
+
+    broadcast["avg"]["temp"] = Math.round(broadcast["avg"]["temp"] /= 5)
+    broadcast["avg"]["feels_like"] = Math.round(broadcast["avg"]["feels_like"] /= 5)
+    broadcast["avg"]["min_temp"] = Math.round(broadcast["avg"]["min_temp"] /= 5)
+    broadcast["avg"]["max_temp"] = Math.round(broadcast["avg"]["max_temp"] /= 5)
+    broadcast["avg"]["humidity"] = Math.round(broadcast["avg"]["humidity"] /= 5)
+    broadcast["avg"]["weather_title"] = mode(wts)
+    broadcast["avg"]["weather_desc"] = mode(wds)
+    broadcast["avg"]["weather_note"] = weather_note
+    broadcast["avg"]["cloudiness"] = Math.round(broadcast["avg"]["cloudiness"] /= 5)
+    broadcast["avg"]["wind_speed"] = Math.round(broadcast["avg"]["wind_speed"] /= 5)
+    broadcast["avg"]["visibility"] = Math.round(broadcast["avg"]["visibility"] /= 5)
+    broadcast["avg"]["rainfall"] = roundDP(broadcast["avg"]["rainfall"] /= 5)
+    broadcast["avg"]["chance_of_rain"] = Math.round(broadcast["avg"]["chance_of_rain"] * 100)
+    broadcast["place"] = place
+    broadcast["days"] = day
+    return broadcast
+}
+    
+function dateTxtToDateTime(dt_str) {
+    // 2023-10-21 12:00:00
+    var temp = dt_str.split(" ")
+    var date = new Date(temp[0]).toLocaleDateString("en-IE", dateOptions) // date
+    var time = temp[1] // time
+    // console.log(date + ", " + time)
+    return [date, time]
+}
+
+function mode(list) {
+    var reps = {}
+    var maxReps = 0
+    var mode = null
+    list.forEach(element => {
+        if (reps[element]) {
+            reps[element] += 1
+        } else {
+            reps[element] = 1
+        }
+        if (reps[element] > maxReps) {
+            maxReps = reps[element]
+            mode = element
+        }
+    });
+    return mode 
+}
+
+function roundDP(num) {
+    return Math.round((num + Number.EPSILON) * 100) / 100
+}

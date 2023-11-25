@@ -51,3 +51,7 @@ cloud are covered in Lectures and labs.
 Applications are introduced
 - Quiz covering the underlying technologies used in the development of Decentralized
 Internet Applications
+
+
+
+

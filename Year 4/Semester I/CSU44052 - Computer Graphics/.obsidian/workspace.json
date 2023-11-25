@@ -4,33 +4,42 @@
     "type": "split",
     "children": [
       {
-        "id": "fbe6d5a2bdfc23ff",
+        "id": "58cfda9864c51250",
         "type": "tabs",
         "children": [
           {
-            "id": "728ae287a2460ee3",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "part/CG2.pdf"
-              }
-            }
-          },
-          {
-            "id": "1eb191fc543b18ad",
+            "id": "3cfa7f2f2f77ee81",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Linear Algebra.md",
+                "file": "Final Project.md",
                 "mode": "source",
                 "source": false
               }
             }
+          },
+          {
+            "id": "452b2a5cd69acb72",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "part/CG10_Hierarchical.pdf"
+              }
+            }
+          },
+          {
+            "id": "040bbdc591ed8fe6",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "part/CG8_Mapping.pdf"
+              }
+            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -80,7 +89,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 358.5
   },
   "right": {
     "id": "242258fb4a2719b1",
@@ -96,7 +105,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Linear Algebra.md",
+                "file": "Final Project.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -113,7 +122,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Linear Algebra.md",
+                "file": "Final Project.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -136,15 +145,24 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Linear Algebra.md"
+                "file": "Final Project.md"
               }
             }
+          },
+          {
+            "id": "963f8ff05e799d43",
+            "type": "leaf",
+            "state": {
+              "type": "advanced-tables-toolbar",
+              "state": {}
+            }
           }
-        ]
+        ],
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
-    "width": 300,
+    "width": 200,
     "collapsed": true
   },
   "left-ribbon": {
@@ -158,16 +176,35 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "1eb191fc543b18ad",
+  "active": "3cfa7f2f2f77ee81",
   "lastOpenFiles": [
-    "part/CG2.pdf",
+    "Labs/Lab3/x64/Debug/Lab3.tlog/link.read.2.tlog",
+    "Labs/Lab3/x64/Debug/main.obj",
+    "Labs/Lab3/x64/Debug/Lab3.tlog/unsuccessfulbuild",
+    "Labs/Lab3/x64/Debug/Lab3.tlog/link.25004.read.1.tlog",
+    "Labs/Lab3/x64/Debug/Lab3.tlog/link.25004.read.4.tlog",
+    "Labs/Lab3/x64/Debug/Lab3.tlog/link.25004-cvtres.write.1.tlog",
+    "Labs/Lab3/x64/Debug/Lab3.tlog/link.25004-cvtres.read.1.tlog",
+    "Labs/Lab3/x64/Debug/Lab3.tlog/link.25004-rc.write.1.tlog",
+    "Labs/Lab3/x64/Debug/Lab3.tlog/link.25004-rc.read.1.tlog",
+    "Labs/Lab3/x64/Debug/Lab3.tlog/link.25004.read.3.tlog",
+    "Labs/Lab3/x64/Debug/Lab3.tlog/link.25004.read.2.tlog",
+    "Labs/Lab3/x64/Debug/pic3.jpg",
+    "Labs/Lab3/x64/Debug/pic2.jpg",
+    "Labs/Lab3/x64/Debug/strawberry_big.png",
+    "Labs/Lab3/x64/Debug/pic.jpg",
+    "Labs/Lab3/x64/Debug/bin_texture.jpg",
+    "Final Project.md",
+    "test1/Pasted image 20231108175819.png",
+    "test1/Pasted image 20231108175947.png",
+    "test1/Pasted image 20231108175828.png",
+    "template_texturing/bin_texture.jpg",
+    "Cheat Sheet.md",
+    "test1/Pasted image 20231108215656.png",
     "Linear Algebra.md",
-    "part/CG1.pdf",
+    "Definitions.md",
     "Overview.md",
-    "part",
-    "New folder",
-    "OpenGLExamples/example.exe",
-    "OpenGLExamples/example.c",
-    "OpenGLExamples"
+    "Labs/Setting_up_CG_labs.md",
+    "Labs/Lab2/Assimp/README.md"
   ]
 }

@@ -1,0 +1,130 @@
+import express from 'express'
+import dotenv from 'dotenv';
+import { resolve } from "path"
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+dotenv.config()
+
+const app = express()
+const port = process.env.PORT
+const LURL = process.env.URL
+const weatherApiKey = process.env.OPENWEATHER_API_KEY
+const googleApiKey = process.env.GOOGLE_PLACES_API_KEY
+const giphyApiKey = process.env.GIPHY_API_KEY
+
+const filepath = fileURLToPath(import.meta.url);
+const dirpath = dirname(filepath);
+let path_to_public = resolve(dirpath, "public")
+app.listen(port, () => console.log(`Open on port ${port}`))
+
+app.use(express.static(path_to_public))
+app.get('/getWeatherName/:name', getWeatherByName);
+app.get('/getPollution/:name', getPollution);
+// app.get('/getCityName/:lat/:long', getCityName);
+app.get('/getCityNameR/:lat/:long', getCityNameRand);
+app.get('/getGIF/:gname', getGIF);
+
+
+async function getWeatherByName(req, res) {
+    const name = req.params.name;
+
+    try {
+        // There are multiple cities that share names, but due to time constraints, only the first will be chosen.
+        const url = `http://api.openweathermap.org/geo/1.0/direct?q=${name}&limit=10&appid=${weatherApiKey}`;
+        let latlongdata = await fetch(url);
+        const ndata = await latlongdata.json()
+        const url2 = 
+            `https://api.openweathermap.org/data/2.5/forecast?&cnt=40&lat=${ndata[0]["lat"]}&lon=${ndata[0]["lon"]}&units=metric&appid=${weatherApiKey}`
+        let weatherData = await fetch(url2)
+        const wdata = await weatherData.json()
+        
+        let result = wdata;
+        res.json({result : result});
+    } catch (error) {
+        console.error(error);
+        res.status(500)
+        res.json({ error: 'Failed to fetch weather details for ' + name });
+    }
+}
+
+async function getPollution(req, res) {
+    const name = req.params.name;
+
+    try {
+        // get lat and long
+        const url = `http://api.openweathermap.org/geo/1.0/direct?q=${name}&limit=10&appid=${weatherApiKey}`; 
+        let latlongdata = await fetch(url);
+        const ndata = await latlongdata.json()
+        // get air quality
+        const url2 = `http://api.openweathermap.org/data/2.5/air_pollution?lat=${ndata[0]["lat"]}&lon=${ndata[0]["lon"]}&appid=${weatherApiKey}` 
+        let pollutionData = await fetch(url2)
+        const pdata = await pollutionData.json()
+
+        let amnt = pdata["list"][0]["components"]["pm2_5"] // pm2.5 amount
+        let nt = amnt > 10 ? "Seems like the air is a bit bad. You should consider wearing a mask to protect your lungs." : "" // air quality note
+        let result = {amount: amnt, note: nt};
+        res.json({result : result});
+    } catch (error) {
+        console.error(error);
+        res.status(500)
+        res.json({ error: 'Failed to fetch pollution details for ' + name });
+    }
+}
+
+
+
+// async function getCityName(req, res) {
+//     const lat = req.params.lat;
+//     const long = req.params.long;
+
+//     const url = `http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${long}&limit=10&appid=${weatherApiKey}`;
+
+//     try {
+//         const response = await fetch(url);
+//         const data = await response.json();
+//         let result = data[0]["name"];
+//         res.json({result : result});
+//     } catch (error) {
+//         console.error(error);
+//         res.status(500).json({ error: 'Failed to fetch city from lat and long' });
+//     }
+// }
+
+async function getCityNameRand(req, res) {
+    const lat = req.params.lat;
+    const long = req.params.long;
+
+    const url = `http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${long}&limit=10&appid=${weatherApiKey}`;
+
+    // console.log(lat);
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        if (data.length == 0) {
+            throw Error
+        }
+        res.json({result : {city: data[0]["name"], country: data[0]["country"]}});
+    } catch (error) {
+        // Default to Blanchardstown, Ireland
+        res.json({result : {city: "Blanchardstown", country: "IE"}});
+        console.error(error + `\nfault pos: ${lat}, ${long}`);
+    }
+}
+
+async function getGIF(req, res) {
+    const gif_name = req.params.gname;
+    const url = `http://api.giphy.com/v1/gifs/search?q=${gif_name}&api_key=${giphyApiKey}&limit=50&rating=g`
+    const random_gif_ind = Math.round(Math.random() * 49);
+
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        let result = data["data"][random_gif_ind];
+        res.json({result : result});
+    } catch (error) {
+        console.error(error);
+        res.status(500)
+        res.json({ error: 'Failed to fetch gif' });
+    }
+}

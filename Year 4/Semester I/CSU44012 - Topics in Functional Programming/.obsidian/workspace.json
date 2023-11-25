@@ -4,11 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "5cf431e29f64c1b0",
+        "id": "8d60551828558a80",
         "type": "tabs",
         "children": [
           {
-            "id": "08fc1ba5fec047bc",
+            "id": "5a0bfa7e3fc7c951",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "part/00 - Refresher.pdf"
+              }
+            }
+          },
+          {
+            "id": "1a0d7bda5a4c43df",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -20,84 +30,19 @@
             }
           },
           {
-            "id": "6370e35b89b33b0d",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Graham_Hutton_-_Programming_in_Haskell_2007_Cambridge_University_Press.pdf"
-              }
-            }
-          },
-          {
-            "id": "812f5f3d7374a95b",
+            "id": "b598f8a827b12e9d",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Notes.md",
+                "file": "Web Development.md",
                 "mode": "source",
                 "source": false
-              }
-            }
-          },
-          {
-            "id": "94a1b0a404b511fa",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "part/01 - Parallelism.pdf"
-              }
-            }
-          },
-          {
-            "id": "f03c81194aee252d",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Definitions.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "31204d8cb0aeb87f",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Function Examples.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "87e919f4cc5433db",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Parallel Programming.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "799bfa5abda77a03",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "part/02.01 - Why Monads.pdf"
               }
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -163,7 +108,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Monads.md",
+                "file": "Web Development.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -180,7 +125,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Monads.md",
+                "file": "Web Development.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -203,7 +148,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Monads.md"
+                "file": "Web Development.md"
               }
             }
           }
@@ -225,29 +170,54 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "08fc1ba5fec047bc",
+  "active": "80d557652f82cde9",
   "lastOpenFiles": [
+    "part/10.01 - Concurrency.pdf",
+    "Assignments/a1/static/output.png",
+    "Assignments/a1/static/Image5.png",
+    "Assignments/a1/static/Image4.png",
+    "Assignments/a1/static/Image3.png",
+    "Assignments/a1/static/Image2.png",
+    "Assignments/a1/static/Image1.png",
+    "Assignments/a1/static",
+    "Monads.md",
+    "Assignments/a1/cool/output.png",
+    "Assignments/a1/cool/Image5.png",
+    "Assignments/a1/cool/Image4.png",
+    "Assignments/a1/cool/Image3.png",
+    "Assignments/a1/cool",
+    "Notes.md",
+    "Overview.md",
+    "part/00 - Refresher.pdf",
     "part/02.01 - Why Monads.pdf",
+    "part/02.03 - Type Classes addendum.pdf",
+    "part/01 - Parallelism.pdf",
+    "part/02.01 - Beyond IO.pdf",
+    "part/03.03 - Applicative Functors.pdf",
+    "Applicative Functors.md",
+    "part/04.01 - eDSLs principles.pdf",
     "Parallel Programming.md",
+    "part/04.03 - Scotty and Blaze, DSLS for the web.pdf",
+    "Web Development.md",
+    "GUI Development.md",
+    "State Monad.md",
     "Function Examples.md",
     "Definitions.md",
-    "part/01 - Parallelism.pdf",
-    "Notes.md",
-    "Graham_Hutton_-_Programming_in_Haskell_2007_Cambridge_University_Press.pdf",
-    "Monads.md",
-    "Overview.md",
-    "fib/fib/answer.txt",
-    "Notes Pictures/Pasted image 20230913122402.png",
-    "Notes Pictures/IO_Side_Effects.png",
-    "Notes Pictures/AssessmentDetails.png",
-    "part/00 - Refresher.pdf",
-    "fib/fib/a1.EXE.eventlog",
-    "fib/fib/dist-newstyle/cache/imp594C.tmp",
-    "fib/fib/dist-newstyle/cache/sol58DB.tmp",
-    "fib/fib/dist-newstyle/sdist/fib-0.1.0.0.tar.gz",
-    "fib/fib/dist-newstyle/sdist",
-    "fib/fib/README.md",
-    "fib/fib/ChangeLog.md",
+    "Untitled.md",
+    "Untitled 1.md",
+    "examples/scotty-example-0.1.0.0/scotty_ex/README.md",
+    "examples/scotty-example-0.1.0.0/scotty_ex/CHANGELOG.md",
+    "examples/scotty-example-0.1.0.0/scotty-example-0.1.0.0 - Copy/README.md",
+    "examples/scotty-example-0.1.0.0/scotty-example-0.1.0.0 - Copy/CHANGELOG.md",
+    "examples/Example4_TP/Example4/dist-newstyle/tmp/src-14454/entropy-0.4.1.10/README.md",
+    "examples/Example4_TP/Example4/dist-newstyle/tmp/src-14453/hsc2hs-0.68.9/changelog.md",
+    "examples/Example4_TP/Example4/dist-newstyle/tmp/src-14464/bytestring-builder-0.10.8.2.0/CHANGELOG.md",
+    "examples/Example4_TP/Example4/dist-newstyle/tmp/src-14463/base64-bytestring-1.2.1.0/README.md",
+    "examples/Example4_TP/Example4/dist-newstyle/tmp/src-14463/base64-bytestring-1.2.1.0/CHANGELOG.md",
+    "examples/Example4_TP/Example4/dist-newstyle/tmp/src-14460/generically-0.1.1/CHANGELOG.md",
+    "examples/Example4_TP/Example4/dist-newstyle/tmp/src-14459/file-embed-0.0.15.0/README.md",
+    "examples/Example4_TP/Example4/dist-newstyle/tmp/src-14459/file-embed-0.0.15.0/ChangeLog.md",
+    "examples/Example4_TP/Example4/dist-newstyle/tmp/src-14458/dlist-1.0/readme.md",
     "Untitled.canvas"
   ]
 }

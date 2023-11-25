@@ -32,84 +32,14 @@
             }
           },
           {
-            "id": "b04cac73028b5905",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Workday-Internships-2024-Ireland.pdf"
-              }
-            }
-          },
-          {
-            "id": "def0b41c22c5d3f0",
-            "type": "leaf",
-            "state": {
-              "type": "release-notes",
-              "state": {
-                "currentVersion": "1.4.13"
-              }
-            }
-          },
-          {
-            "id": "3ba43d23c527b57d",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "INTEL-Client-AI-Movidius-Lab-Services-and-Remote-Operations-Internships-2023_2024.pdf"
-              }
-            }
-          },
-          {
-            "id": "9a7272917112102d",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "INTEL-Client-AI-Movidius-Internships-Job-Description-2023_2024.pdf"
-              }
-            }
-          },
-          {
-            "id": "4decf6b99401c653",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "technical-cv.pdf"
-              }
-            }
-          },
-          {
-            "id": "b82cd746ebce8179",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Session 1 Internship Orientation.pdf"
-              }
-            }
-          },
-          {
-            "id": "748573cf3fb44dfb",
+            "id": "2932131ea31d2111",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Overview.md",
+                "file": "Interview Prep.md",
                 "mode": "source",
                 "source": false
-              }
-            }
-          },
-          {
-            "id": "3c2fc05e82cb2c5b",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "PROPYLON-Intern-Developer-Job-Spec-2023.pdf"
               }
             }
           }
@@ -163,7 +93,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 200
   },
   "right": {
     "id": "c68368d3481a3c1d",
@@ -254,20 +184,24 @@
   },
   "active": "09e6adde0e1b5eae",
   "lastOpenFiles": [
-    "Software-Development-Placement-2024---Copy.pdf",
+    "important/~WRL0001.tmp",
+    "important/~WRD0000.tmp",
+    "important/Intern Offer Letter - Chike Okafor.pdf",
+    "Interview Prep.md",
     "Interview Questions.md",
-    "Potential Internships.md",
+    "part/Session 3 2022 Internship Interviews and Speed Connect Prep021 MK_HJ.pdf",
+    "part/Session 1 Internship Orientation.pdf",
+    "part/Session 5 _AssessmentGuide(1).pdf",
+    "330px-Min-heap.png",
     "Overview.md",
-    "~$D-InternshipAgreement-2023-2024.docx",
-    "TCD-InternshipAgreement-2023-2024.docx",
-    "Workday-Internships-2024-Ireland.pdf",
-    "PROPYLON-Intern-Developer-Job-Spec-2023.pdf",
-    "INTEL-Client-AI-Movidius-Lab-Services-and-Remote-Operations-Internships-2023_2024.pdf",
-    "INTEL-Client-AI-Movidius-Internships-Job-Description-2023_2024.pdf",
-    "technical-cv.pdf",
-    "Session 1 Internship Orientation.pdf",
-    "msoA572.tmp",
-    "~$Session 1 Internship Orientation(2).pptx",
+    "Potential Internships.md",
+    "important/Internship Handbook 2023-24.pdf",
+    "docs/PROPYLON-Intern-Developer-Job-Spec-2023.pdf",
+    "important/~$D-InternshipAgreement-2023-2024.docx",
+    "part/Session 2 2023 Internship CVs _ Speed Connect.pdf",
+    "part/msoA2C6.tmp",
+    "Pasted image 20231005230808.png",
+    "Pasted image 20231005223141.png",
     "Pasted image 20230905204047.png"
   ]
 }

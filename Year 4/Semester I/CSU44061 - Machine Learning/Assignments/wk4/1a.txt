@@ -1,0 +1,243 @@
+################################# q: 1 #################################
+Ci value: 0.01
+Mean Error: 0.7879849508536052
+Standard Deviation: 0.002490651133015296
+Ci value: 0.1
+Mean Error: 0.7879849508536052
+Standard Deviation: 0.002490651133015296
+Ci value: 1
+Mean Error: 0.7879849508536052
+Standard Deviation: 0.002490651133015296
+Ci value: 5
+Mean Error: 0.7879849508536052
+Standard Deviation: 0.002490651133015296
+Ci value: 10
+Mean Error: 0.7879849508536052
+Standard Deviation: 0.002490651133015296
+Ci value: 25
+Mean Error: 0.7879849508536052
+Standard Deviation: 0.002490651133015296
+Ci value: 50
+Mean Error: 0.7879849508536052
+Standard Deviation: 0.002490651133015296
+Ci value: 100
+Mean Error: 0.7879849508536052
+Standard Deviation: 0.002490651133015296
+Ci value: 1000
+Mean Error: 0.7879849508536052
+Standard Deviation: 0.002490651133015296
+
+Max F1 Score:
+0.7879849508536052
+Min Standard Deviation:
+0.002490651133015296
+
+################################# q: 2 #################################
+Ci value: 0.01
+Mean Error: 0.7879849508536052
+Standard Deviation: 0.002490651133015296
+Ci value: 0.1
+Mean Error: 0.7879849508536052
+Standard Deviation: 0.002490651133015296
+Ci value: 1
+Mean Error: 0.7879849508536052
+Standard Deviation: 0.002490651133015296
+Ci value: 5
+Mean Error: 0.7879849508536052
+Standard Deviation: 0.002490651133015296
+Ci value: 10
+Mean Error: 0.7879849508536052
+Standard Deviation: 0.002490651133015296
+Ci value: 25
+Mean Error: 0.7879849508536052
+Standard Deviation: 0.002490651133015296
+Ci value: 50
+Mean Error: 0.7879849508536052
+Standard Deviation: 0.002490651133015296
+Ci value: 100
+Mean Error: 0.7879849508536052
+Standard Deviation: 0.002490651133015296
+Ci value: 1000
+Mean Error: 0.7879849508536052
+Standard Deviation: 0.002490651133015296
+
+Max F1 Score:
+0.7879849508536052
+Min Standard Deviation:
+0.002490651133015296
+
+################################# q: 3 #################################
+Ci value: 0.01
+Mean Error: 0.7879849508536052
+Standard Deviation: 0.002490651133015296
+Ci value: 0.1
+Mean Error: 0.7879849508536052
+Standard Deviation: 0.002490651133015296
+Ci value: 1
+Mean Error: 0.7883284782939068
+Standard Deviation: 0.0029469360651429625
+Ci value: 5
+Mean Error: 0.7864119842758599
+Standard Deviation: 0.0030878117378031187
+Ci value: 10
+Mean Error: 0.7864119842758599
+Standard Deviation: 0.0030878117378031187
+Ci value: 25
+Mean Error: 0.7864119842758599
+Standard Deviation: 0.0030878117378031187
+Ci value: 50
+Mean Error: 0.7864119842758599
+Standard Deviation: 0.0030878117378031187
+Ci value: 100
+Mean Error: 0.7864119842758599
+Standard Deviation: 0.0030878117378031187
+Ci value: 1000
+Mean Error: 0.7864119842758599
+Standard Deviation: 0.0030878117378031187
+
+Max F1 Score:
+0.7883284782939068
+Min Standard Deviation:
+0.002490651133015296
+
+################################# q: 4 #################################
+Ci value: 0.01
+Mean Error: 0.7879849508536052
+Standard Deviation: 0.002490651133015296
+Ci value: 0.1
+Mean Error: 0.7879849508536052
+Standard Deviation: 0.002490651133015296
+Ci value: 1
+Mean Error: 0.7868149421581878
+Standard Deviation: 0.0024781234759989356
+Ci value: 5
+Mean Error: 0.7830256516514474
+Standard Deviation: 0.0056924203357441505
+Ci value: 10
+Mean Error: 0.7818991795572335
+Standard Deviation: 0.006050882576106028
+Ci value: 25
+Mean Error: 0.7807622286528406
+Standard Deviation: 0.007152305386856625
+Ci value: 50
+Mean Error: 0.7807622286528406
+Standard Deviation: 0.007152305386856625
+Ci value: 100
+Mean Error: 0.7807622286528406
+Standard Deviation: 0.007152305386856625
+Ci value: 1000
+Mean Error: 0.7807622286528406
+Standard Deviation: 0.007152305386856625
+
+Max F1 Score:
+0.7879849508536052
+Min Standard Deviation:
+0.0024781234759989356
+
+################################# q: 5 #################################
+Ci value: 0.01
+Mean Error: 0.7879849508536052
+Standard Deviation: 0.002490651133015296
+Ci value: 0.1
+Mean Error: 0.7894326709049488
+Standard Deviation: 0.0026585655910017427
+Ci value: 1
+Mean Error: 0.7852758872574102
+Standard Deviation: 0.005191508237753663
+Ci value: 5
+Mean Error: 0.7844428844755246
+Standard Deviation: 0.008865615106175253
+Ci value: 10
+Mean Error: 0.7832933078882753
+Standard Deviation: 0.010197270143795532
+Ci value: 25
+Mean Error: 0.7832933078882753
+Standard Deviation: 0.010197270143795532
+Ci value: 50
+Mean Error: 0.7821457312744957
+Standard Deviation: 0.011617160416697988
+Ci value: 100
+Mean Error: 0.7821457312744957
+Standard Deviation: 0.011617160416697988
+Ci value: 1000
+Mean Error: 0.7809853096251025
+Standard Deviation: 0.012986224569957837
+
+Max F1 Score:
+0.7894326709049488
+Min Standard Deviation:
+0.002490651133015296
+
+################################# q: 6 #################################
+Ci value: 0.01
+Mean Error: 0.7879849508536052
+Standard Deviation: 0.002490651133015296
+Ci value: 0.1
+Mean Error: 0.7894326709049488
+Standard Deviation: 0.0026585655910017427
+Ci value: 1
+Mean Error: 0.7841370044058561
+Standard Deviation: 0.006401478868515094
+Ci value: 5
+Mean Error: 0.7832933078882753
+Standard Deviation: 0.010197270143795532
+Ci value: 10
+Mean Error: 0.7798453278443034
+Standard Deviation: 0.013229071888435574
+Ci value: 25
+Mean Error: 0.7808915405571498
+Standard Deviation: 0.012616371451541635
+Ci value: 50
+Mean Error: 0.7785136435926316
+Standard Deviation: 0.01549921904412304
+Ci value: 100
+Mean Error: 0.7760816888383015
+Standard Deviation: 0.019620100110454872
+Ci value: 1000
+Mean Error: 0.7719154670344925
+Standard Deviation: 0.02646912850571802
+
+Max F1 Score:
+0.7894326709049488
+Min Standard Deviation:
+0.002490651133015296
+
+
+
+True Max F1 Score:
+0.7894326709049488 (q = 5)
+True Min Standard Deviation:
+0.0024781234759989356 (q = 4)
+
+##########################################################################################################################################################\n
+LATEX Format
+
+$\theta_{0}$ & 0.0 & 0.0 & 0.0 & -0.0 & -0.0 & 0.002 & -0.003 & 0.314 & 0.308 \\
+$\theta_{1}$ & -0.016 & 0.061 & 0.259 & 0.231 & 0.679 & 0.292 & 0.531 & 0.402 & 0.36 \\
+$\theta_{2}$ & -0.007 & 0.048 & 0.013 & -0.118 & 0.012 & 0.108 & 0.529 & -0.116 & 0.187 \\
+$\theta_{3}$ & -0.022 & -0.076 & -0.258 & -0.149 & 0.091 & -0.174 & -0.312 & -0.037 & -0.019 \\
+$\theta_{4}$ & -0.043 & -0.206 & -0.399 & -0.456 & -0.217 & -0.464 & -0.474 & -0.442 & -0.15 \\
+$\theta_{5}$ & 0.051 & 0.105 & 0.309 & 0.273 & 0.19 & 0.413 & 0.313 & 0.091 & 0.238 \\
+$\theta_{6}$ & -0.026 & -0.057 & 0.025 & 0.036 & -0.461 & -0.131 & -0.805 & -0.4 & -0.206 \\
+$\theta_{7}$ & -0.01 & -0.01 & -0.453 & -0.037 & -0.145 & -0.549 & -0.823 & -0.537 & -0.385 \\
+$\theta_{8}$ & -0.033 & -0.148 & -0.428 & -0.636 & -1.015 & -0.561 & -0.399 & -0.467 & -0.495 \\
+$\theta_{9}$ & 0.016 & -0.022 & 0.299 & 0.299 & 0.014 & 0.18 & -0.459 & 0.519 & 0.025 \\
+\hline
+\hline
+Intercepts & 0.67 & 0.59 & 0.608 & 0.526 & 0.495 & 0.522 & 0.729 & 0.321 & 0.308 \\
+
+##########################################################################################################################################################\n
+Confusion Matrix
+[[ 1 51]
+ [ 0 82]]
+
+Classification Report
+              precision    recall  f1-score   support
+
+          -1       1.00      0.02      0.04        52
+           1       0.62      1.00      0.76        82
+
+    accuracy                           0.62       134
+   macro avg       0.81      0.51      0.40       134
+weighted avg       0.77      0.62      0.48       134
+AUC: 0.5278737424954025

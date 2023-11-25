@@ -1,0 +1,79 @@
+.intro {
+    background-color: #2c781b5f;
+    position: absolute;
+    /* padding: 10px; */
+    width: 71.3%;
+    outline: #000000 solid 3px;
+}
+
+.title {
+    font-size: 50px;
+    float: left;
+    padding-left: 5px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.user-choice {
+    width: 50%;
+    padding-top: 30px;
+    /* padding-right: 185px; */
+    float: right;
+}
+
+.prime {
+    width: 72%;
+    height: 10%;
+    /* margin:auto; */
+    padding: 2%;
+    background-color: #63bdf15a;
+}
+
+#wgif {
+    float: right;
+    background-color: #9c74395a;
+    padding-top: 4px;
+    padding-left: 4px;
+    padding-right: 4px;
+    /* padding-bottom: 16px; */
+}
+
+.column:nth-child(odd) {
+    background-color: #ec63f15a;
+}
+
+.column:nth-child(even) {
+    background-color: #6629685a;
+}
+
+.column {
+    float: left;
+    width: 20%;
+    padding: 20px;
+    height: 20%;
+    /* Should be removed. Only for demonstration */
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.weather_note {
+    text-align:center;
+    background-color: #ba194c5a;
+    padding: 2px;
+}
+
+.fail_result {
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    padding: 4%;
+    background-color: #3e1e285a;
+}

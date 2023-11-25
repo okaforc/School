@@ -162,7 +162,7 @@ void init()
 			1.0f, -1.0f, 0.0f,
 			0.0f, 1.0f, 0.0f};
 	// Create a color array that identfies the colors of each vertex (format R, G, B, A)
-	GLfloat colors[] = {0.0f, 1.0f, 0.0f, 1.0f,
+	GLfloat colors[] = {0.0f, 0.0f, 0.0f, 1.0f,
 			1.0f, 0.0f, 0.0f, 1.0f,
 			0.0f, 0.0f, 1.0f, 1.0f};
 	// Set up the shaders

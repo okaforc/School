@@ -1,4 +1,4 @@
-(In order of preference)
+
 # Propylon
 https://www.tcd.ie/scss/courses/undergraduate/internships-for-students/current-opportunities/propylon/
 
@@ -443,7 +443,7 @@ Example: **Areas of Interest:** Software Development, Automated Testing
 ## Their Description
 https://www.tcd.ie/scss/courses/undergraduate/internships-for-students/current-opportunities/sig-susquehanna-international-group/
 
-[[Software-Development-Placement-2024---Copy.pdf|PDF explaining the internship]]
+[[SIG-Software-Development-Placement-2024---Copy.pdf|PDF explaining the internship]]
 SIG Founded in 1987, SIG has grown from an options trading firm on the Philadelphia Stock Exchange to one of the world’s largest privately held financial institutions. Today, with offices around the world, we trade almost every major financial product, and we are recognized for our disciplined and quantitative trading approach, and our leading-edge trading systems. We established our European headquarters in Dublin 20 years ago and now employ over 500 people here in Trading, Technology, Research, Operations, Compliance, Legal, Finance, and HR.
 
 We offer fantastic internship opportunities in our Dublin office. This area is responsible for researching, designing and implementing the full trading capability for the European office, using leading edge hardware and software technologies. A SIG Internship allows you to get involved with development teams that are competing at a world-class level in the financial sector.
@@ -493,17 +493,204 @@ We’re looking for someone who meets the minimum requirements to be considered 
 ### Hybrid work at Stripe
 
 Our Chicago, Dublin, and Singapore teams spend at least 50% of their time in their local offices. We believe that more in-person interactions will contribute to better results for our employees and Stripe. Increased office time allows for improved collaboration, efficiency, and informal learning opportunities, fostering a stronger community and building our culture. We will apply the insights gained from these initial three locations to continue refining our hybrid approach.
+# Guidewire
+https://www.tcd.ie/scss/courses/undergraduate/internships-for-students/current-opportunities/guidewire/
+
+## Their Description
+### Ranked 10th Best Workplaces and one of Ireland Best Workplaces in Tech 2021.
+
+At Guidewire, a combination of good working conditions, an excellent market opportunity, a rational and meritocratic company culture, quality software products, and a long history of careful hiring have allowed us to create an enviable work environment.
+
+### We live by our core values every day.
+
+At Guidewire, we value people at every stage of their career and try to minimize those barriers to collaboration. It is reflected in how we communicate with each other company-wide and on projects. Every developer and consultant bring something to the table whether in the early years or after a long and successful progression. We strive for integrity in all that we do: truthful relationships with customers, prospective customers, partners, investors, and each other.
+
+We prize clear, rational, and collaborative communication on our projects that is plainly based on logic, total commitment to quality, and making decisions based on factual evidence. You would be working on a team that is comprised of professional equals with a minimum of hierarchy. We don’t place high importance on titles; it’s all about what you do.
+
+### What you will be doing as an intern?
+
+Guidewire is offering a 6-month internship program from February through July 2022, this program is designed to give active undergraduate college students, or those registered in a masters’ program, an opportunity to work in a real-world business environment. Learn how to interact with customers, solving complex problems, and help create software that is used by some of the largest Insurance companies in the world.
+
+You will become part of our Dublin EMEA HQ, where you will have a technical role in both our Delivery Services team and our Product Development team. The Delivery Services team works directly with customers to understand and customize solutions that best suit their needs. The Product Development teams build our next generation of Cloud-based solutions using cutting-edge technology and Agile teams.
+
+Every team in Guidewire lives by an Agile methodology: we do iterative development, break features into stories, work in priority order, encourage pair programming, and more. Our focus is to make the highest quality software for our customers and deliver it on time. We spend a significant amount of time focusing on software development as a craft. If you intern here, you will collaborate with customers, developers, testers, product managers, and writers while learning what it means to be a professional software developer.
+
+### Intern Requirements:
+
+Our hiring is as methodical, rational, and measured as our development standards…
+
+- Penultimate year of study in a bachelor’s or master’s degree
+- Computer Science or equivalent course
+- Enthusiasm to learn and support others in your team
+- Understanding of programming skills and grounding in Java, C# or C++
+- Awareness of object-oriented design principles
+- Some Software development lifecycle exposure (Agile) preferred
+- Some understanding of JavaScript is a bonus
+
+### Other types of things that we like to nurture
+
+- Curiosity based on a genuine love of technology and solving tough technical problems
+- Accountability based on a desire to do what is expected with the support of mentoring and guidance
+- Kindness and respect for your fellow teammates
+
+### About Guidewire
+
+Guidewire is the platform P&C insurers trust to engage, innovate, and grow efficiently.
+
+Guidewire combines core, data, digital, analytics, and AI to deliver our platform as a cloud service. More than 400 insurers, including the largest and most complex in the world, run on Guidewire.
+
+As a partner to our customers, we continually evolve to enable their success. We are proud of our unparalleled implementation track record with 1000+ successful projects, supported by the largest R&D team and partner ecosystem in the industry. Our Marketplace provides hundreds of add-ons that accelerate integration, localization, and innovation.
+
+Guidewire Software Inc. provides equal employment opportunities to all applicants for employment and prohibits discrimination and harassment of any type without regard to race, color, religion, age, sex, national origin, disability status, genetics, protected veteran status, sexual orientation, gender identity or expression, or any other characteristic protected by federal, state or local laws. All offers are contingent upon passing a criminal history and other background checks where it's applicable to the position.
+
+We will ensure that individuals with disabilities are provided reasonable accommodation to participate in the job application or interview process, to perform essential job functions, and to receive other benefits and privileges of employment. Please contact us to request accommodation.
+# LexisNexis
+**LexisNexis Risk Solutions Group** is looking to recruit talented interns to join our fast-growing Dublin Team. You will be responsible for implementing and delivering scalable and robust enterprise software solutions. The ideal candidate will be a self-starter who can handle several competing priorities. Above all, we seek an eagerness to learn new things while staying abreast of emerging industry trends and platforms. 
+
+**Qualities we are looking for:** 
+
+- Excellent programming skills, focusing on Java & Python. 
+- Open to learning new technologies and new problem domains. 
+- Eager to review code and able to communicate clearly and efficiently. 
+- Interest in cloud technologies and DevOps practices. 
+- Genuine enthusiasm for experimenting with technology and software. 
+
+- An inclusive, positive, collaborative mindset. 
+- A desire to deliver real business value to our customers. 
+
+**Responsibilities:** 
+
+- Designing, prototyping, and implementing robust applications using best-practice, agile development processes. 
+
+- Working with technologies including Java, AWS, Terraform, Docker, Kubernetes. 
+- Building cloud infrastructure in AWS to run and monitor the applications, while automating common tasks. 
+- Collaborating as part of an agile and quality-focused team to deliver tangible value to our customers.
+
+# Shutterstock
+## Shutterstock Internships
+
+We have roles available in our core software development teams along with those specialising in AI/Data Science and in Cloud Infrastructure. Let us know in your application if you have a particular interest in one of those areas!
+
+### About Shutterstock
+
+Shutterstock is a growing, fast-paced, entrepreneurial company operating within a disruptive industry for over 17 years. Well-positioned as the leader in the digital content space, Shutterstock has the largest crowd-sourced digital content library in the world, including leading collections of images, vectors, music, and video. We manage a library of creative building blocks for an expanding global customer base. Shutterstock adds hundreds of thousands of images, video and audio content each week, and currently has more than 370 million images and more than 21 million video clips available.
+
+Headquartered in New York City, Shutterstock has offices around the world and customers in more than 150 countries. The Company also owns Offset, a high-end image collection; Shutterstock Studios, an end-to-end custom creative shop; PremiumBeat, a curated royalty-free music library; Shutterstock Editorial, a premier source of editorial images and videos for the world's media; TurboSquid, a leading 3D content marketplace; Amper Music, an AI-driven music platform; and Bigstock, a value-oriented stock media offering.
+
+Our Creative platform supports photographers, advertisers, film & television studios, marketers and publishers to produce and consume amazing content, while our Editorial business is a world leader in the production and distribution of real-time celebrity, sports, fashion and news photography, as well as covering events such as the Academy Awards, London Fashion Week and the Met Gala.
+
+Shutterstock is looking for interns to join our software development, AI, Data Science and cloud infrastructure teams.
+
+You will be working with highly motivated and extremely talented engineers on full stack services with quality, performance, and scale in mind at every step of the way. Our core belief is that the customers are our number one priority so we work hard to deliver value back to them with everything we do. We believe strongly in team ownership of systems, which includes defining the vision of the services to prioritization of projects.
+
+You will join a diverse and international team based out of our Dublin offices, which are located just off Grafton Street in the heart of the city. Remote, hybrid or on-site positions can be supported.
+
+### Daily activities:
+
+● Participate in all aspects of the services under the team’s ownership, which includes design, implementation, automated testing, deployment, and uptime of the services.  
+● Participate in the code review process, paired programming.  
+● Work alongside engineers, product managers and designers on the development of the services under the team's ownership.  
+● Building the technology the right way: for us, this means simple, well-tested systems that gradually grow over time, and that provide plenty of insight into production performance.
+
+### Ideal candidate would have one or more of the following:
+
+● Passionate about what you do and care deeply about the things you build.  
+● Able to clearly communicate with team members.  
+● Natural curiosity for learning new technologies.  
+● Experience in one or more OO languages.  
+● Solid software development fundamentals (Data Structures, algorithms, problem-solving, OO
+
+### Design, and system architecture).
+
+● Has a good understanding of continuous delivery.  
+● Writing unit tests, integration tests and automated testing.
+
+### Bonus Skills:
+
+● Javascript frameworks such as React or Next.js  
+● Node.js  
+● Java, Ruby, Python or Scala  
+● Knowledge of AI, Machine Learning or Computer Vision techniques  
+● Cloud based infrastructure like AWS and container based deployments like Docker and Kubernetes.  
+● Knowledge of relational and non relational database technologies  
+● Familiarity with agile methodologies
+
+# AMD
+We care deeply about transforming lives with AMD technology to enrich our industry, our communities, and the world. Our mission is to build great products that accelerate next-generation computing experiences – the building blocks for the data center, artificial intelligence, PCs, gaming and embedded. Underpinning our mission is the AMD culture. We push the limits of innovation to solve the world’s most important challenges. We strive for execution excellence while being direct, humble, collaborative, and inclusive of diverse perspectives. 
+
+AMD together we advance_
+
+#### **LOCATION:**  Dublin
+
+**ONSITE**: This role requires the student to work from the Dublin office throughout the duration of the Co-op/Intern term.
+
+**PROGRAM TERM:** January 15 2024 - August 15 2024 or March 15 2024 - August 15 2024 (depending on your course requirements)
+
+**WHAT YOU’LL BE DOING:**
+
+We are hiring students across several of our teams including Analog Mixed Signal (AMS), System Engineering, Data Centre/Telecommunications and Design Software Verification.
+
+- The Analog Mixed Signal (AMS) team design high performance analog and digital circuits such as ADCs, DACs, references and high-speed interfaces which are integrated into FPGA devices. These devices are used in a variety of applications such as automotive, wireless communications and medical imaging.
+- The System Engineering team produce high quality embedded software systems, applications and drivers in embedded Linux and Bare metal areas. You will be involved with the complete development lifecycle from definition right through to testing and delivery.
+- The Data Centre/Telecommunications team assist with the development of leading-edge FPGA-based hardware and embedded software platforms for use in data centre acceleration applications. You will be working with the latest FPGA hardware and software technologies from AMD-Xilinx, including Vivado Design Suite, Versal ACAP devices and Alveo data center boards using the Vitis unified software platform.
+- The Design Software Verification team play a critical role in verifying the AMD EDA tool chain for both pre- and post-silicon support. The team work on the development of new designs to test the Vivado tool chain, development and maintenance of automated test frameworks as well as testing next generation FPGA/ACAP EDA tools.
+
+Our Engineering Internship Program is a fantastic opportunity for you to learn and contribute within teams focused on either software development or FPGA IP design/verification. The roles will give you the benefit of professional guidance from our talented engineering teams, alongside the ability to grow both personally and professionally.
+
+**KEY QUALIFICATIONS:**
+
+- Currently pursuing a Bachelors or Masters degree in Computer Science, Electronics, Electrical or Computer Engineering
+- Proficient programming skills
+- Familiarity with scripting languages
+- Knowledge of analog, digital electrical circuits and logic design fundamentals
+- Excellent teamwork, communication and problem-solving skills
+
+**BENEFITS:**
+
+- Personal & professional development through mentoring and training
+- Working on cutting-edge technology
+- Networking opportunities
+- Flexible working
+- On-site gym access
+- Free on-site parking
+
+### _Benefits offered are described:_  [AMD benefits at a glance](https://amd.jibeapply.com/benefits).
+
+_AMD does not accept unsolicited resumes from headhunters, recruitment agencies, or fee-based recruitment services. AMD and its subsidiaries are equal opportunity, inclusive employers and will consider all applicants without regard to age, ancestry, color, marital status, medical condition, mental or physical disability, national origin, race, religion, political and/or third-party affiliation, sex, pregnancy, sexual orientation, gender identity, military or veteran status, or any other characteristic protected by law.   We encourage applications from all qualified candidates and will accommodate applicants’ needs under the respective laws throughout all stages of the recruitment and selection process._
+
 # Internships Applied
+## Offers
+- [x] Arista
+	- €3,000 a month (!!!)
+	- 8 months (!!!)
+## Rejections
+- [x] ~~Intel (rejected)~~
+- [x] ~~HubSpot (rejected)~~
+- [x] ~~Workday (rejected)~~
+- [x] ~~LexisNexis (rejected)~~
+- [x] ~~SIG (rejected, but really close)~~
+- [x] ~~Guidewire (rejected, also really close)~~
+- [x] ~~Stripe (rejected)~~
+- [x] ~~Fathom (rejected)~~
+## Waiting for Response
 - [x] Propylon
 - [x] Mastercard
-- [x] Intel
 - [x] Revenue Commissioners
-- [x] Workday
-- [x] LexisNexis
-- [x] SIG
-- [ ] Rapid7
-- [ ] Genesys
-- [x] HubSpot
-- [ ] Analog Devices
-- [ ] Fathom
-- [ ] Stripe
+- [x] Red Hat
+- [x] Murex
+- [x] Bloomberg
+
+
+# SpeedConnect Schedule
+| Time  | Company      | Applied for Internship | Key Points                                                   |
+| ----- | ------------ | ---------------------- | ------------------------------------------------------------ |
+| 14:30 | Propylon     | Yes                    | Law and legislature, machine learning, data processing       |
+| 14:40 | Mastercard   | Yes                    | Fintech (mention Pico work)                                  |
+| 15:00 | Workday      | Yes                    | HR and jobseeking tools (already applied)                    |
+| 15:10 | SIG          | Yes                    | Trading + tech firm                                          |
+| 15:40 | LexisNexis   | Yes                    | Risk solutions (loss prevention, etc.), cloud infrastructure |
+| 15:50 | Guidewire    | Yes                    | Insurance company                                            |
+| 16:00 | Shutterstock | No                     | Online media storage, cloud infrastructure                   |
+| 16:10 | AMD          | No                     | Processer engineering                                        |
+
+

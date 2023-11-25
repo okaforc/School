@@ -27,3 +27,9 @@ Two vectors $\vec{v_1}$ and $\vec{v_2}$ are **equivalent** if they have the same
 
 ### Points
 **Points** represent *positions*. They require an **origin** and a **vector space** to position themselves in.
+
+[[CG5_Graphics_Programming.pdf#page=36&annotation=432R]]
+
+Like functions that use a lot of global variables
+
+Uniform just a constant, remains constant.. Like a constant colour,, properties that stay uniform for all verts

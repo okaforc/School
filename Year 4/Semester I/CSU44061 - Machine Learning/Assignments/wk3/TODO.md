@@ -1,0 +1,22 @@
+- [x] (i)
+    - [x] a
+        - The data looks like it lies on a curve
+    - [x] b
+        - data in f.txt
+    - [x] c
+        - As the value of C changes, so too does the accuracy of the predictions. The cost function used for LASSO regression is [the formula]. Here, the lower C is, the larger the penalty term ([penalty term]) of the cost function becomes. The higher C is, the smaller it becomes, and as C tends to infinity, the penalty term diminishes in value until it reaches 1/inf, which is 0.
+
+        - For LASSO regression, the lower the C value, the more 0s in the model parameters. For the first few terms, as the C value is very low, there aren't any changes in the model parameters -- all values except the intercept are 0, which appears in the first few graphs as a flat plane. This continues until C = 5, when there are finally two non-zero parameters. LASSO's use of the $l1$ penalty means that sparse data -- that is, data with mostly or only zeros -- is more likely to be generated. And at C = 1000, the data is clearly massively overfitted, as it attempts to adapt to all available data, even the noise. [maybe move some of this to (b)?]
+    - [x] d
+        - Under-fitting occurs when the prediction model is too simple to capture the behaviour of the data. An example of this is using a linear model to predict quadratic data.
+        Over-fitting occurs when the prediction model is *too* precise. It begins to fit "noise", extra data not necessarily following the path of most of the data. An example of this is using a cubic model to predict linear data. With under-fitting and over-fitting, the overall prediction quality decreases.
+    - [x] e
+        - LASSO regression uses the L1 penalty, whereas Ridge regression uses the L2 penalty. The main difference between L1 and L2 penalties is the penalty term. For the L1 penalty, \theta_j is absolute; that is, the cost function always takes the absolute value of the penalty term. For the L2 penalty, however, \theta_j is squared. In both cases, \theta_j is non-negative. 
+- [ ] (ii)
+    - [ ] a
+        - The values chosen were [0.01, 0.1, 1, 5, 10, 25, 50, 100, 1000]. These choices cover a very large spread of values, starting from the very small 0.01 to the very large 1000. The values are far enough apart such that they won't overlap when viewed on a logarithmic scale, which the graphs use.
+    - [ ] b
+        - [Lasso] I would choose C = 25. The previous value of 10 is too different, and the next value of 50 is similar enough such that choosing it wouldn't make much of a difference. Additionally, the higher values of 100 and 1000 are, while also more of the same, potentially over-fitting the data and taking too much noise into account.
+        - [Ridge] For Ridge regression, I would choose C = 1. The previous value of 10 is too different, and the next value of 50 is similar enough such that choosing it wouldn't make much of a difference. Additionally, the higher values of 100 and 1000 are, while also more of the same, potentially over-fitting the data and taking too much noise into account.
+    - [ ] c
+        - see above for [Ridge]

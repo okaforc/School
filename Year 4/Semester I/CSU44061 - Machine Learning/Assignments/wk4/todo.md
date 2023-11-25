@@ -1,0 +1,37 @@
+- [ ] i
+    - [x] a
+        - [x] best c value
+            - [x] 5, as it minimises f1 score at its value, which i prioritise over standard deviation. c = 10 has the lowest deviation, and the lower the c value, the better, as it minimises over-fitting.
+        - [x] best q value
+            - [x] 3, as both the max f1 score (c = 5) and minimum std dev (c = 10) are at q = 3.
+    - [x] b
+        - [x] best k value
+            - [x] 4, as the scores for k > 4 are all close enough, and are therefore minimised by k = 4, which also boasts the lowest standard deviation. if k is too large, there exists the risk of under-fitting the data.
+    - [x] c
+        - [x] regression
+        - [x] knn
+        - [x] baseline
+    - [x] d
+        - [x] regression
+        - [x] knn
+        - [x] baseline
+    - [ ] e
+        - [ ] 
+- [ ] ii
+    - [ ] a
+        - [ ] best c value
+            - [ ] why?
+        - [ ] best q value
+            - [ ] why?
+    - [ ] b
+        - [ ] best k value
+            - [ ] 5, as it is close enough to k = 7, and minimises the k value. for whatever reason, odd values of k are more accurate than even values, so k=6 is also not considered for that reason.
+    - [ ] c
+        - [ ] regression
+        - [ ] knn
+        - [ ] baseline
+    - [ ] d
+        - [ ] regression
+        - [ ] knn
+        - [ ] baseline
+    - [ ] e

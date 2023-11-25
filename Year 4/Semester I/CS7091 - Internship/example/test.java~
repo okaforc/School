@@ -1,0 +1,46 @@
+class Test {
+    public static void main(String args[]) {
+	System.out.println("hello world");
+	System.out.println("hello iris :3");
+	int[] arr = new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9};
+	
+	System.out.println(bsearch(arr, 1));
+	System.out.println(bsearchr(arr, 3));	
+    }
+
+    public static int[] twoSum(int[] nums, int target) {
+	HashMap<Integer, Integer> map = new HashMap<>();
+	for (int i : nums) {
+	    if (map.containsKey(target - nums[i]))
+		return new int[] {i, map.get(target - nums[i])};
+	    else set.put(nums[i], i);
+	}
+	return new int[]{};
+    }
+
+    public static int bsearch(int[] arr, int target) {
+	int lo = 0, hi = arr.length - 1;
+
+	while (lo <= hi) {
+	    int mid = lo + (hi - lo)/2;
+	    if (arr[mid] == target) return mid;
+	    else if (arr[mid] > target) hi = mid - 1;
+	    else lo = mid + 1;
+	}
+	return -1;
+    }
+
+    public static int bsearchr(int[] arr, int target) {
+	return bsearchrh(arr, target, 0, arr.length - 1);
+    }
+
+    public static int bsearchrh(int[] arr, int target, int lo, int hi) {
+	if (lo > hi) return -1;
+	int mid = lo + (hi - lo)/2;
+
+	if (arr[mid] == target) return mid;
+	else if (arr[mid] > target) return bsearchrh(arr, target, lo, mid - 1);
+	else return bsearchrh(arr, target, mid + 1, hi);
+    }
+    
+}

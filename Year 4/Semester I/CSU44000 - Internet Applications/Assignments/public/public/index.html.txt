@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script type="module" src="client.js" defer async></script>
+</head>
+
+<body>
+        <div id="app">
+            <div id="wgif">
+                <iframe :src=gif_res frameBorder="0" class="giphy-embed" width=450px height=350px allowFullScreen></iframe>
+                <br>
+                <p><a :href=gif_res>via GIPHY</a></p>
+                <button v-on:click="GetGIF" style="width:100%;height:40px">New GIF!</button> <br><br>
+            </div>
+            <!-- <img id="bg_gif" :src=gif_res>
+            <p><a :href=gif_res id="bg_gif">via GIPHY</a></p> -->
+            <div class="intro">
+                <h1 class="title">Weather Forecast</h1> 
+                <span class="user-choice">
+                    Please enter the city you wish to check:
+                    <input v-model="cityName" v-on:keyup.enter="NewWeather">
+                    <button v-on:click="NewWeather">Show city</button> <br><br>
+                    or <button v-on:click="RandomCity">Pick a random city!</button> (Might not have any results, though...)
+                </span>
+            </div>
+            <br><br><br><br><br>
+            <div v-if="days != 0">
+                <br><br>
+                <div class="prime">
+                    <br>
+                    <ul style="float:right; width:30%">
+                        <li>
+                            {{day_0_weather.temp_note}}
+                        </li>
+                        <br>
+                        <li>
+                            {{day_0_weather.rain_note}}
+                        </li>
+                        <br>
+                        <li v-if="daily_forecast.pollution.amount > 10">
+                            {{daily_forecast.pollution.note}} Reports show {{daily_forecast.pollution.amount}}µg/m<sup>3</sup> of PM<sub>2.5</sub>.
+                        </li>
+                    </ul>
+
+                    <img :src="'sprites/' + day_0_weather.weather_title + '.png'" width="256" height="256" style="float:left; margin-right:10px;">
+                    <h1>Today is {{day_0_weather.date}}</h1>
+                    <h3>in {{userPlace}} </h3>
+                    <h2>{{day_0_weather.temp}}°C, {{day_0_weather.weather_title}}</h2>
+                    <h5>{{day_0_weather.min_temp}}°C/{{day_0_weather.max_temp}}°C </h5>
+                    <h4>Feels like {{day_0_weather.feels_like}}°C </h4>
+                </div>
+
+                <h2 class="weather_note" v-html="avg_weather.weather_note"></h2>
+
+                <div class="row">
+                    <div v-for="(forecast, index) in daily_forecast.weather" :key="index" class="column">
+                        <h2 v-if="index==0">Today</h2>
+                        <h2 v-else-if="index==1">Tomorrow</h2>
+                        <h2 v-else>{{forecast.date}}</h2>
+
+                        <img :src="'sprites/' + forecast.weather_title + '.png'" width="128" height="128" style="float:right;padding:3px">
+                        <h3>{{forecast.temp}}°C, {{forecast.weather_title}}</h3>
+                        <h5>{{forecast.min_temp}}°C/{{forecast.max_temp}}°C </h5>
+                        <h4>Feels like {{forecast.feels_like}}°C </h4>
+                        <p>Seems to be some {{forecast.weather_desc}} </p>
+                        <p>Wind speed is {{forecast.wind_speed}} m/s</p>
+                        <p>{{forecast.chance_of_rain}}% chance of rain </p>
+                        <p>Roughly {{forecast.rainfall}} mm of rainfall</p>
+                    </div>
+                    <div v-if="days != 5">
+                        <h3 style="text-align:center">It's pretty late. No more weather information here. Try again in a few hours.</h3>
+                    </div>
+                </div>
+            </div>
+            <div v-else class="fail_result">
+                <h1>That's all for now, folks!</h1>
+                <h3>(Maybe click through some GIFs...)</h3>
+            </div>
+        </div>
+</body>
+
+</html>

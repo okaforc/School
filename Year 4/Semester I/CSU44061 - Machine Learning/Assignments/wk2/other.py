@@ -1,0 +1,44 @@
+from sklearn.metrics import mean_squared_error
+from sklearn.linear_model import LinearRegression
+from sklearn.preprocessing import PolynomialFeatures
+import matplotlib.pyplot as plt
+from sklearn.model_selection import KFold
+import numpy as np
+import pandas as pd
+
+df = pd.read_csv("week2.csv")
+VALUES = df.iloc[:, 2]
+# print(df.head())
+X = np.reshape(df.iloc[:, 0][VALUES==-1].to_numpy(), (-1, 1))
+y = np.reshape(df.iloc[:, 1][VALUES==-1].to_numpy(), (-1, 1))
+# X = np.arange(0, 1, 0.01).reshape(-1, 1) # xaxis values
+# y = 10*(X**2) + np.random.normal(0.0, 1.0, X.size).reshape(-1, 1) # yaxis values
+kf = KFold(n_splits=5)
+plt.rc('font', size=18); plt.rcParams['figure.constrained_layout.use'] = True
+mean_error = []; std_error = []
+q_range = [1, 2, 3, 4, 5, 6]
+rs = 5; cs = 5; cur = 1 # for subplot: 5 rows, 5 columns, subplots are 1-indexed
+for q in q_range:
+    Xpoly = PolynomialFeatures(q).fit_transform(X)
+    model = LinearRegression()
+    temp = []; plotted = False
+    for train, test in kf.split(Xpoly):
+        model.fit(Xpoly[train], y[train])
+        ypred = model.predict(Xpoly[test])
+        temp.append(mean_squared_error(y[test], ypred))
+        if ((q == 1) or (q == 2) or (q == 6)) and not plotted:
+            plt.subplot(rs, cs, cur) # setup subplot for each new plot
+            cur += 1 # increase subplot number for next plot
+            plt.scatter(X, y, color='black')
+            ypred = model.predict(Xpoly)
+            plt.plot(X, ypred, color='blue', linewidth=3)
+            plt.xlabel("input x"); plt.ylabel("output y")
+            # if uncommented, the opened tkinter window would need to be closed to see each next plot. do NOT uncomment if you value your time.
+            # plt.show()
+    plotted = True
+    mean_error.append(np.array(temp).mean())
+    std_error.append(np.array(temp).std())
+plt.errorbar(q_range, mean_error, yerr=std_error, linewidth=3)
+plt.xlabel('q')
+plt.ylabel('Mean square error')
+plt.show()

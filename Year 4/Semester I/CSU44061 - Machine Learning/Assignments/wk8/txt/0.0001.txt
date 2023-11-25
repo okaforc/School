@@ -1,0 +1,155 @@
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ conv2d (Conv2D)             (None, 32, 32, 16)        448       
+
+ conv2d_1 (Conv2D)           (None, 16, 16, 16)        2320      
+
+ conv2d_2 (Conv2D)           (None, 16, 16, 32)        4640      
+
+ conv2d_3 (Conv2D)           (None, 8, 8, 32)          9248
+
+ dropout (Dropout)           (None, 8, 8, 32)          0
+
+ flatten (Flatten)           (None, 2048)              0
+
+ dense (Dense)               (None, 10)                20490
+
+=================================================================
+Total params: 37146 (145.10 KB)
+Trainable params: 37146 (145.10 KB)
+Non-trainable params: 0 (0.00 Byte)
+_________________________________________________________________
+Epoch 1/20
+WARNING:tensorflow:From C:\Users\Zenith\AppData\Local\Programs\Python\Python310\lib\site-packages\keras\src\utils\tf_utils.py:492: The name tf.ragged.RaggedTensorValue is deprecated. Please use tf.compat.v1.ragged.RaggedTensorValue instead.
+
+WARNING:tensorflow:From C:\Users\Zenith\AppData\Local\Programs\Python\Python310\lib\site-packages\keras\src\engine\base_layer_utils.py:384: The name tf.executing_eagerly_outside_functions is deprecated. Please use tf.compat.v1.executing_eagerly_outside_functions instead.
+
+36/36 [==============================] - 3s 31ms/step - loss: 2.2889 - accuracy: 0.1578 - val_loss: 2.1442 - val_accuracy: 0.2200
+Epoch 2/20
+36/36 [==============================] - 1s 23ms/step - loss: 2.0348 - accuracy: 0.2718 - val_loss: 1.9204 - val_accuracy: 0.3400
+Epoch 3/20
+36/36 [==============================] - 1s 23ms/step - loss: 1.8388 - accuracy: 0.3427 - val_loss: 1.9406 - val_accuracy: 0.3300
+Epoch 4/20
+36/36 [==============================] - 1s 23ms/step - loss: 1.7919 - accuracy: 0.3727 - val_loss: 1.7720 - val_accuracy: 0.4080
+Epoch 5/20
+36/36 [==============================] - 1s 22ms/step - loss: 1.6743 - accuracy: 0.4105 - val_loss: 1.6844 - val_accuracy: 0.4340
+Epoch 6/20
+36/36 [==============================] - 1s 25ms/step - loss: 1.6684 - accuracy: 0.4132 - val_loss: 1.6828 - val_accuracy: 0.4420
+Epoch 7/20
+36/36 [==============================] - 1s 23ms/step - loss: 1.5962 - accuracy: 0.4374 - val_loss: 1.6041 - val_accuracy: 0.4720
+Epoch 8/20
+36/36 [==============================] - 1s 23ms/step - loss: 1.5345 - accuracy: 0.4621 - val_loss: 1.6190 - val_accuracy: 0.4580
+Epoch 9/20
+36/36 [==============================] - 1s 23ms/step - loss: 1.5110 - accuracy: 0.4770 - val_loss: 1.5699 - val_accuracy: 0.4920
+Epoch 10/20
+36/36 [==============================] - 1s 22ms/step - loss: 1.4710 - accuracy: 0.4901 - val_loss: 1.5772 - val_accuracy: 0.4800
+Epoch 11/20
+36/36 [==============================] - 1s 19ms/step - loss: 1.4283 - accuracy: 0.4992 - val_loss: 1.5323 - val_accuracy: 0.4920
+Epoch 12/20
+36/36 [==============================] - 1s 22ms/step - loss: 1.3867 - accuracy: 0.5168 - val_loss: 1.4979 - val_accuracy: 0.5040
+Epoch 13/20
+36/36 [==============================] - 1s 24ms/step - loss: 1.3769 - accuracy: 0.5170 - val_loss: 1.5477 - val_accuracy: 0.4720
+Epoch 14/20
+36/36 [==============================] - 1s 23ms/step - loss: 1.3528 - accuracy: 0.5250 - val_loss: 1.5144 - val_accuracy: 0.4980
+Epoch 15/20
+36/36 [==============================] - 1s 22ms/step - loss: 1.3182 - accuracy: 0.5455 - val_loss: 1.5307 - val_accuracy: 0.5140
+Epoch 16/20
+36/36 [==============================] - 1s 24ms/step - loss: 1.3217 - accuracy: 0.5437 - val_loss: 1.4971 - val_accuracy: 0.4900
+Epoch 17/20
+36/36 [==============================] - 1s 23ms/step - loss: 1.2862 - accuracy: 0.5497 - val_loss: 1.4746 - val_accuracy: 0.5120
+Epoch 18/20
+36/36 [==============================] - 1s 19ms/step - loss: 1.2504 - accuracy: 0.5677 - val_loss: 1.4982 - val_accuracy: 0.4940
+Epoch 19/20
+36/36 [==============================] - 1s 23ms/step - loss: 1.2576 - accuracy: 0.5701 - val_loss: 1.4620 - val_accuracy: 0.5040
+Epoch 20/20
+36/36 [==============================] - 1s 21ms/step - loss: 1.2300 - accuracy: 0.5819 - val_loss: 1.4376 - val_accuracy: 0.5160
+157/157 [==============================] - 1s 6ms/step
+              precision    recall  f1-score   support
+
+           0       0.62      0.69      0.65       505
+           1       0.71      0.80      0.76       460
+           2       0.61      0.47      0.53       519
+           3       0.57      0.48      0.52       486
+           4       0.59      0.46      0.52       519
+           5       0.61      0.59      0.60       488
+           6       0.56      0.75      0.64       518
+           7       0.62      0.71      0.66       486
+           8       0.75      0.67      0.71       520
+           9       0.71      0.72      0.71       498
+
+    accuracy                           0.63      4999
+   macro avg       0.64      0.64      0.63      4999
+weighted avg       0.63      0.63      0.63      4999
+
+[[350  25   8   5  12   3   4  16  60  22]
+ [ 10 370   2   0   5   3  17   3  15  35]
+ [ 46   6 242  33  52  31  53  40   9   7]
+ [  9   4  22 234  24  70  65  27   6  25]
+ [ 25   9  49  28 239  22  81  55   7   4]
+ [  8   5  27  44  17 289  49  39   4   6]
+ [  5  10  21  26  28  17 391  12   4   4]
+ [ 14   5  15  25  21  25  20 346   2  13]
+ [ 82  27   5   6   3   7   7   4 350  29]
+ [ 18  58   3  13   1  10  14  15   9 357]]
+313/313 [==============================] - 2s 6ms/step
+              precision    recall  f1-score   support
+
+           0       0.54      0.62      0.58      1000
+           1       0.63      0.70      0.66      1000
+           2       0.44      0.35      0.39      1000
+           3       0.36      0.32      0.34      1000
+           4       0.47      0.36      0.41      1000
+           5       0.46      0.40      0.43      1000
+           6       0.48      0.67      0.56      1000
+           7       0.53      0.63      0.58      1000
+           8       0.63      0.58      0.61      1000
+           9       0.59      0.56      0.58      1000
+
+    accuracy                           0.52     10000
+   macro avg       0.51      0.52      0.51     10000
+weighted avg       0.51      0.52      0.51     10000
+
+[[622  43  50  18  22  11  16  32 140  46]
+ [ 42 701   8  11   5   8  23  16  51 135]
+ [103  17 352  88 109  73 128  80  32  18]
+ [ 38  23  71 318  55 188 172  85  14  36]
+ [ 55  17 132  54 357  48 183 126  18  10]
+ [ 23  13  84 179  60 399 102 110  14  16]
+ [  5  11  51  96  69  36 665  33  10  24]
+ [ 40  12  32  62  52  78  55 627   8  34]
+ [168  84  15  27  13  12  12  21 583  65]
+ [ 61 194   8  19  10  14  34  47  54 559]]
+[[1000    0    0    0    0    0    0    0    0    0]
+ [1000    0    0    0    0    0    0    0    0    0]
+ [1000    0    0    0    0    0    0    0    0    0]
+ [1000    0    0    0    0    0    0    0    0    0]
+ [1000    0    0    0    0    0    0    0    0    0]
+ [1000    0    0    0    0    0    0    0    0    0]
+ [1000    0    0    0    0    0    0    0    0    0]
+ [1000    0    0    0    0    0    0    0    0    0]
+ [1000    0    0    0    0    0    0    0    0    0]
+ [1000    0    0    0    0    0    0    0    0    0]]
+C:\Users\Zenith\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\metrics\_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+C:\Users\Zenith\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\metrics\_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+C:\Users\Zenith\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\metrics\_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+              precision    recall  f1-score   support
+
+           0       0.10      1.00      0.18      1000
+           1       0.00      0.00      0.00      1000
+           2       0.00      0.00      0.00      1000
+           3       0.00      0.00      0.00      1000
+           4       0.00      0.00      0.00      1000
+           5       0.00      0.00      0.00      1000
+           6       0.00      0.00      0.00      1000
+           7       0.00      0.00      0.00      1000
+           8       0.00      0.00      0.00      1000
+           9       0.00      0.00      0.00      1000
+
+    accuracy                           0.10     10000
+   macro avg       0.01      0.10      0.02     10000
+weighted avg       0.01      0.10      0.02     10000

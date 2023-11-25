@@ -4,40 +4,51 @@
     "type": "split",
     "children": [
       {
-        "id": "e15d407a9b4512e5",
+        "id": "79cd9335481df896",
         "type": "tabs",
-        "dimension": 64.73607038123167,
         "children": [
           {
-            "id": "c3fab5fdbccac309",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Logistic Regression.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          }
-        ]
-      },
-      {
-        "id": "21b1c98da079921c",
-        "type": "tabs",
-        "dimension": 35.26392961876833,
-        "children": [
-          {
-            "id": "199a7fc72cf15e6f",
+            "id": "64ba226272873a76",
             "type": "leaf",
             "state": {
               "type": "pdf",
               "state": {
-                "file": "part/2.1.LogisticRegression.pdf"
+                "file": "part/8.3.convnets3.pdf"
+              }
+            }
+          },
+          {
+            "id": "42e334fa0035ed07",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "part/9.1.convnets4.pdf"
+              }
+            }
+          },
+          {
+            "id": "dcc4f6c0c8c311d9",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "part/8.1.convnets1.pdf"
+              }
+            }
+          },
+          {
+            "id": "3debcf4a79080786",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "part/8.2.convnets2.pdf"
               }
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -87,8 +98,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "44c1bf87d8bcea2a",
@@ -104,7 +114,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Logistic Regression.md",
+                "file": "part/8.2.convnets2.pdf",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -121,7 +131,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Logistic Regression.md",
+                "file": "part/8.2.convnets2.pdf",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -144,7 +154,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Logistic Regression.md"
+                "file": "part/8.2.convnets2.pdf"
               }
             }
           }
@@ -166,15 +176,35 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "c3fab5fdbccac309",
+  "active": "3debcf4a79080786",
   "lastOpenFiles": [
-    "part/2.1.LogisticRegression.pdf",
+    "Assignments/wk8/wk8.zip",
+    "Assignments/wk8/part_i.zip",
+    "Assignments/wk8/example.png",
+    "Assignments/wk8/cifar.model/variables/variables_temp/part-00000-of-00001.data-00000-of-00001",
+    "Assignments/wk8/cifar.model/variables/variables_temp/part-00000-of-00001.data-00000-of-00001.tempstate9530972661679145228",
+    "Assignments/wk8/cifar.model/variables/variables_temp",
+    "Assignments/wk8/part_ii.py",
+    "Assignments/wk8/part_i.py",
+    "Assignments/wk8/pics/new.png",
+    "Assignments/wk8/cifar.model/variables/variables_temp/part-00000-of-00001.index",
+    "Assignments/wk8/pics/b_iv_0.0001.png",
+    "Assignments/wk8/txt/0.0000001.txt",
+    "Assignments/wk8/txt/0.0001.txt",
+    "Assignments/wk8/k1.png",
+    "Assignments/wk8/k2.png",
+    "Assignments/wk8/k0.png",
+    "Assignments/wk8/k1.PNG",
+    "Assignments/wk8/k2.PNG",
+    "Assignments/wk8/pics/c_ii.png",
+    "Neural Networks.md",
+    "Assignments/wk8/pics/b_iv_0.0000001.png",
+    "Assignments/wk8/todo.md",
+    "Cross Validation.md",
     "Logistic Regression.md",
-    "part/2.2.features1.pdf",
-    "part/1.1.intro.pdf",
-    "part/1.2.LinearRegression1.pdf",
+    "Assignments/wk4/todo.md",
+    "Sample Code.md",
     "Overview.md",
-    "part",
-    "New folder"
+    "Assignments/wk3/TODO.md"
   ]
 }
