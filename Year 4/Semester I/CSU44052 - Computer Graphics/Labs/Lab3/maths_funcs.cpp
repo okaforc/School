@@ -20,6 +20,13 @@ vec3::vec3(float x, float y, float z) {
 	v[2] = z;
 }
 
+// ADDED BY IRIS
+vec3::vec3(float x) {
+	v[0] = x;
+	v[1] = x;
+	v[2] = x;
+}
+
 vec3::vec3(const vec2& vv, float z) {
 	v[0] = vv.v[0];
 	v[1] = vv.v[1];
@@ -72,6 +79,19 @@ mat3::mat3(float a, float b, float c,
 	m[8] = i;
 }
 
+// Get the upper left 3x3 matrix of a 4x4 matrix (ADDED BY IRIS)
+mat3::mat3(const mat4& p) {
+	m[0] = p.m[0];
+	m[1] = p.m[1];
+	m[2] = p.m[2];
+	m[3] = p.m[3];
+	m[4] = p.m[4];
+	m[5] = p.m[5];
+	m[6] = p.m[6];
+	m[7] = p.m[7];
+	m[8] = p.m[8];
+}
+
 mat4::mat4() {}
 
 // note: entered in rows, but stored in columns
@@ -95,6 +115,27 @@ mat4::mat4(float a, float b, float c, float d,
 	m[13] = h;
 	m[14] = l;
 	m[15] = p;
+}
+
+// Fill the upper left corner of a 4x4 matrix with a 3x3 matrix. All horizontal and vertical fields will be set to 0, and the last diagonal (bottom right) set to 1.
+mat4::mat4(const mat3& p) {
+	m[0] = p.m[0];
+	m[1] = p.m[1];
+	m[2] = p.m[2];
+	m[3] = 0;
+	m[4] = p.m[3];
+	m[5] = p.m[4];
+	m[6] = p.m[5];
+	m[7] = 0;
+	m[8] = p.m[6];
+	m[9] = p.m[7];
+	m[10] = p.m[8];
+	m[11] = 0;
+	m[12] = 0;
+	m[13] = 0;
+	m[14] = 0;
+	m[15] = 1;
+
 }
 
 /*----------------------------------PRINT FUNCTIONS-----------------------------------*/
@@ -222,6 +263,30 @@ vec3& vec3::operator= (const vec3& rhs) {
 	v[1] = rhs.v[1];
 	v[2] = rhs.v[2];
 	return *this;
+}
+
+// ADDED BY IRIS
+vec3& vec3::operator* (const vec3& rhs) {
+	v[0] *= rhs.v[0];
+	v[1] *= rhs.v[1];
+	v[2] *= rhs.v[2];
+	return *this;
+}
+
+// ADDED BY IRIS
+bool vec3::operator== (const vec3& rhs) {
+	return
+		v[0] == rhs.v[0] &&
+		v[1] == rhs.v[1] &&
+		v[2] == rhs.v[2];
+}
+
+// ADDED BY IRIS
+bool vec3::operator!= (const vec3& rhs) {
+	return
+		v[0] != rhs.v[0] ||
+		v[1] != rhs.v[1] ||
+		v[2] != rhs.v[2];
 }
 
 float dot(const vec3& a, const vec3& b) {
@@ -614,6 +679,14 @@ mat4 quat_to_mat4(const versor& q) {
 		0.0f,
 		1.0f
 	);
+}
+
+mat4 rotate_mat(float radians, vec3 axis) {
+	return quat_to_mat4(quat_from_axis_rad(radians, axis.v[0], axis.v[1], axis.v[2]));
+}
+
+mat4 rotate_mat(float radians, float x, float y, float z) {
+	return quat_to_mat4(quat_from_axis_rad(radians, x, y, z));
 }
 
 versor normalise(versor& q) {

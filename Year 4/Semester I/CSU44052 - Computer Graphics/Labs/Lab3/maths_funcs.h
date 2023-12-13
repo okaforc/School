@@ -2,13 +2,16 @@
 #define _MATHS_FUNCS_H_
 
 // const used to convert degrees into radians
-#define TWO_PI 2.0f * 3.14159265358979323846
-#define ONE_DEG_IN_RAD (2.0f * 3.14159265358979323846) / 360.0f // 0.017444444
+#define PI 3.14159265358979323846
+#define TWO_PI 2.0f * PI
+#define ONE_DEG_IN_RAD (TWO_PI) / 360.0f // 0.017444444
 #define ONE_RAD_IN_DEG 57.2957795
 
 struct vec2;
 struct vec3;
 struct vec4;
+struct mat3;
+struct mat4;
 struct versor;
 
 struct vec2 {
@@ -45,6 +48,14 @@ struct vec3 {
 	vec3 operator/ (float rhs);
 	//! because users expect this too
 	vec3& operator= (const vec3& rhs);
+	//! create from 1 scalars (ADDED BY IRIS)
+	vec3(float x);
+	//! multiply with vector (ADDED BY IRIS)
+	vec3& operator* (const vec3& rhs);
+	//! check equality of vectors (ADDED BY IRIS)
+	bool operator== (const vec3& rhs);
+	//! check inequality of vectors (ADDED BY IRIS)
+	bool operator!= (const vec3& rhs);
 
 	//! internal data
 	float v[3];
@@ -67,6 +78,7 @@ struct mat3 {
 	mat3(float a, float b, float c,
 		float d, float e, float f,
 		float g, float h, float i);
+	mat3(const mat4& p);
 	float m[9];
 };
 
@@ -81,6 +93,7 @@ struct mat4 {
 		float e, float f, float g, float h,
 		float i, float j, float k, float l,
 		float mm, float n, float o, float p);
+	mat4(const mat3& p);
 	vec4 operator* (const vec4& rhs);
 	mat4 operator* (const mat4& rhs);
 	mat4& operator= (const mat4& rhs);
@@ -131,6 +144,10 @@ mat4 perspective(float fovy, float aspect, float near, float far);
 versor quat_from_axis_rad(float radians, float x, float y, float z);
 versor quat_from_axis_deg(float degrees, float x, float y, float z);
 mat4 quat_to_mat4(const versor& q);
+// get a rotation matrix using radians and a specified axis vector (ADDED BY IRIS)
+mat4 rotate_mat(float radians, vec3 axis); 
+// get a rotation matrix using radians and a specified axis (ADDED BY IRIS)
+mat4 rotate_mat(float radians, float x, float y, float z); 
 float dot(const versor& q, const versor& r);
 versor slerp(const versor& q, const versor& r);
 // stupid overloading wouldn't let me use const

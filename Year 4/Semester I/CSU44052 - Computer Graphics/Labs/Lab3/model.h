@@ -5,6 +5,7 @@
 #include <math.h>
 #include <vector>
 #include <string>
+#include <map>
 #include "maths_funcs.h"
 using namespace std;
 
@@ -35,6 +36,7 @@ typedef struct ModelData {
 	vector<vec3> mVertices;
 	vector<vec3> mNormals;
 	vector<vec2> mTextureCoords;
+	vector<unsigned int> indices;
 };
 
 class Model
@@ -56,18 +58,25 @@ public:
 	unsigned int normal_vbo; // normal vbo
 	unsigned int texture_vbo; // texture vbo
 	unsigned int vao; // model vao
+	unsigned int ebo; // model ebo
 	unsigned int texture; // model texture
 	string mesh_name; // name of mesh for model
 	string texture_name; // name of texture for model
+	string shader_name; // name of shader for model
 	string name;
 	
 	// functions
 	Model();
 	Model(string);
 	Model(string, string, string, unsigned int);
+	vec3 getTranslate();
 	void setTranslate(float x, float y, float z);
 	void setTranslate(Translate t);
+	void setTranslate(vec3 v);
+	void setRotate(vec3 v);
 	void addChild(Model*);
 	Model* getChild(string);
+private:
+	Model* getChildRecur(string);
 };
 
